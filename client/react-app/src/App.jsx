@@ -19,7 +19,6 @@ function App() {
 
   const [concentration, setConcentration] = useState('ai');
 
-
   const [courseSelections, setCourseSelections] = useState([]);
 
   const [concentrationSelections, setConcentrationSelections] = useState([]);
@@ -47,7 +46,6 @@ function App() {
             }
             const data = await response.json();
             setOutline(data);
-            
             
 
         }catch(error) {
