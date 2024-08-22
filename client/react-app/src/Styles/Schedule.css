@@ -1,0 +1,68 @@
+
+
+
+/* 
+==========================================
+               Selection Bar 
+==========================================
+*/ 
+
+.selection-bar {
+    display: flex;
+    margin-bottom: 10px;
+    margin-top: -11px;
+}
+  
+
+
+
+
+
+
+
+/* 
+==========================================
+               Buttons
+==========================================
+*/ 
+
+
+
+
+
+.selection-bar button {
+font-weight: bold;
+}
+
+.selection-bar button:hover {
+cursor: pointer;
+}
+
+.side-button {
+    background-color: white;
+    border: 5px solid black;
+    box-shadow: 5px 5px;
+    width: 50px;
+    height: 50px;
+    margin:auto;
+    font-weight: bold;
+  }
+  
+.side-button:active {
+cursor: pointer;
+transform: translate(5px, 5px);
+box-shadow: none;
+}
+
+.selection-button {
+    margin-left: 1600px;
+    transform: translateY(60px);
+    border: 3px solid black;
+    box-shadow: 2px 2px
+}
+
+.selection-button:active {
+    box-shadow: none;
+    transform: translate(2px, 62px);
+}
+

@@ -1,0 +1,367 @@
+* {
+  font-family: verdana;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: 'Consolas', monospace;
+  
+}
+
+.profile-container{
+  border: 5px solid black;
+  width: 800px;
+  padding: 30px;
+  margin: auto;
+  margin-top: 20px;
+  box-shadow: 5px 5px;
+}
+
+.profile-container button{
+  border: 3px solid black;
+  box-shadow: 2px 2px;
+  margin-right: 5px;
+}
+
+.profile-container button:active {
+  box-shadow: none;
+  transform: translate(2px, 2px);
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+
+#hub {
+  background-color: black;
+  color: white;
+  padding:5px;
+  border-radius: 5px;
+}
+
+.home{
+  text-align: center;
+  
+}
+
+.header-container {
+  display: flex;
+  
+  text-align: center;
+  width: 700px;
+  padding: 20px;
+  margin: auto;
+  font-size: 30px;
+  margin-top: -20px;
+  margin-bottom: -30px;
+}
+
+.navigation-bar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin: 0px;
+  justify-content: center;
+  margin-left: 50px;
+  margin-bottom:  -80px;
+  margin-top: -90px;
+  
+}
+
+.navigation-bar button {
+  width: 400px;
+  height: 50px;
+  border: 5px solid black;
+  padding: 10px;
+  box-shadow: 5px 5px;
+  margin: 0px;
+  margin-left: -150px;
+  font-size: 20px;
+}
+
+.navigation-bar button:active  {
+  cursor: pointer;
+  box-shadow: none;
+  
+  transform: translate(5px, 5px);
+ 
+}
+
+.button-link, .button-link-active {
+  margin: 80px;
+  font-size: 30px;
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.button-link-active {
+  text-decoration: underline;
+}
+
+
+
+.container {
+  display: flex;
+
+  width: 100%;
+}
+
+.requirement-container {
+  width: 900px;
+ 
+  margin-right: 30px;
+  margin-left: 20px;
+
+}
+
+.concentration-container{
+  width: 900px;
+}
+
+.section-container {
+  border: 2px solid black;
+  box-shadow: 10px 10px;
+  margin-bottom: 20px;
+  padding-left: 25px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.section-container:hover {
+  box-shadow: none;
+  transform: translate(10px, 10px);
+  
+}
+
+.section-container button {
+  width: 97%;
+  height: 20px;
+  font-size: 15px;
+  text-align: left;
+  margin-bottom: 15px;
+  border: none;
+  background-color: white;
+}
+
+
+
+
+.course-button {
+  width: 97%;
+  height: 20px;
+  font-size: 15px;
+  text-align: left;
+  margin-bottom: 15px;
+  border: none;
+}
+
+.section-container button:hover {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+
+.button-active, .button-inactive {
+  width: 200px;
+  height: 50px;
+  border: 2px solid black;
+  margin: 10px;
+}
+
+.button-inactive {
+  background-color: white;
+  box-shadow: 5px 5px;
+}
+
+.button-active {
+  background-color: lightgrey;
+  transform: translate(5px, 5px);
+  box-shadow: none;
+}
+
+.missing-courses-container {
+  margin-left: 20px;
+  width: 1000px;
+  
+}
+
+.section-bar {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: auto;
+}
+
+.incomplete-section-container {
+  border: 3px solid black;
+  padding: 10px;
+  margin: auto;
+  width: 100%;
+  text-align: center;
+}
+
+.section-bar {
+  display:flex;
+  flex-direction:row;
+
+}
+
+.course-selection-container {
+  border: 5px solid black;
+  padding: 40px;
+  width: 90%;
+  height: 350px;
+  box-shadow: 5px 5px;
+  margin: auto;
+  margin-top: 20px;
+  background-color: #87CEEB;
+}
+
+.course-selection-container h1 {
+  margin-top: -20px;
+}
+
+
+
+.side-button {
+  background-color: white;
+  border: 5px solid black;
+  box-shadow: 5px 5px;
+  width: 50px;
+  height: 50px;
+  margin:auto;
+  font-weight: bold;
+}
+
+.side-button:active {
+  cursor: pointer;
+  transform: translate(5px, 5px);
+  box-shadow: none;
+}
+
+
+.course-selection,.course-selection-active {
+  background-color: white;
+  border: 3px solid black;
+  width: 325px;
+  height: 50px;
+  box-shadow: 5px 5px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  overflow:scroll;
+}
+
+.course-selection-active {
+  background-color: lightyellow;
+  
+}
+
+.course-selection:hover, .course-selection-active:hover {
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.calender-container {
+  margin-left: 50px;
+  margin-top: 40px;
+  display: flex;
+  flex: column;
+}
+
+.semester-container h1 {
+  text-align: center;
+  margin-top: 0;
+
+}
+
+.semester-container{
+  display: flex;
+  flex-direction: column;
+  border: 3px solid black;
+  width: 500px;
+  padding: 20px;
+  box-shadow: 10px 10px;
+  margin-left: 30px;
+  height: 400px;
+}
+
+
+.semester-container .course-selection {
+  width: 480px;
+  height: 50px;
+  font-weight: bold;
+}
+
+.add-remove-container {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.add-semester-button {
+  background-color: white;
+  border: 4px solid black;
+  box-shadow: 5px 5px;
+  margin-left: 20px;
+  height: 100px;
+  width: 50px;
+  margin-bottom: 50px;
+  font-weight: bold;
+}
+
+.add-semester-button:active {
+  box-shadow: none;
+  transform: translate(5px, 5px);
+}
+
+
+
+.change-year-container {
+  display: flex;
+  flex-direction: row;
+  width: 1000px;
+  margin: auto;
+}
+
+.add-year-button {
+  background-color: white;
+  border: 4px solid black;
+  width: 500px;
+  height: 50px;
+  margin-top: 30px;
+  box-shadow: 5px 5px;
+  margin-bottom: 30px;
+  font-weight:bold;
+  margin-left: 20px;
+}
+
+.add-year-button:active {
+  box-shadow: none;
+  transform: translate(5px, 5px);
+}
+
+
+.year-header {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  width: 1750px;
+  margin-left: 70px;
+  box-shadow: 5px 5px;
+  border: 5px solid black;
+  height: 50px;
+  margin-bottom: -20px;
+}
+
+.year-header:active {
+  box-shadow: none;
+  transform: translate(5px, 5px);
+}
+
+
+
