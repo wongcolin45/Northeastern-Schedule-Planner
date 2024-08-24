@@ -9,7 +9,7 @@ class Course extends Model {}
 
 Course.init(
     {
-        id: {
+        courseID: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
@@ -43,6 +43,10 @@ Course.init(
             type: DataTypes.TEXT,
             field: 'attributes'
         },
+        mandatory: {
+            type: DataTypes.INTEGER,
+            field: 'must_take'
+        },
         credit: {
             type: DataTypes.INTEGER,
             field: 'credits'
@@ -51,5 +55,8 @@ Course.init(
     { sequelize, tableName: 'courses', timestamps: false}
     
 )
+
+
+
 
 export {Course}

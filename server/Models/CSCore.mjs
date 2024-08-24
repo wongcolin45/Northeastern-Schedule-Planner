@@ -1,5 +1,6 @@
 
 import { Model, DataTypes } from 'sequelize';
+import { Course } from './Course.mjs';
 
 import sequelize from '../Configuration/connection.mjs';
 
@@ -26,13 +27,13 @@ CSCore.init(
             type: DataTypes.INTEGER,
             field: 'courses_required'
         },
-        mandatory: {
-            type: DataTypes.INTEGER,
-            field: 'must_take'
-        },
         courseID: {
             type: DataTypes.INTEGER,
             field: 'course_id',
+            references: {
+                model: Course,
+                key: 'courseID'
+            }
         }
     },
     { sequelize, tableName: 'cs_requirements', timestamps: false}

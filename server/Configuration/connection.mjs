@@ -10,12 +10,22 @@ const sequelize = new Sequelize({
 async function authenticateDatabase() {
     try {
         await sequelize.authenticate();
-        console.log('Connection has been established successfully.');
     } catch (error) {
         console.error('Unable to connect to the database:', error);
     }
 }
 
-authenticateDatabase();
+//authenticateDatabase();
+
+async function syncDatabase() {
+    try {
+        await sequelize.sync(); // or use { force: true } or { alter: true }
+        //console.log('Database synchronized');
+    } catch (error) {
+        //console.error('Error syncing database:', error);
+    }
+}
+
+export {authenticateDatabase, syncDatabase};
 
 export default sequelize;
