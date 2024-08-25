@@ -10,7 +10,8 @@ function Calender(props) {
     function handleAddYearClick() {
         props.setSchedule(prev => {
             const newSchedule = [...prev];
-            const year = prev[prev.length - 1].Year;
+            const l = prev[prev.length -1].plans.length
+            const year = prev[prev.length - 1].plans[l - 1].year + 1;
             newSchedule.push({Year: year, 
                               plans: 
                               [{year: year, semester: "Fall", courses: [null, null, null, null, null]}]});

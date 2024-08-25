@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
 import { MyContext } from '../App';
 
-import { fetchConcentration } from '../API/courseRequirementsAPI';
 
 function SelectionBar(props) {
     const {concentration, courseSelections, concentrationSelections} = useContext(MyContext);
@@ -50,7 +49,7 @@ function SelectionBar(props) {
         if (selection[index] === undefined) {
             return <p>index bad or sometihing</p>
         }
-        console.log('index passed');
+
         const section = selection[index];
         if (section === undefined) {
             return <h1>Section is Undefined</h1>
@@ -104,15 +103,6 @@ function SelectionBar(props) {
         })
     }
 
-
-    function getConcentrationName(tag) {
-        if (tag.length == 3)
-            return 'Human Centered Computing';
-        else if (tag.length == 2)
-            return "Artificial Inteligence";
-        else
-            return tag.charAt(0).toUpperCase() + tag.slice(1);
-    }
     
     function handleSelectionClick() {
         
@@ -125,7 +115,8 @@ function SelectionBar(props) {
 
         setSelectionName(n => {
             if (n === 'Major Requirements') {
-                return concentration.toUpperCase()  + ' Requirements';
+                const tag = (concentration.tag.length <= 3) ? concentration.tag.toUpperCase() : concentration.name;
+                return tag + ' Requirements';
             }
             return 'Major Requirements'
         });
@@ -138,11 +129,11 @@ function SelectionBar(props) {
         <>
             <button className='selection-button' onClick={handleSelectionClick}>{selectionName}</button>
             <div className='section-bar'>
-                <button onClick={handleLeftClick} className='side-button'>{'<'}</button>
+                <button onClick={handleLeftClick} className='left-button'>{'<'}</button>
                     {
                         renderSection(current)
                     }
-                <button onClick={handleRightClick} className='side-button'>{'>'}</button>
+                <button onClick={handleRightClick} className='right-button'>{'>'}</button>
             </div>
         </>
     )

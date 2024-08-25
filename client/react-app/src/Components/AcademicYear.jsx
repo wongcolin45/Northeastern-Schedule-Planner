@@ -1,9 +1,13 @@
 import Semester from "./Semester";
 
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
+
+import { MyContext } from "../App";
 
 function AcademicYear(props) {
     const YearPlan = props.schedule[props.year];
+
+    const {startYear} = useContext(MyContext);
 
     const [hidden, setHidden] = useState(false);
 
@@ -22,21 +26,20 @@ function AcademicYear(props) {
         
     }
 
-
     function getYearHeader(year) {
         let name;
         if (year === 0) {
-            name = 'Freshman Year';
+            name = 'Freshman';
         }else if (year === 1) {
-            name = "Sophmore Year";
+            name = "Sophmore";
         }else if (year === 2) {
-            name = "Junior Year";
+            name = "Junior";
         }else if (year === 3) {
-            name = 'Senior Year'
+            name = 'Senior';
         }else {
-            name = "Super Senior Year"
+            name = "Super Senior";
         }
-        return name;
+        return name + ` ${startYear + year} - ${startYear + year + 1}`
     }
 
     function handleAddClick(index) {
@@ -63,8 +66,6 @@ function AcademicYear(props) {
             })
         }
     }
-   
-
 
     return (
         <>
@@ -74,7 +75,6 @@ function AcademicYear(props) {
             { !hidden &&
                 <div className="calender-container">
                     {
-                        
                         YearPlan.plans.map(p => {
                             return (
                                 <Semester info={p} 

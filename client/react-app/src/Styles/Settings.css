@@ -1,0 +1,33 @@
+
+
+
+.profile-container{
+    border: 5px solid black;
+    width: 800px;
+    padding: 30px;
+    margin: auto;
+    margin-top: 20px;
+    box-shadow: 5px 5px;
+}
+  
+.profile-container button{
+    background-color: white;
+    border: 3px solid black;
+    box-shadow: 2px 2px;
+    margin-right: 5px;
+}
+  
+.profile-container button:active {
+    box-shadow: none;
+    transform: translate(2px, 2px);
+}
+
+.profile-container input {
+    border: 3px solid black;
+    box-shadow: 2px 2px;
+}
+
+
+.selected {
+    background-color: lightgrey;
+}

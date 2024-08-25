@@ -9,13 +9,157 @@
 
 .selection-bar {
     display: flex;
-    margin-bottom: 10px;
     margin-top: -11px;
 }
   
 
+.section-bar {
+    display:flex;
+    flex-direction:row;
+    width: 95%;
+
+  }
+
+  
+.course-selection-container {
+    border: 3px solid black;
+    padding: 40px;
+    width: 90%;
+    height: 350px;
+    box-shadow: 2px 2px;
+    margin: auto;
+    margin-bottom: 30px;
+    background-color: #87CEEB;
+}
+  
+.course-selection-container h1 {
+    margin-top: -20px;
+}
+  
+  
+.course-selection,.course-selection-active {
+    background-color: white;
+    border: 3px solid black;
+    width: 329px;
+    height: 50px;
+    box-shadow: 2px 2px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    overflow:scroll;
+}
+  
+.course-selection-active {
+    background-color: lightyellow;
+}
+  
+.course-selection:hover, .course-selection-active:hover {
+    cursor: pointer;
+}
+  
+.calender-container {
+
+    display: flex;
+    flex: column;
+    width: 100%;
+}
+  
+.semester-container h1 {
+    text-align: center;
+    font-size: 30px;
+}
+  
+.semester-container{
+    display: flex;
+    flex-direction: column;
+    border: 3px solid black;
+    width: 566px;
+    padding: 20px;
+    box-shadow: 2px 2px;
+    height: 350px;
+}
+  
+
+.semester-container h1 {
+    margin-top: 0px;
+}
+
+.semester-container .course-selection {
+    width: 500px;
+    height: 50px;
+    font-weight: bold;
+    box-shadow: none;
+}
+  
+  .add-remove-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .add-semester-button {
+    background-color: white;
+    border: 3px solid black;
+    box-shadow: 2px 2px;
+    height: 100%;
+    width: 50px;
+    font-weight: bold;
+  }
+  
+  .add-semester-button:active {
+    box-shadow: none;
+    transform: translate(2px, 2px);
+  }
+  
+  
+  
+  .change-year-container {
+    display: flex;
+    flex-direction: row;
+    width: 1000px;
+    margin: auto;
+  }
+  
+  .add-year-button {
+    background-color: white;
+    border: 3px solid black;
+    width: 500px;
+    height: 50px;
+    margin-top: 30px;
+    box-shadow: 2px 2px;
+    font-weight:bold;
+    margin-left: 20px;
+    
+  }
+  
+  .add-year-button:active {
+    box-shadow: none;
+    transform: translate(2px, 2px);
+  }
+  
+  
+  .year-header {
+    font-size: 15px;
+    font-weight: bold;
+    width: 100%;
+    box-shadow: 2px 2px;
+    border: 3px solid black;
+    height: 40px;
+  
+
+  }
+  
+  .year-header:active {
+    box-shadow: none;
+    transform: translate(2px, 2px);
+  }
 
 
+
+.course-container {
+    display: flex;
+    
+}
 
 
 
@@ -27,6 +171,17 @@
 */ 
 
 
+.trash-button {
+    background-color: white;
+    border: 3px solid black;
+    width: 50px;
+    height: 50px;
+    box-shadow: 2px 2px;
+}
+
+.trash-button:active {
+    transform: translate(2px, 2px);
+}
 
 
 
@@ -38,31 +193,39 @@ font-weight: bold;
 cursor: pointer;
 }
 
-.side-button {
-    background-color: white;
-    border: 5px solid black;
-    box-shadow: 5px 5px;
+.left-button, .right-button {
+    border: 3px solid black;
+    box-shadow: 2px 2px;
     width: 50px;
-    height: 50px;
-    margin:auto;
+    height: 436px;
     font-weight: bold;
-  }
+}
   
-.side-button:active {
-cursor: pointer;
-transform: translate(5px, 5px);
-box-shadow: none;
+.left-button:active, .right-button:active {
+    cursor: pointer;
+    box-shadow: none;
+    background-color: lightgrey;
+    transform: translateY(2px);
+}
+
+.left-button:active {
+    transform: translateX(2px);
+}
+
+.right-button:active {
+    transform: translateX(-2px);
 }
 
 .selection-button {
-    margin-left: 1600px;
-    transform: translateY(60px);
+    width: 220px;
+    margin-left: 1595px;
+    transform: translateY(40px);
     border: 3px solid black;
     box-shadow: 2px 2px
 }
 
 .selection-button:active {
     box-shadow: none;
-    transform: translate(2px, 62px);
+    transform: translate(2px, 42px);
 }
 

@@ -2,15 +2,18 @@
 import Calender from "../Components/Calender";
 import NavBar from "../Components/NavBar";
 import SelectionBar from "../Components/SelectionBar";
-import React, {useState, useEffect, createContext} from 'react';
+import React, {useState, useEffect, createContext, useContext} from 'react';
 import '../Styles/Schedule.css';
+import { MyContext } from "../App";
 
 export const ScheduleContext = createContext();
 
 function ScheduleMaker(props) {
 
+    const {startYear} = useContext(MyContext);
+
     const [schedule, setSchedule] = useState([{ Year: 1, 
-                                                plans: [{year: 2024, semester: "Fall", courses: [null, null, null, null, null]}]
+                                                plans: [{year: startYear, semester: "Fall", courses: [null, null, null, null, null]}]
                                               }]);
 
     const [courseSelection, setCourseSelection] = useState();

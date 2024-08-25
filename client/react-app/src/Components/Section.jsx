@@ -59,11 +59,12 @@ function Section(props) {
         })
     }, [courses])
 
-    
+    const getHeader = () => (props.section.name.includes('section')) ? props.section.name.slice(0, 12) : props.section.name;
+         
 
     return (
         <div className="section-container" style={{background: background}}>
-            <h2>{props.section.name + message}</h2>
+            <h2>{getHeader() + message}</h2>
             {props.section.courses.map((c, index) => {
                 const m = (c.mandatory) ? '(M)' : '';
                 const name = c.courseCode + '  -  ' + c.className + m;

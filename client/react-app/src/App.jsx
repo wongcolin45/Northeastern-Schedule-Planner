@@ -4,7 +4,7 @@ import RequirementsHub from './Pages/RequirementsHub';
 
 import Home from './Pages/Home';
 import ScheduleMaker from './Pages/ScheduleMaker';
-import Login from './Pages/Login';
+import Settings from './Pages/Settings';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import { fetchConcentration } from './API/courseRequirementsAPI';
 
@@ -17,7 +17,9 @@ function App() {
 
   const [outline, setOutline] = useState([]);
 
-  const [concentration, setConcentration] = useState('ai');
+  const [startYear, setStartYear] = useState(2024);
+
+  const [concentration, setConcentration] = useState({name: "Artificial Inteligence", tag: 'ai'});
 
   const [courseSelections, setCourseSelections] = useState([]);
 
@@ -99,7 +101,6 @@ function App() {
     <BrowserRouter>
       <Routes>
 
-        
           
         <Route path="/requirementshub" 
               element=
@@ -119,13 +120,19 @@ function App() {
             <MyContext.Provider value={{outline: outline,
                                         courseSelections: courseSelections, setCourseSelections: setCourseSelections,
                                         concentration: concentration,
-                                        concentrationSelections: concentrationSelections
+                                        concentrationSelections: concentrationSelections,
+                                        startYear: startYear
             }}>
               <ScheduleMaker/>
             </MyContext.Provider>
         }></Route>
 
-        <Route path="/login" element={<Login/>}></Route>
+        <Route path="/login" element={
+          <MyContext.Provider value={{concentration: concentration, setConcentration: setConcentration,
+                                      startYear: startYear, setStartYear: setStartYear}}>
+             <Settings/>
+          </MyContext.Provider>
+        }></Route>
 
         
 
