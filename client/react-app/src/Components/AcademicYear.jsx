@@ -74,7 +74,6 @@ function AcademicYear(props) {
         }
     }
 
-
     return (
         <>
             <button className="year-header"
