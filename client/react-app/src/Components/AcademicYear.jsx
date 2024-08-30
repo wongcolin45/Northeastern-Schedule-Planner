@@ -4,8 +4,12 @@ import React, {useState, useContext} from 'react';
 
 import { MyContext } from "../App";
 
+
+
 function AcademicYear(props) {
-    const YearPlan = props.schedule[props.year];
+
+   
+    const YearPlan = props.schedule[props.yearIndex];
 
     const {startYear} = useContext(MyContext);
 
@@ -20,9 +24,9 @@ function AcademicYear(props) {
         const lastYear = getLastSemester(year).year;
         const lastSemester = getLastSemester(year).semester;
         if (lastSemester === 'Fall') {
-            return {year: lastYear + 1, semester: "Spring", courses: [null, null, null, null, null]}
+            return {year: lastYear + 1, semester: "Spring", courses: [null, null, null, null]}
         }
-        return {year: lastYear, semester: "Summer", courses: [null, null, null, null, null]} 
+        return {year: lastYear, semester: "Summer", courses: [null, null, null, null]} 
         
     }
 
@@ -44,11 +48,14 @@ function AcademicYear(props) {
 
     function handleAddClick(index) {
         const plans = props.schedule[index].plans.length;
+        
         if (plans < 3) {
             props.setSchedule(s => { 
                 const newSchedule = [...s]    
                 const newSemester = getNextSemester(index)
                 newSchedule[index].plans.push(newSemester);
+                console.log('setting schedule');
+                console.log(newSchedule)
                 return newSchedule;
             })
         }
@@ -67,28 +74,31 @@ function AcademicYear(props) {
         }
     }
 
+
     return (
         <>
             <button className="year-header"
                     onClick={() => setHidden(h => !h)}
-                    >{getYearHeader(props.year)}</button>
+                    >{getYearHeader(props.yearIndex)}</button>
             { !hidden &&
                 <div className="calender-container">
                     {
-                        YearPlan.plans.map(p => {
+                        YearPlan.plans.map((p, index) => {
+                          
                             return (
-                                <Semester info={p} 
-                                    setSchedule={props.setSchedule} 
-                                    courseSelection={props.courseSelection} 
-                                    year={props.year}
+                                <Semester 
+                                    year={p.year}
+                                    yearIndex={props.yearIndex}
+                                    semester={p.semester}
+                                    semesterIndex={index}
+                                    courses = {p.courses}
                                     key={props.year + p.year + p.semester+props}/>
                                 )
                         })
-                        
                     }
                     <div className="add-remove-container">
-                        <button className="add-semester-button" onClick={() => handleAddClick(props.year)} key={'add1'}>+</button>
-                        <button className="add-semester-button" onClick={() => handleRemoveClick(props.year)} key={'remove1'}>-</button>
+                        <button className="add-semester-button" onClick={() => handleAddClick(props.yearIndex)} key={'add1'}>+</button>
+                        <button className="add-semester-button" onClick={() => handleRemoveClick(props.yearIndex)} key={'remove1'}>-</button>
                     </div>
                 </div>
             }

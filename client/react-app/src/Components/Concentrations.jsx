@@ -5,10 +5,7 @@ function Concentration(props) {
 
     const [outline, setOutline] = useState([]);
     
-    
-
-    useEffect(() => {
-        
+    useEffect(() => {  
         async function setConcentration() {
             const data = await fetchConcentration(props.concentration);
             setOutline(data);
@@ -16,9 +13,7 @@ function Concentration(props) {
         setConcentration();
     },[props.concentration]);
   
-
-   
-    if (outline.length === 0) {
+    if (outline.length === 0 || outline === undefined) {
         return <h1>Your SQLite database isn't working!</h1>
     }
 
@@ -36,7 +31,6 @@ function Concentration(props) {
                 }
         </>
     )
-
 }
 
 export default Concentration;

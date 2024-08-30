@@ -45,6 +45,33 @@ function SelectionBar(props) {
         return `${section.left - coursesTaken(index)}`;
     }
 
+    function renderCourse(course, index) {
+        
+       
+
+        if (props.courseTaken(course)) {
+            return (
+                <button key={course+index} 
+                       
+                        style={{ textDecoration: 'line-through' }}
+                        >        
+                {course.courseCode + ' - ' + course.className}
+                </button>
+            )   
+        }
+
+        const style = (props.courseSelection === course) ? {backgroundColor: "yellow"} : {};
+
+        return (
+            <button key={course+index}   
+                    onClick={() => props.setCourseSelection(course)}
+                    style={style}
+                    >        
+            {course.courseCode + ' - ' + course.className}
+            </button>
+        )  
+    }
+
     function renderSection(index) {
         if (selection[index] === undefined) {
             return <p>index bad or sometihing</p>
@@ -58,31 +85,10 @@ function SelectionBar(props) {
         return (
             <div className='course-selection-container'>
                 <h1>{`${section.name} (${getLeft(index)})`}</h1>
-                <div>
+                <div className='courses-container'>
                 {
                     section.courses.map((course, index) => {
-                        const className = (props.courseSelection && props.courseSelection.courseCode === course.courseCode) 
-                                          ? "course-selection-active" : "course-selection";
-
-                        if (props.courseTaken(course)) {
-                            return (
-                                <button key={course+index} 
-                                        className={className}
-                                        style={{ textDecoration: 'line-through' }}
-                                        >        
-                                {course.courseCode + ' - ' + course.className}
-                                </button>
-                            )   
-                        }
-
-                        return (
-                            <button key={course+index} 
-                                    className={className}
-                                    onClick={() => props.setCourseSelection(course)}
-                                    >        
-                            {course.courseCode + ' - ' + course.className}
-                            </button>
-                        )   
+                       return renderCourse(course, index);  
                     })
                 }
                 </div>

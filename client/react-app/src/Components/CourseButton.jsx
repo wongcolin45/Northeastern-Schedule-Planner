@@ -12,7 +12,7 @@ function CourseButton(props) {
     
 
     function handleClick() {  
-        if (isComplete() === '☐') {
+        if (isComplete() === '☐' && !courses.some(c => c.courseCode === props.courseCode)) {
             setCourses(c => {
                 const newCourses = [...c]
                 const courseInfo = {courseCode: props.courseCode, 

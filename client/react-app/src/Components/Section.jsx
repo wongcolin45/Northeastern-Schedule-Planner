@@ -13,27 +13,22 @@ function Section(props) {
  
     const [background, setBackground] = useState("lightcoral");
 
-    const unique = () => props.section.name.includes('not already taken');
+    const unique = (name) => name.includes('not already taken');
 
     function calculateLeft() {
-       let total = props.section.coursesRequired;  
+       
+        let total = props.section.coursesRequired;  
         props.section.courses.forEach((course) => {
-            const i  = courses.findIndex(c => {     
-                return c.courseCode === course.courseCode && 
-                       c.requirementName === props.requirementName &&
-                       c.sectionName === props.section.name;
-            });
-            const j = courses.findIndex(c => {
-                return c.courseCode === course.courseCode && 
-                       c.requirementName !== props.requirementName &&
-                       c.sectionName !== props.section.name;
-            })
+            const i = courses.findIndex(c => c.courseCode === course.courseCode);
+                       
             if (i !== -1) {
-                if (unique()) {
-                    if (j === -1 || j >= i) {
-                        total--;
-                    }
-                }else {
+
+                const sectionMatch = courses[i].requirementName == props.requirementName && 
+                                     courses[i].sectionName == props.section.name;
+
+                const fillingUnique = !unique(props.section.name) && unique(courses[i].requirementName);
+
+                if (sectionMatch || fillingUnique) {
                     total--;
                 }
             }
@@ -65,7 +60,8 @@ function Section(props) {
     return (
         <div className="section-container" style={{background: background}}>
             <h2>{getHeader() + message}</h2>
-            {props.section.courses.map((c, index) => {
+            {
+                props.section.courses.map((c, index) => {
                 const m = (c.mandatory) ? '(M)' : '';
                 const name = c.courseCode + '  -  ' + c.className + m;
                 return <CourseButton key={c+index} 

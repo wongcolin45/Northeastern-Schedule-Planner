@@ -13,7 +13,7 @@ function ScheduleMaker(props) {
     const {startYear} = useContext(MyContext);
 
     const [schedule, setSchedule] = useState([{ Year: 1, 
-                                                plans: [{year: startYear, semester: "Fall", courses: [null, null, null, null, null]}]
+                                                plans: [{year: startYear, semester: "Fall", courses: [null, null, null, null]}]
                                               }]);
 
     const [courseSelection, setCourseSelection] = useState();

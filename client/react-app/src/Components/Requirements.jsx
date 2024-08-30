@@ -1,5 +1,4 @@
 import React, {useState, useEffect, useContext} from 'react';
-import CourseButton from './CourseButton.jsx';
 import Section from './Section.jsx';
 import { MyContext } from '../App.jsx';
 
