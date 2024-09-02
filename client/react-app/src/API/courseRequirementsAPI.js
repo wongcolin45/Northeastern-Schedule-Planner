@@ -5,6 +5,7 @@ const base = 'http://localhost:3000/api/computerscience/';
 
 async function fetchConcentration(concentration) {
     const url = base + concentration;
+    console.log('trying url '+url);
     try {
         const response = await fetch(url);
          
@@ -21,4 +22,35 @@ async function fetchConcentration(concentration) {
 
 
 
-export {fetchConcentration};
+
+async function fetchSchedule(schedule) {
+    console.log('send over schedule');
+    console.log(schedule);
+    try {
+        
+        const response = await fetch('http://localhost:3000/api/computerscienceSchedule', {
+            method: 'POST', // HTTP method
+            headers: {
+                'Content-Type': 'application/json', // Content type being sent
+            },
+            body: JSON.stringify(schedule), // Convert the JavaScript object to a JSON string
+        });
+
+        // Check if the request was successful
+        if (response.ok) {
+            const responseData = await response.json(); // Parse JSON response from the server
+            console.log('Data successfully sent and received:', responseData);
+            // You can now use `responseData` in your frontend
+            return responseData;
+        } else {
+            console.error('Error sending data:', response.statusText);
+        }
+    } catch (error) {
+        console.error('Error occurred:', error);
+    }
+}
+
+
+
+
+export {fetchConcentration, fetchSchedule};

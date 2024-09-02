@@ -1,11 +1,14 @@
 
-import getCSCore from '../Repositories/computerScience.mjs';
+import getCSCore from '../repositories/computerScienceRepo.mjs';
 
 import getConcentration from '../repositories/concentration.mjs';
 
 import express from 'express';
 
 import cors from 'cors';
+import { generateSchedule } from '../repositories/scheduleRepo.mjs';
+
+
 
 const app = express();
 
@@ -39,6 +42,14 @@ app.get('/api/computerscience/:concentration', async (request, response) => {
         return response.status(503).send('Outline not yet initialized. Please try again later.');
     }
 });
+
+
+app.post('/api/computerscienceSchedule', async (request, response) => {
+    const schedule = request.body;
+    const data = await generateSchedule(schedule, 4);
+    
+    return response.status(200).send(data);
+})
 
 
 

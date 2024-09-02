@@ -52,7 +52,7 @@ function SelectionBar(props) {
         if (props.courseTaken(course)) {
             return (
                 <button key={course+index} 
-                       
+                      
                         style={{ textDecoration: 'line-through' }}
                         >        
                 {course.courseCode + ' - ' + course.className}
@@ -66,6 +66,7 @@ function SelectionBar(props) {
             <button key={course+index}   
                     onClick={() => props.setCourseSelection(course)}
                     style={style}
+                     
                     >        
             {course.courseCode + ' - ' + course.className}
             </button>
@@ -82,9 +83,11 @@ function SelectionBar(props) {
             return <h1>Section is Undefined</h1>
         }
 
+        const sectionTitle = (section.name.includes('section')) ? section.name.slice(0, -12) : section.name;
+
         return (
             <div className='course-selection-container'>
-                <h1>{`${section.name} (${getLeft(index)})`}</h1>
+                <h1>{`${sectionTitle} (${getLeft(index)})`}</h1>
                 <div className='courses-container'>
                 {
                     section.courses.map((course, index) => {

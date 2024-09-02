@@ -16,12 +16,11 @@ from '../Models/CSConcentration.mjs';
 
 const Models = [AIConcentration, HCCConcentration, SoftwareConcentration, SystemsConcentration, FoundationsConcentration];
 
-Models.forEach((Model) => console.log(Model.tableName));
+
 
 
 
 Models.forEach((Model, index) => {
-    console.log(`Alais is ${index}`);
     Course.hasMany(Model, { foreignKey: 'courseID', as: `${Model.tableName}` });
     Model.belongsTo(Course, { foreignKey: 'courseID', as: `course-${Model.tableName}` });
 });

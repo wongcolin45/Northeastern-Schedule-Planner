@@ -17,8 +17,7 @@ async function getCourseID(department, code) {
         where: {
             department: department,
             courseNumber: code
-        }
-            
+        }   
     })
 }
 

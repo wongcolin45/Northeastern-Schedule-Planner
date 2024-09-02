@@ -1,12 +1,14 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import { ScheduleContext } from '../Pages/ScheduleMaker';
-
+import { fetchSchedule } from '../API/courseRequirementsAPI';
 
 
 
 function Semester(props) {
 
     const {courseSelection, schedule, setSchedule} = useContext(ScheduleContext);
+
+    const [scheduleMade, setScheduleMade] = useState([]);
 
     function getBackground() {
         if (props.semesterIndex === 0) {
@@ -55,6 +57,36 @@ function Semester(props) {
         }
     }
 
+
+    
+
+
+    function handleGenerateClick() {
+        const getSchedule = async () => {
+            const plan = await fetchSchedule(schedule);
+            setSchedule(prev => {
+                const newSchedule = [...prev];
+
+                const Year = newSchedule[props.yearIndex].plans;
+
+                const courses = Year[props.semesterIndex].courses;
+
+                for (let i = 0; i < 4; i++) {
+                    if (courses[i] === null) {
+                        if (plan.length <= 0) {
+                            return newSchedule;
+                        }
+                        courses[i] = plan.pop();
+                    }
+                }
+                return newSchedule;
+            })
+
+        }
+        getSchedule();
+        
+    }
+
     return (
         <div className="semester-container" style={getBackground()}>
             <h1>{props.semester + ' - '+ props.year}</h1>
@@ -75,6 +107,7 @@ function Semester(props) {
                     )         
                 })
             }
+            <button className='generate-schedule-button' onClick={handleGenerateClick}>Generate Schedule</button>
         </div>
     )
 }
