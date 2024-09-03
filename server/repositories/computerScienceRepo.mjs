@@ -111,7 +111,7 @@ async function getCSCore() {
 
         const subRequirements = await getSubRequirements(requirement);
 
-        const subsections = [];
+        const sections = [];
 
         for (const subRequirement of subRequirements) {
 
@@ -122,10 +122,10 @@ async function getCSCore() {
 
             const section = {name: subRequirement, courses: courses, coursesRequired: coursesRequired}
 
-            subsections.push(section); 
+            sections.push(section); 
             
         }
-        outline.push({name: requirement, subsections: subsections})
+        outline.push({name: requirement, sections: sections})
     }
 
     return outline

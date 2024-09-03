@@ -13,7 +13,7 @@ function Requirements(props) {
             return <h1>Outline not initialized</h1>
         }
 
-        const sections = requirement.subsections;
+        const sections = requirement.sections;
         return (
             <div key={requirement+index} className="requirement-container">
                 <h1>{requirement.name}</h1>

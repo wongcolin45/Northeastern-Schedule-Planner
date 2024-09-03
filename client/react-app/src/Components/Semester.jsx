@@ -64,23 +64,26 @@ function Semester(props) {
     function handleGenerateClick() {
         const getSchedule = async () => {
             const plan = await fetchSchedule(schedule);
-            setSchedule(prev => {
-                const newSchedule = [...prev];
-
-                const Year = newSchedule[props.yearIndex].plans;
-
-                const courses = Year[props.semesterIndex].courses;
-
-                for (let i = 0; i < 4; i++) {
-                    if (courses[i] === null) {
-                        if (plan.length <= 0) {
-                            return newSchedule;
+            if (plan.length !== 0) {
+                setSchedule(prev => {
+                    const newSchedule = [...prev];
+    
+                    const Year = newSchedule[props.yearIndex].plans;
+    
+                    const courses = Year[props.semesterIndex].courses;
+    
+                    for (let i = 0; i < 4; i++) {
+                        if (courses[i] === null) {
+                            if (plan.length <= 0) {
+                                return newSchedule;
+                            }
+                            courses[i] = plan.pop();
                         }
-                        courses[i] = plan.pop();
                     }
-                }
-                return newSchedule;
-            })
+                    return newSchedule;
+                })
+            }
+            
 
         }
         getSchedule();

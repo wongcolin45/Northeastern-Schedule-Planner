@@ -63,7 +63,7 @@ function App() {
       const requirements = [];
       outline.forEach(r => {
   
-        r.subsections.forEach(s => {
+        r.sections.forEach(s => {
           
           const info = {name: s.name, courses: s.courses, left: s.coursesRequired,};
            

@@ -3,7 +3,7 @@ import ConcentrationSelector from "../Components/ConcentrationSelector";
 import NavBar from "../Components/NavBar";
 import NUPath from "../Components/NUPath";
 import '../Styles/Requirements.css';
-import SaveRequirementsButton from "../Components/SaveRequirements";
+
 
 function RequirementsHub() {
 
@@ -16,7 +16,6 @@ function RequirementsHub() {
                 <div className='requirementHub-container'>
                     <Requirements/>
                     <div className="subsections-container">
-                        <SaveRequirementsButton/>
                         <ConcentrationSelector/>
                     </div>
                     
