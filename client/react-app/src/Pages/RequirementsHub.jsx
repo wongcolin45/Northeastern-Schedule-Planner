@@ -7,8 +7,6 @@ import '../Styles/Requirements.css';
 
 function RequirementsHub() {
 
-    
-
     return (
        
             <div>

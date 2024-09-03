@@ -26,7 +26,7 @@ app.get('/api/requirements', async (req, res) => {
     const outline = await getCSCore();
     if (outline) {
         return res.json(outline);
-    } else {
+    } else {  
         return res.status(503).send('Outline not yet initialized. Please try again later.');
     }
 });

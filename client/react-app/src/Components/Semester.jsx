@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import { ScheduleContext } from '../Pages/ScheduleMaker';
 import { fetchSchedule } from '../API/courseRequirementsAPI';
 
@@ -8,8 +8,20 @@ function Semester(props) {
 
     const {courseSelection, schedule, setSchedule} = useContext(ScheduleContext);
 
-    const [scheduleMade, setScheduleMade] = useState([]);
+    const [full, setFull] = useState(false);
 
+
+    useEffect(() => {
+        const Year = schedule[props.yearIndex].plans;
+        const courses = Year[props.semesterIndex].courses;
+        if (courses.every(course => course !== null)) {
+            setFull(true);
+        }else {
+            setFull(false);
+        }
+    })
+
+    
     function getBackground() {
         if (props.semesterIndex === 0) {
             return {backgroundColor: "#FF6F00"}
@@ -33,8 +45,13 @@ function Semester(props) {
 
                 courses[index] = courseSelection;
 
+
                 return newSchedule;
             })
+            const Year = schedule[props.yearIndex].plans;
+
+            const courses = Year[props.semesterIndex].courses;
+
         }else {
             console.log('no course has been selected');
         }
@@ -58,6 +75,13 @@ function Semester(props) {
     }
 
 
+    function renderGenerateClearButton() {
+        if (full) {
+            return <button className='generate-schedule-button' onClick={handleClearClick}>Clear Schedule</button>
+        }else {
+            return <button className='generate-schedule-button' onClick={handleGenerateClick}>Generate Schedule</button>
+        }
+    }
     
 
 
@@ -90,6 +114,18 @@ function Semester(props) {
         
     }
 
+    function handleClearClick() {
+        setSchedule(prev => {
+            const newSchedule = [...prev];
+
+            const Year = newSchedule[props.yearIndex].plans;
+
+            Year[props.semesterIndex].courses = [null, null, null, null];
+
+            return newSchedule;
+        }) 
+    }
+
     return (
         <div className="semester-container" style={getBackground()}>
             <h1>{props.semester + ' - '+ props.year}</h1>
@@ -110,7 +146,7 @@ function Semester(props) {
                     )         
                 })
             }
-            <button className='generate-schedule-button' onClick={handleGenerateClick}>Generate Schedule</button>
+            {renderGenerateClearButton()}
         </div>
     )
 }
