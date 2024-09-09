@@ -56,7 +56,8 @@ async function getCourses(Model, section) {
                     attributes: [
                         [sequelize.col('course_name'), 'courseName'],
                         [sequelize.col('department'), 'department'],
-                        [sequelize.col('course_number'), 'courseNumber'],     
+                        [sequelize.col('course_number'), 'courseNumber'],    
+                        [sequelize.col('attributes'), 'attributes'],   
                     ]
                 }
         ],
@@ -71,7 +72,12 @@ async function getCourses(Model, section) {
         const mandatory = (r.mandatory === undefined) ? false : r.mandatory === 1;
         const courseName = r[alias].courseName
         const courseCode = r[alias].department + r[alias].courseNumber;
-        return {className: courseName, courseCode: courseCode, mandatory: mandatory}
+        const attributes = r[alias].dataValues.attributes;
+    
+        const courseInfo =  {className: courseName, courseCode: courseCode, mandatory: mandatory, attributes: attributes}
+        console.log('RETURNING COURSE INFO CHECK')
+        console.log(courseInfo);
+        return courseInfo;
       });
       return courses
     } catch (error) {

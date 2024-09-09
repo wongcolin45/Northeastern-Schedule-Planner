@@ -1,3 +1,6 @@
+import React, {useContext, useEffect, useState} from 'react';
+import { MyContext } from '../App';
+import { fetchNUPath } from '../API/courseRequirementsAPI';
 
 const requirements = ['Engaging with the Natural and Designed World',
                       'Exploring Creative Expression and Innovation',
@@ -13,15 +16,35 @@ const requirements = ['Engaging with the Natural and Designed World',
 
 
 function NUPath() {
-    
+    const [outline, setOutline] = useState([]);
+    const {courses} = useContext(MyContext);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await fetchNUPath(courses);
+                setOutline(data); // Set the outline with the fetched data
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+        fetchData();
+        //console.log('Outline Check ')
+        //console.log(outline);
+      
+    }, [courses])
+
     return (
         <>
             <h1>NUpath Requirements</h1>
             <div className="nupath-section-container">
                 <h2>11 Relevant Disciples</h2>
                 {
-                    requirements.map(name => {
-                        return <span>{name}</span>
+                    
+                    outline.map(requirement => {
+                        console.log('requiremnt check')
+                        console.log(requirement)
+                        return <button>requirement</button>
                     })
                 }
             </div>

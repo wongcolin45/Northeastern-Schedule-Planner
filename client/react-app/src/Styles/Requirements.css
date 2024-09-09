@@ -1,6 +1,5 @@
 
 .subsections-container {
-    border: 1px solid red;
     margin-right: 50px;
     padding: 10px;
     width: 100%;
@@ -23,7 +22,6 @@
 
 .requirement-container {
     width: 95%;
-    border: 4px solid green;
     padding: 10px;
   
 }

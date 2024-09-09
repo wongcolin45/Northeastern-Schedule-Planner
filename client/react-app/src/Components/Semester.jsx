@@ -23,6 +23,7 @@ function Semester(props) {
 
     
     function getBackground() {
+        return {backgroundColor: '#efefee'}
         if (props.semesterIndex === 0) {
             return {backgroundColor: "#FF6F00"}
         }else if (props.semesterIndex === 1) {
@@ -44,6 +45,9 @@ function Semester(props) {
                 const courses = Year[props.semesterIndex].courses;
 
                 courses[index] = courseSelection;
+
+                console.log('course selection is ');
+                console.log(courseSelection);
 
 
                 return newSchedule;

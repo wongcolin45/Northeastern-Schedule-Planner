@@ -14,11 +14,14 @@ function CourseButton(props) {
     function handleClick() {  
         if (isComplete() === '☐' && !courses.some(c => c.courseCode === props.courseCode)) {
             setCourses(c => {
-                const newCourses = [...c]
+                const newCourses = [...c];
                 const courseInfo = {courseCode: props.courseCode, 
                                     courseName: props.name,
+                                    attributes: props.attributes,
                                     requirementName: props.requirementName, 
                                     sectionName: props.sectionName};
+                console.log('pushing ');
+                console.log(courseInfo);
                 newCourses.push(courseInfo);
                 return newCourses;
             });

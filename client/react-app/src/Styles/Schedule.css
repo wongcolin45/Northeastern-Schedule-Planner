@@ -7,16 +7,60 @@
 ==========================================
 */ 
 
+.selection-container {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+
+.requirements-bar {
+  display: flex;
+  flex-direction: column;
+  border: 3px solid black;
+  height: 460px;
+  box-shadow: 2px 2px;
+  margin-right: 5px;
+  overflow:scroll;
+  background-color: #efefee;
+  padding: 5px;
+
+  
+
+}
+
+.requirements-bar h2 {
+  font-size: 20px;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.requirements-bar button {
+  outline: 2px solid black;
+  height: 150px;
+  width: 100%;
+  font-size: 20px;
+  padding: 10px;
+  background-color: white;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.requirements-bar button:active {
+  background-color: lightgrey;
+}
+
 .selection-bar {
     display: flex;
     margin-top: -11px;
-}
+} 
   
 
 .section-bar {
     display:flex;
     flex-direction:row;
-    width: 95%;
+    width: 100%;
 
   }
 
@@ -25,12 +69,12 @@
     border: 3px solid black;
     box-shadow: 2px 2px;
     padding: 40px;
-    width: 90%;
-    height: 350px;
+    width: 100%;
+    height: 380px;
     box-shadow: 2px 2px;
     margin: auto;
     margin-bottom: 30px;
-    background-color: #87CEEB;
+    background-color: #efefee;
 }
   
 .course-selection-container h1 {
@@ -233,16 +277,12 @@ cursor: pointer;
 }
 
 .selection-button {
-    width: 220px;
-    margin-left: 1595px;
-    transform: translateY(40px);
-    border: 3px solid black;
+    border: 2px solid black;
     box-shadow: 2px 2px
 }
 
 .selection-button:active {
-    box-shadow: none;
-    transform: translate(2px, 42px);
+    background-color: lightgrey;
 }
 
 

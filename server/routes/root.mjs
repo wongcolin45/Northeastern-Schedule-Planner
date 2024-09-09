@@ -8,6 +8,8 @@ import express from 'express';
 import cors from 'cors';
 import { generateSchedule } from '../repositories/scheduleRepo.mjs';
 
+import { getAttributes } from '../repositories/nuPathRepo.mjs';
+
 
 
 const app = express();
@@ -49,7 +51,14 @@ app.post('/api/computerscienceSchedule', async (request, response) => {
     const data = await generateSchedule(schedule, 4);
     
     return response.status(200).send(data);
-})
+});
+
+
+app.post('/api/nupath', (request, response) => {
+    const courses = request.body;
+    const data = getAttributes(request.body);
+    return response.status(200).send(data)
+});
 
 
 

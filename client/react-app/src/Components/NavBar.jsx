@@ -33,6 +33,7 @@ function NavBar() {
                 }
                
             </div>
+            <hr className="nav-line"></hr>
         </>
     );
 }

@@ -20,9 +20,6 @@ async function fetchConcentration(concentration) {
     }
 }
 
-
-
-
 async function fetchSchedule(schedule) {
     console.log('send over schedule');
     console.log(schedule);
@@ -50,7 +47,28 @@ async function fetchSchedule(schedule) {
     }
 }
 
+async function fetchNUPath(courses) {
+    
+    try {
+        const response =  await fetch('http://localhost:3000/api/nupath', {
+            method: 'POST', // HTTP method
+            headers: {
+                'Content-Type': 'application/json', // Content type being sent
+            },
+            body: JSON.stringify(courses), // Convert the JavaScript object to a JSON string
+        });
+        if (response.ok) {
+            const responseData = await response.json(); // Parse JSON response from the server
+            return responseData;
+        } else {
+            console.error('Error sending data:', response.statusText);
+        }
+    }catch (error){
+        console.log(error)
+    }
+}
 
 
 
-export {fetchConcentration, fetchSchedule};
+
+export {fetchConcentration, fetchSchedule, fetchNUPath};

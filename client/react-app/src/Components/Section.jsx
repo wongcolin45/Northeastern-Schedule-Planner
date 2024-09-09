@@ -64,6 +64,7 @@ function Section(props) {
                 props.section.courses.map((c, index) => {
                 const m = (c.mandatory) ? '(M)' : '';
                 const name = c.courseCode + '  -  ' + c.className + m;
+                const attributes = c.attributes;
                 return <CourseButton key={c+index} 
                                      name={name} 
                                      courseCode={c.courseCode}
@@ -71,6 +72,7 @@ function Section(props) {
                                      limit = {props.section.coursesRequired}
                                      requirementName = {props.requirementName}
                                      sectionName = {props.section.name}
+                                     attributes = {attributes}
                                      />
             })}
         </div>

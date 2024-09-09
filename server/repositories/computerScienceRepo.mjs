@@ -60,6 +60,7 @@ async function getCourses(requirement, subRequirement) {
                         [sequelize.col('course_name'), 'courseName'],
                         [sequelize.col('department'), 'department'],
                         [sequelize.col('course_number'), 'courseNumber'],     
+                        [sequelize.col('attributes'), 'attributes'], 
                     ]
                 }
             ],
@@ -73,7 +74,8 @@ async function getCourses(requirement, subRequirement) {
             const courseName = d.course.courseName;
             const mandatory = d.mandatory === 1;
             const courseCode = d.course.department + ' ' + d.course.courseNumber;
-            const courseInfo = {className: courseName, mandatory: mandatory, courseCode: courseCode}
+            const attributes = (d.course.attributes) ? d.course.attributes : null;
+            const courseInfo = {className: courseName, mandatory: mandatory, courseCode: courseCode, attributes: attributes}
             return courseInfo;
         });
         return courses;

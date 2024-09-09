@@ -5,19 +5,7 @@ import { MyContext } from '../App';
 function SelectionBar(props) {
     const {concentration, courseSelections, concentrationSelections} = useContext(MyContext);
 
-
-    const [selectionName, setSelectionName] = useState('Major Requirements');
-
-    const [selection, setSelection] = useState([])
-
-
-    useEffect(() => {
-        if (courseSelections) {
-            setSelection(courseSelections);
-        } else if (concentrationSelections) {
-            setSelection(concentrationSelections);
-        }
-    },[courseSelections, concentrationSelections]);
+    const sections = courseSelections.concat(concentrationSelections);
 
 
     const [current, setCurrent] = useState(0);
@@ -27,7 +15,7 @@ function SelectionBar(props) {
     },[concentrationSelections])
     
     function coursesTaken(index) {
-        const section = selection[index];
+        const section = sections[index];
         let count = 0;
         section.courses.forEach(course => {
             if (props.courseTaken(course)) {
@@ -38,11 +26,12 @@ function SelectionBar(props) {
     }
 
     function getLeft(index) {
-        const section = selection[index];
+        const section = sections[index];
+       
         if (section.left - coursesTaken(index) <= 0) {
-            return 'Complete';
+            return 0;
         }
-        return `${section.left - coursesTaken(index)}`;
+        return section.left - coursesTaken(index);
     }
 
     function renderCourse(course, index) {
@@ -74,20 +63,22 @@ function SelectionBar(props) {
     }
 
     function renderSection(index) {
-        if (selection[index] === undefined) {
+        if (sections[index] === undefined) {
             return <p>index bad or sometihing</p>
         }
 
-        const section = selection[index];
+        const section = sections[index];
         if (section === undefined) {
             return <h1>Section is Undefined</h1>
         }
 
         const sectionTitle = (section.name.includes('section')) ? section.name.slice(0, -12) : section.name;
+        
+        const style = getBackgroundColor(index);
 
         return (
-            <div className='course-selection-container'>
-                <h1>{`${sectionTitle} (${getLeft(index)})`}</h1>
+            <div className='course-selection-container' style={style}>
+                <h1>{`${sectionTitle}`}</h1>
                 <div className='courses-container'>
                 {
                     section.courses.map((course, index) => {
@@ -100,51 +91,61 @@ function SelectionBar(props) {
         )
     }
 
-    function handleLeftClick() {
-        setCurrent(c => {
-            return (c === 0)  ? selection.length - 1 : c - 1;
-        })
-    }
-
-    function handleRightClick() {
-        setCurrent(c =>{
-            return (c === selection.length - 1) ? 0 : c + 1;
-        })
-    }
 
     
-    function handleSelectionClick() {
-        
-        setSelection(s =>  {
-            if (s === courseSelections) {
-                return concentrationSelections
-            }
-            return courseSelections;
-        })
-
-        setSelectionName(n => {
-            if (n === 'Major Requirements') {
-                const tag = (concentration.tag.length <= 3) ? concentration.tag.toUpperCase() : concentration.name;
-                return tag + ' Requirements';
-            }
-            return 'Major Requirements'
-        });
+    const handleClick = (index) => {
+        setCurrent(index);
     }
 
-    
+
+    function getBackgroundColor(index) {
+        const left = getLeft(index);
+        if (left === sections[index].left) {
+            return {backgroundColor: 'lightcoral'}
+        }else if (left > 0) {
+            return {backgroundColor: 'lightsalmon'}
+        }else {
+            return {backgroundColor: 'lightgreen'}
+        }
+    }
+
+    function renderSelectionBar() {
+        return (
+            <div className='requirements-bar'>
+                <h2>Computer Science Requirements</h2>
+                {   
+                    sections.map((section, index) => {
+                        const sectionTitle = (section.name.includes('section')) ? section.name.slice(0, -12) : section.name;
+                        const style = getBackgroundColor(index)
+                        if (index === 11) {
+                            return (
+                                <>
+                                    <h2>{concentration.name+ ' Requirements'}</h2>
+                                    <button style={style} onClick={() => handleClick(index)} key={section.name+index}>{sectionTitle}</button>
+                                </>
+                            )
+                        }
+                        return <button style={style} onClick={() => handleClick(index)} key={section.name+index}>{sectionTitle}</button>
+                    })
+                }
+                
+            </div>
+        )
+    }
        
-
+    //<button className='selection-button' onClick={handleSelectionClick}>{selectionName}</button>
     return (
-        <>
-            <button className='selection-button' onClick={handleSelectionClick}>{selectionName}</button>
+        <div className='selection-container'>
+            {
+                renderSelectionBar()
+            }
+            
             <div className='section-bar'>
-                <button onClick={handleLeftClick} className='left-button'>{'<'}</button>
                     {
                         renderSection(current)
                     }
-                <button onClick={handleRightClick} className='right-button'>{'>'}</button>
             </div>
-        </>
+        </div>
     )
 }
 

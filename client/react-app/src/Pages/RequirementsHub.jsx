@@ -15,6 +15,7 @@ function RequirementsHub() {
                     <Requirements/>
                     <div className="subsections-container">
                         <ConcentrationSelector/>
+                        <NUPath></NUPath>
                     </div>
                     
                 </div>
