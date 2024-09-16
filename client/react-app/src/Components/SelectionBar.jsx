@@ -76,6 +76,8 @@ function SelectionBar(props) {
         
         const style = getBackgroundColor(index);
 
+        
+
         return (
             <div className='course-selection-container' style={style}>
                 <h1>{`${sectionTitle}`}</h1>
@@ -117,15 +119,16 @@ function SelectionBar(props) {
                     sections.map((section, index) => {
                         const sectionTitle = (section.name.includes('section')) ? section.name.slice(0, -12) : section.name;
                         const style = getBackgroundColor(index)
+                        const arrow = (current === index) ? "➡️" : "";
                         if (index === 11) {
                             return (
                                 <>
                                     <h2>{concentration.name+ ' Requirements'}</h2>
-                                    <button style={style} onClick={() => handleClick(index)} key={section.name+index}>{sectionTitle}</button>
+                                    <button style={style} onClick={() => handleClick(index)} key={section.name+index}>{arrow + ' '+ sectionTitle}</button>
                                 </>
                             )
                         }
-                        return <button style={style} onClick={() => handleClick(index)} key={section.name+index}>{sectionTitle}</button>
+                        return <button style={style} onClick={() => handleClick(index)} key={section.name+index}>{arrow + ' ' + sectionTitle}</button>
                     })
                 }
                 
@@ -133,7 +136,6 @@ function SelectionBar(props) {
         )
     }
        
-    //<button className='selection-button' onClick={handleSelectionClick}>{selectionName}</button>
     return (
         <div className='selection-container'>
             {
