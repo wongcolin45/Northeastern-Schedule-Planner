@@ -1,6 +1,6 @@
 
 import React, {useState, useEffect,createContext} from 'react';
-import RequirementsHub from './Pages/RequirementsHub';
+
 
 import Home from './Pages/Home';
 import ScheduleMaker from './Pages/ScheduleMaker';
@@ -48,7 +48,7 @@ function App() {
             }
             const data = await response.json();
             setOutline(data);
-            
+            console.log(outline);
 
         }catch(error) {
             console.log(`Error fetching data ${error}`);
@@ -104,7 +104,7 @@ function App() {
       <Routes>
 
           
-        <Route path="/requirementshub" 
+        {/* <Route path="/requirementshub" 
               element=
               {<MyContext.Provider value={{courses:courses, setCourses: setCourses, printCourses: printCourses, courseTaken: courseTaken,
                                            outline: outline, setOutline,
@@ -113,12 +113,12 @@ function App() {
                                            }}>
                 <RequirementsHub/>
               </MyContext.Provider>
-              }></Route>
+              }></Route> */}
 
-        <Route path="/home" element={<Home/>}></Route>
+        {/* <Route path="/home" element={<Home/>}></Route> */}
 
 
-        <Route path="/schedulemaker" element={
+        <Route path="/" element={
             <MyContext.Provider value={{outline: outline,
                                         courseSelections: courseSelections, setCourseSelections: setCourseSelections,
                                         concentration: concentration,
@@ -129,14 +129,14 @@ function App() {
             </MyContext.Provider>
         }></Route>
 
-        <Route path="/login" element={
+        {/* <Route path="/login" element={
           <MyContext.Provider value={{concentration: concentration, setConcentration: setConcentration,
                                       startYear: startYear, setStartYear: setStartYear}}>
              <Settings/>
           </MyContext.Provider>
         }></Route>
 
-        
+         */}
 
       </Routes>
     </BrowserRouter>

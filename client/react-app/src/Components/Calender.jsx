@@ -1,5 +1,5 @@
 import AcademicYear from "./AcademicYear";
-import Semester from "./Semester";
+
 import React, {useState} from 'react';
 
 
@@ -35,8 +35,7 @@ function Calender(props) {
             <div>
                 {
                     props.schedule.map((_,index) => {
-                        return <AcademicYear schedule={props.schedule} setSchedule={props.setSchedule} yearIndex={index} key={index}/>
-                            
+                        return <AcademicYear schedule={props.schedule} setSchedule={props.setSchedule} yearIndex={index} key={index}/>         
                     })
                 }
             </div>

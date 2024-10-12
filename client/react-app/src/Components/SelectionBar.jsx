@@ -123,12 +123,20 @@ function SelectionBar(props) {
                         if (index === 11) {
                             return (
                                 <>
-                                    <h2>{concentration.name+ ' Requirements'}</h2>
-                                    <button style={style} onClick={() => handleClick(index)} key={section.name+index}>{arrow + ' '+ sectionTitle}</button>
+                                    <h2 key={index}>{concentration.name+ ' Requirements'}</h2>
+                                    <button style={style} 
+                                            onClick={() => handleClick(index)} 
+                                            key={section.name+index}
+                                            className='selection-bar-button'
+                                            >{arrow + ' '+ sectionTitle}</button>
                                 </>
                             )
                         }
-                        return <button style={style} onClick={() => handleClick(index)} key={section.name+index}>{arrow + ' ' + sectionTitle}</button>
+                        return <button style={style} 
+                                       onClick={() => handleClick(index)} 
+                                       key={section.name+index}
+                                       className='selection-bar-button'
+                                       >{arrow + ' ' + sectionTitle}</button>
                     })
                 }
                 

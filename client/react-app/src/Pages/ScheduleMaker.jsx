@@ -5,6 +5,7 @@ import SelectionBar from "../Components/SelectionBar";
 import React, {useState, useEffect, createContext, useContext} from 'react';
 import '../Styles/Schedule.css';
 import { MyContext } from "../App";
+import Header from "../Components/Header";
 
 export const ScheduleContext = createContext();
 
@@ -52,7 +53,7 @@ function ScheduleMaker(props) {
     return (
         <ScheduleContext.Provider value={{courseSelection: courseSelection, setCourseSelection: setCourseSelection,
                                           schedule: schedule, setSchedule: setSchedule}}>
-            <NavBar/>
+            <Header/>
             <SelectionBar courseSelection={courseSelection} setCourseSelection={setCourseSelection}
                         courseTaken={courseTaken}
             />

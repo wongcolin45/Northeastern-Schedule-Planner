@@ -43,20 +43,18 @@ button:hover {
   justify-content: center;
   margin-bottom:  -80px;
   margin-top: -90px;
-
+  border: 1px solid black;
   
 }
 
 .navigation-bar button {
   width: 400px;
   height: 50px;
-  border: 5px solid black;
   padding: 10px;
-  box-shadow: 5px 5px;
+  box-shadow: 2px 2px;
   margin: 0px;
-  margin-left: -150px;
   font-size: 20px;
-  border: 3px solid black;
+  border: 1px solid black;
   font-weight: bold;
 }
 
@@ -123,7 +121,7 @@ button:hover {
 .button-active, .button-inactive {
   width: 200px;
   height: 50px;
-  border: 2px solid black;
+  border: 1px solid black;
   margin: 10px;
 }
 
@@ -134,7 +132,7 @@ button:hover {
 
 .button-active {
   background-color: lightgrey;
-  transform: translate(5px, 5px);
+  transform: translate(2px, 2px);
   box-shadow: none;
 }
 
@@ -146,7 +144,7 @@ button:hover {
 }
 
 .incomplete-section-container {
-  border: 3px solid black;
+  border: 1px solid black;
   padding: 10px;
   margin: auto;
   width: 100%;
@@ -158,7 +156,7 @@ button:hover {
   width: 50%;
   height: 1%;
   background-color: white;
-  border: 3px solid black;
+  border: 1px solid black;
   box-shadow: 2px 2px;
 }
 

@@ -16,7 +16,7 @@
 .requirements-bar {
   display: flex;
   flex-direction: column;
-  border: 3px solid black;
+  border: 1px solid black;
   height: 460px;
   box-shadow: 2px 2px;
   margin-right: 5px;
@@ -66,7 +66,7 @@
 
   
 .course-selection-container {
-    border: 3px solid black;
+    border: 1px solid black;
     box-shadow: 2px 2px;
     padding: 40px;
     width: 100%;
@@ -104,7 +104,7 @@
 .semester-container{
     display: flex;
     flex-direction: column;
-    border: 3px solid black;
+    border: 1px solid black;
     width: 566px;
     width: 100%;
     padding: 20px;
@@ -122,7 +122,7 @@
     height: 50px;
     font-weight: bold;
     box-shadow: 2px 2px;
-    border: 3px solid black;
+    border: 1px solid black;
     background-color: white;
     max-width: 800px;
     text-align: center;
@@ -139,7 +139,7 @@
   
   .add-semester-button {
     background-color: white;
-    border: 3px solid black;
+    border: 1px solid black;
     box-shadow: 2px 2px;
     height: 100%;
     width: 50px;
@@ -162,7 +162,7 @@
   
   .add-year-button {
     background-color: white;
-    border: 3px solid black;
+    border: 1px solid black;
     width: 500px;
     height: 50px;
     margin-top: 30px;
@@ -183,7 +183,7 @@
     font-weight: bold;
     width: 100%;
     box-shadow: 2px 2px;
-    border: 3px solid black;
+    border: 1px solid black;
     height: 40px;
   
 
@@ -223,7 +223,7 @@
     background-color: white;
     margin-right: 5px;
     margin-bottom: 5px;
-    border: 3px solid black;
+    border: 1px solid black;
     box-shadow: 2px 2px;
     font-size: 15px;
     padding: 10px;
@@ -232,7 +232,7 @@
 
 .trash-button {
     background-color: white;
-    border: 3px solid black;
+    border: 1px solid black;
     width: 50px;
     height: 50px;
     box-shadow: 2px 2px;
@@ -245,16 +245,14 @@
 
 
 
-.selection-bar button {
-font-weight: bold;
-}
+
 
 .selection-bar button:hover {
 cursor: pointer;
 }
 
 .left-button, .right-button {
-    border: 3px solid black;
+    border: 1px solid black;
     box-shadow: 2px 2px;
     width: 50px;
     height: 436px;
@@ -277,7 +275,7 @@ cursor: pointer;
 }
 
 .selection-button {
-    border: 2px solid black;
+    border: 1px solid black;
     box-shadow: 2px 2px
 }
 
@@ -292,7 +290,7 @@ cursor: pointer;
   max-width: 850px;
   background-color: white;
   height: 50px;
-  border: 4px solid black;
+  border: 1px solid black;
   border-radius: 5px;
   box-shadow: 2px 2px;
   font-size: 20px;
@@ -305,3 +303,5 @@ cursor: pointer;
   background-color: lightgrey;
   transform: translate(2px, 2px);
 }
+
+
