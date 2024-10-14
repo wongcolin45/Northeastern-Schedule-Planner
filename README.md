@@ -15,10 +15,8 @@ The **Northeastern Schedule Planner** is a web application designed to help stud
 
 ## Features
 - Create, view, and edit class schedules
-- Responsive design for mobile and desktop
 - Easy navigation and user-friendly interface
-- Course filtering and search functionality
-- Save schedules for future reference
+- Course requirement split up into readable section
 
 ## Technologies Used
 - **Frontend:** React, CSS
