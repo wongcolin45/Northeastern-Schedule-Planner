@@ -1,17 +1,17 @@
 
 import Calender from "../Components/Calender";
-import NavBar from "../Components/NavBar";
 import SelectionBar from "../Components/SelectionBar";
-import React, {useState, useEffect, createContext, useContext} from 'react';
+import {useState, useEffect, createContext, useContext} from 'react';
 import '../Styles/Schedule.css';
 import { MyContext } from "../App";
 import Header from "../Components/Header";
+import convertAttributes from "../Helpers/converter.jsx";
 
 export const ScheduleContext = createContext();
 
-function ScheduleMaker(props) {
+function ScheduleMaker() {
 
-    const {startYear} = useContext(MyContext);
+    const {startYear, setPath} = useContext(MyContext);
 
     const [schedule, setSchedule] = useState([{ Year: 1, 
                                                 plans: [{year: startYear, semester: "Fall", courses: [null, null, null, null]}]
@@ -26,7 +26,6 @@ function ScheduleMaker(props) {
             return false;
         }
        
-       
         const result = schedule.some(y => {
             return y.plans.some(p => {
                     return p.courses.some(c => {  
@@ -34,18 +33,53 @@ function ScheduleMaker(props) {
                     })
                 })
         })
-        //console.log(`result is ${result}`);
         return result;
     }
 
-    useEffect(() => {
-        //console.log(`course selctino is `);
-        //console.log(courseSelection);
-    },[courseSelection])
+
+    function updateNUPath(courseData) {
+        const data = courseData.attributes;
+        if (data != null) {
+            const attributes = convertAttributes(data);
+            setPath(prev => {
+                const newData = {...prev};
+                attributes.forEach(attribute => {
+                    newData[attribute].add(courseData.className);
+                })
+
+
+                return newData;
+            })
+        }
+    }
+
+    function clearNUPath() {
+        setPath(prev => {
+            const newPath = {...prev};
+            for (let key in newPath) {
+                newPath[key].length = 0;
+            }
+            return newPath;
+        })
+
+    }
 
     useEffect(() => {
-        //console.log('setting to null')
-        
+        console.log('usef effect caled clearing');
+        clearNUPath();
+        schedule.forEach(year => {
+            year.plans.forEach(p =>{
+                p.courses.forEach(course => {
+                    if (course != null) {
+                        updateNUPath(course);
+                        console.log('updating for course'+course);
+                    }
+                })
+            })
+        })
+    }, [schedule])
+
+    useEffect(() => {
         setCourseSelection(null);
     },[schedule])
 

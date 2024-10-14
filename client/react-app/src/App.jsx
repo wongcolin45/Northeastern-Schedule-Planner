@@ -1,19 +1,18 @@
 
-import React, {useState, useEffect,createContext} from 'react';
+import {useState, useEffect,createContext} from 'react';
 
 
-import Home from './Pages/Home';
+
 import ScheduleMaker from './Pages/ScheduleMaker';
-import Settings from './Pages/Settings';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import { fetchConcentration } from './API/courseRequirementsAPI';
+
 
 
 
 export const MyContext = createContext();
 
 function App() {
-  const [courses, setCourses] = useState([]);
 
   const [outline, setOutline] = useState([]);
 
@@ -25,18 +24,21 @@ function App() {
 
   const [concentrationSelections, setConcentrationSelections] = useState([]);
 
-  const [sections, setSections] = useState([]);
+  const [path, setPath] = useState({
+    "Engaging with the Natural and Designed World": new Set(),
+    "Exploring Creative Expression and Innovation": new Set(),
+    "Interpreting Culture": new Set(),
+    "Conducting Formal and Quantitative Reasoning": new Set(),
+    "Understanding Societies and Institutions": new Set(),
+    "Analyzing and Using Data": new Set(),
+    "Engaging Differences and Diversity": new Set(),
+    "Employing Ethical Reasoning": new Set(),
+    "Writing Across Audiences and Genres": new Set(),
+    "Integrating Knowledge and Skills Through Experience": new Set(),
+    "Demonstrating Thought and Action in a Capstone": new Set()
+  });
 
-  function printCourses(courses) { 
-  }
 
-  function courseTaken(courseInfo) {
-    return courses.some(c => {
-      return c.courseCode === courseInfo.courseCode &&
-             c.requirementName === courseInfo.requirementName &&
-             c.sectionName === courseInfo.sectionName;
-    })
-  }
 
   useEffect(() => {    
     async function fetchRequirements() {
@@ -48,7 +50,6 @@ function App() {
             }
             const data = await response.json();
             setOutline(data);
-            console.log(outline);
 
         }catch(error) {
             console.log(`Error fetching data ${error}`);
@@ -76,8 +77,6 @@ function App() {
     }
   },[outline])
 
-
-
   useEffect(() => {
     const fetchSelections = async () => {
       
@@ -96,34 +95,23 @@ function App() {
   },[]);
 
 
-  
-  
 
+  
+  
   return (
     <BrowserRouter>
       <Routes>
 
-          
-        {/* <Route path="/requirementshub" 
-              element=
-              {<MyContext.Provider value={{courses:courses, setCourses: setCourses, printCourses: printCourses, courseTaken: courseTaken,
-                                           outline: outline, setOutline,
-                                           concentration: concentration,setConcentration: setConcentration,
-                                           sections: sections, setSections: setSections,
-                                           }}>
-                <RequirementsHub/>
-              </MyContext.Provider>
-              }></Route> */}
-
-        {/* <Route path="/home" element={<Home/>}></Route> */}
-
-
         <Route path="/" element={
             <MyContext.Provider value={{outline: outline,
-                                        courseSelections: courseSelections, setCourseSelections: setCourseSelections,
+                                        courseSelections: courseSelections, 
+                                        setCourseSelections: setCourseSelections,
                                         concentration: concentration,
                                         concentrationSelections: concentrationSelections,
-                                        startYear: startYear
+                                        startYear: startYear,
+                                        path : path,
+                                        setPath : setPath
+
             }}>
               <ScheduleMaker/>
             </MyContext.Provider>

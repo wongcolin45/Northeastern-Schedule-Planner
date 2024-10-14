@@ -1,16 +1,18 @@
-import React, {useContext, useState, useEffect} from 'react';
+import {useContext, useState, useEffect} from 'react';
 import { ScheduleContext } from '../Pages/ScheduleMaker';
 import { fetchSchedule } from '../API/courseRequirementsAPI';
-
+import PropTypes from "prop-types";
 
 
 function Semester(props) {
 
     const {courseSelection, schedule, setSchedule} = useContext(ScheduleContext);
 
+
+
     const [full, setFull] = useState(false);
 
-
+    
     useEffect(() => {
         const Year = schedule[props.yearIndex].plans;
         const courses = Year[props.semesterIndex].courses;
@@ -21,48 +23,7 @@ function Semester(props) {
         }
     })
 
-    
-    function getBackground() {
-        return {backgroundColor: '#efefee'}
-        if (props.semesterIndex === 0) {
-            return {backgroundColor: "#FF6F00"}
-        }else if (props.semesterIndex === 1) {
-            return {backgroundColor: "#98FF98"}
-        }
-        return {backgroundColor: "#FFF700"}
-
-    }
-
-    function handleClick(index) { 
-        if (courseSelection) {
-            setSchedule(prev => {
-               
-                const newSchedule = [...prev];
-
-                const Year = newSchedule[props.yearIndex].plans;
-
-
-                const courses = Year[props.semesterIndex].courses;
-
-                courses[index] = courseSelection;
-
-                console.log('course selection is ');
-                console.log(courseSelection);
-
-
-                return newSchedule;
-            })
-            const Year = schedule[props.yearIndex].plans;
-
-            const courses = Year[props.semesterIndex].courses;
-
-        }else {
-            console.log('no course has been selected');
-        }
-    }
-
     function handleTrashClick(index, name) {
-        
         if (name.length > 0) {
             setSchedule(prev => {
                 const newSchedule = [...prev];
@@ -78,7 +39,6 @@ function Semester(props) {
         }
     }
 
-
     function renderGenerateClearButton() {
         if (full) {
             return <button className='generate-schedule-button' onClick={handleClearClick}>Clear Schedule</button>
@@ -87,8 +47,6 @@ function Semester(props) {
         }
     }
     
-
-
     function handleGenerateClick() {
         const getSchedule = async () => {
             const plan = await fetchSchedule(schedule);
@@ -106,6 +64,7 @@ function Semester(props) {
                                 return newSchedule;
                             }
                             courses[i] = plan.pop();
+
                         }
                     }
                     return newSchedule;
@@ -130,24 +89,43 @@ function Semester(props) {
         }) 
     }
 
+    function handleClick(index) { 
+        if (courseSelection) {
+            setSchedule(prev => {
+                const newSchedule = [...prev];
+                const Year = newSchedule[props.yearIndex].plans;
+                const courses = Year[props.semesterIndex].courses;
+                courses[index] = courseSelection; 
+                return newSchedule;
+            })
+        }else {
+            console.log('no course has been selected');
+        }
+    }
+
+    function renderCourse(course, index) {
+        const name = (course !== null) ? (course.courseCode + ' - ' + course.className) : '';
+        return (
+            <div className='course-container' key={index}>
+                <button className="course-selection" 
+                        key={index}
+                        onClick={() => handleClick(index)}>
+                    {name}
+                </button> 
+                <button key={'trash' + index} 
+                        className='trash-button'
+                        onClick={() => handleTrashClick(index, name)}>🗑️</button>
+            </div>
+        )       
+    }
+
     return (
-        <div className="semester-container" style={getBackground()}>
+        <div className="semester-container">
             <h1>{props.semester + ' - '+ props.year}</h1>
             {
                 props.courses.map((course, index) => {
-                    const name = (course !== null) ? (course.courseCode + ' - ' + course.className) : '';
-                    return (
-                        <div className='course-container' key={index}>
-                            <button className="course-selection" 
-                                    key={index}
-                                    onClick={() => handleClick(index)}>
-                                {name}
-                            </button> 
-                            <button key={'trash' + index} 
-                                    className='trash-button'
-                                    onClick={() => handleTrashClick(index, name)}>🗑️</button>
-                        </div>
-                    )         
+                    return renderCourse(course, index);
+                      
                 })
             }
             {renderGenerateClearButton()}
@@ -156,3 +134,11 @@ function Semester(props) {
 }
 
 export default Semester;
+
+Semester.propTypes = {
+    yearIndex: PropTypes.number,
+    semesterIndex: PropTypes.number,
+    semester: PropTypes.string,
+    courses: PropTypes.array,
+    year: PropTypes.number
+}

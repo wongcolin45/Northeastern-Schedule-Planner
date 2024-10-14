@@ -2,10 +2,13 @@
 
 const base = 'http://localhost:3000/api/computerscience/';
 
-
+/**
+ * Fetches CS Concentration requirements from backend.
+ * @param concentration the name of the concentration
+ * @returns {Promise<any>} data in json format
+ */
 async function fetchConcentration(concentration) {
     const url = base + concentration;
-    console.log('trying url '+url);
     try {
         const response = await fetch(url);
          
@@ -20,9 +23,8 @@ async function fetchConcentration(concentration) {
     }
 }
 
+
 async function fetchSchedule(schedule) {
-    console.log('send over schedule');
-    console.log(schedule);
     try {
         
         const response = await fetch('http://localhost:3000/api/computerscienceSchedule', {
@@ -36,7 +38,6 @@ async function fetchSchedule(schedule) {
         // Check if the request was successful
         if (response.ok) {
             const responseData = await response.json(); // Parse JSON response from the server
-            console.log('Data successfully sent and received:', responseData);
             // You can now use `responseData` in your frontend
             return responseData;
         } else {

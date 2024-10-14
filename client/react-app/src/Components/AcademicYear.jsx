@@ -1,8 +1,7 @@
 import Semester from "./Semester";
-
-import React, {useState, useContext} from 'react';
-
+import {useState, useContext} from 'react';
 import { MyContext } from "../App";
+import PropTypes from "prop-types";
 
 
 
@@ -54,8 +53,6 @@ function AcademicYear(props) {
                 const newSchedule = [...s]    
                 const newSemester = getNextSemester(index)
                 newSchedule[index].plans.push(newSemester);
-                console.log('setting schedule');
-                console.log(newSchedule)
                 return newSchedule;
             })
         }
@@ -105,3 +102,11 @@ function AcademicYear(props) {
     )
 }
 export default AcademicYear;
+
+AcademicYear.propTypes = {
+    yearIndex: PropTypes.number,
+    year: PropTypes.number,
+    setYear: PropTypes.func,
+    setSchedule: PropTypes.func,
+    schedule: PropTypes.array,
+}
