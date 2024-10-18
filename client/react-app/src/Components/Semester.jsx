@@ -121,7 +121,7 @@ function Semester(props) {
 
     return (
         <div className="semester-container">
-            <h1>{props.semester + ' - '+ props.year}</h1>
+            <h1>{props.semester}</h1>
             {
                 props.courses.map((course, index) => {
                     return renderCourse(course, index);

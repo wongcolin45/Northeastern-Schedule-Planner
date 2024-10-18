@@ -1,6 +1,6 @@
 import AcademicYear from "./AcademicYear";
 
-
+import PropTypes from "prop-types";
 
 
 function Calender(props) {
@@ -48,3 +48,9 @@ function Calender(props) {
 }
 
 export default Calender;
+
+Calender.propTypes = {
+    schedule: PropTypes.array,
+    setSchedule: PropTypes.func
+
+}

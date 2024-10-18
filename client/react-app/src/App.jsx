@@ -59,7 +59,6 @@ function App() {
   },[]);
 
   useEffect(() => {
-   
     if (outline.length > 0) {
       const requirements = [];
       outline.forEach(r => {

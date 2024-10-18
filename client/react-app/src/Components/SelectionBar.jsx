@@ -1,7 +1,8 @@
 import {useState, useContext} from 'react';
 import { MyContext } from '../App';
 import PropTypes from 'prop-types';
-
+import {getCompentenciesCompleted} from "../Helpers/converter.jsx";
+import CourseButton from './CourseButton';
 
 function SelectionBar(props) {
     const {concentration, courseSelections, concentrationSelections, path} = useContext(MyContext);
@@ -32,32 +33,6 @@ function SelectionBar(props) {
         return section.left - coursesTaken(index);
     }
 
-    function renderCourse(course, index) {
-
-        if (props.courseTaken(course)) {
-            return (
-                <button key={course+index} 
-                      
-                        style={{ textDecoration: 'line-through' }}
-                        >        
-                {course.courseCode + ' - ' + course.className}
-                </button>
-            )   
-        }
-
-        const style = (props.courseSelection === course) ? {backgroundColor : "lightyellow"} : {};
-
-        return (
-            <button key={course+index}   
-                    onClick={() => props.setCourseSelection(course)}
-                    style={style}
-                     
-                    >        
-            {course.courseCode + ' - ' + course.className}
-            </button>
-        )  
-    }
-
     function renderSection(index) {
     
         if (pathClicked) {
@@ -79,8 +54,8 @@ function SelectionBar(props) {
                 <h1>{`${sectionTitle}`}</h1>
                 <div className='courses-container'>
                 {
-                    section.courses.map((course, index) => {
-                       return renderCourse(course, index);  
+                    section.courses.map((course,index) => {
+                       return <CourseButton course={course} key={index}/>
                     })
                 }
                 </div>
@@ -89,12 +64,12 @@ function SelectionBar(props) {
         )
     }
 
-
-
     function renderNUPathSection() {
+        const completed = getCompentenciesCompleted(path)
+        const style = getNUPathBackgroundColor(completed);
         return (
-            <div className='nupath-selection-container'>
-                <h1>11 Compentencies</h1>
+            <div style={style} className='nupath-selection-container'>
+                <h1>NU Path Requirements</h1>
                 <div className='nupath-contents-container'>
                 {
                     Object.entries(path).map(([key, value]) => {
@@ -118,6 +93,7 @@ function SelectionBar(props) {
     }
 
     const handleClick = (index) => {
+        setPathClicked(false);
         setCurrent(index);
     }
 
@@ -125,11 +101,11 @@ function SelectionBar(props) {
        
         const left = getLeft(index);
         if (left === sections[index].left) {
-            return {backgroundColor: 'lightcoral'}
+            return {backgroundColor: '#E0E0E0'}
         }else if (left > 0) {
-            return {backgroundColor: 'lightsalmon'}
+            return {backgroundColor: '#F5E6CC'}
         }else {
-            return {backgroundColor: 'lightgreen'}
+            return {backgroundColor: '#A3D9B1'}
         }
     }
 
@@ -159,7 +135,22 @@ function SelectionBar(props) {
         )      
     }
 
+    function getNUPathBackgroundColor(left) {
+        if (left === 11) {
+            return {backgroundColor: '#A3D9B1'}
+        }else if (left > 0) {
+            return {backgroundColor: '#F5E6CC'}
+        }else {
+            return {backgroundColor: '#E0E0E0'}
+        }
+    }
+
     function renderSelectionBar() {
+        const compentenciesCompleted = getCompentenciesCompleted(path);
+        const title = `${compentenciesCompleted}/11 Completed`;
+
+        const style = getNUPathBackgroundColor(compentenciesCompleted);
+
         return (
             <div className='requirements-bar'>
                 <h2>Computer Science Requirements</h2>
@@ -169,12 +160,11 @@ function SelectionBar(props) {
                     })
                 }
                 <h2>NU Path Requirements</h2>
-                <button onClick={() => setPathClicked(p => !p)}>11 Compentencies</button>
+                <button style={style} onClick={() => setPathClicked(p => !p)}>{title}</button>
             </div>
         )
     }
 
-   
        
     return (
         <div className='selection-container' >

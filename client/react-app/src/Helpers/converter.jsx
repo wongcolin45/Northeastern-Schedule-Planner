@@ -1,7 +1,7 @@
 const conversions = {
     "": "Employing Ethical Reasoning",
     "[]": [
-        
+
         "Integrating Knowledge and Skills Through Experience"
     ],
     "Natural/Desgined World" : "Engaging with the Natural and Designed World",
@@ -27,4 +27,18 @@ function convertAttributes(attributes) {
     return requirements;
 }
 
-export default convertAttributes;
+
+
+function getCompentenciesCompleted(pathDict) {
+    let total = 0;
+
+    for (const key in pathDict) {
+        if (pathDict[key].size >= 2) {
+            total++;
+
+        }
+    }
+    return total;
+}
+
+export {convertAttributes, getCompentenciesCompleted,};

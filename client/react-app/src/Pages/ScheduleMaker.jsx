@@ -5,7 +5,7 @@ import {useState, useEffect, createContext, useContext} from 'react';
 import '../Styles/Schedule.css';
 import { MyContext } from "../App";
 import Header from "../Components/Header";
-import convertAttributes from "../Helpers/converter.jsx";
+import {convertAttributes} from "../Helpers/converter.jsx";
 
 export const ScheduleContext = createContext();
 
@@ -19,7 +19,7 @@ function ScheduleMaker() {
 
     const [courseSelection, setCourseSelection] = useState();
 
-    const [slotSelection, setSelection] = useState();
+
 
     function courseTaken(course) {
         if (!schedule) {
@@ -57,7 +57,7 @@ function ScheduleMaker() {
         setPath(prev => {
             const newPath = {...prev};
             for (let key in newPath) {
-                newPath[key].length = 0;
+                newPath[key].clear();
             }
             return newPath;
         })
@@ -65,14 +65,12 @@ function ScheduleMaker() {
     }
 
     useEffect(() => {
-        console.log('usef effect caled clearing');
         clearNUPath();
         schedule.forEach(year => {
             year.plans.forEach(p =>{
                 p.courses.forEach(course => {
                     if (course != null) {
                         updateNUPath(course);
-                        console.log('updating for course'+course);
                     }
                 })
             })
@@ -85,15 +83,14 @@ function ScheduleMaker() {
 
 
     return (
-        <ScheduleContext.Provider value={{courseSelection: courseSelection, setCourseSelection: setCourseSelection,
-                                          schedule: schedule, setSchedule: setSchedule}}>
+        <ScheduleContext.Provider value={{courseSelection, setCourseSelection,
+                                          schedule, setSchedule, courseTaken}}>
             <Header/>
             <SelectionBar courseSelection={courseSelection} setCourseSelection={setCourseSelection}
                         courseTaken={courseTaken}
             />
             <Calender schedule={schedule} setSchedule={setSchedule}
                       courseSelection={courseSelection}
-                      slotSelection={slotSelection}
             />
         </ScheduleContext.Provider>
     )
