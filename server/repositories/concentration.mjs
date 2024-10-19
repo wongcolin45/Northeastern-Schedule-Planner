@@ -43,7 +43,6 @@ async function getSections(Model) {
 }
 
 async function getCourses(Model, section) {
-  
     try {
         const data = await Model.findAll({
         attributes: [
@@ -66,22 +65,16 @@ async function getCourses(Model, section) {
         }
       });
       const courses = data.map(r => {
-      
         const alias = `course-${Model.tableName}`
-      
         const mandatory = (r.mandatory === undefined) ? false : r.mandatory === 1;
         const courseName = r[alias].courseName
         const courseCode = r[alias].department + r[alias].courseNumber;
         const attributes = r[alias].dataValues.attributes;
-    
         const courseInfo =  {className: courseName, courseCode: courseCode, mandatory: mandatory, attributes: attributes}
-        console.log('RETURNING COURSE INFO CHECK')
-        console.log(courseInfo);
         return courseInfo;
       });
       return courses
     } catch (error) {
-      console.log('Error fetching requirements:', error);
       throw error
     }
 }

@@ -13,7 +13,6 @@ CSCore.belongsTo(Course, { foreignKey: 'courseID', as: 'course' });
 //===============================================================
 
 async function getRequirements() {
-    
     try {
         const data = await CSCore.findAll({
         attributes: [ 

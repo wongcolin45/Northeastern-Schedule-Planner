@@ -73,13 +73,14 @@ function SelectionBar(props) {
                 <div className='nupath-contents-container'>
                 {
                     Object.entries(path).map(([key, value]) => {
+                        const check = (value.size >= 2) ? " ✔" : '';
                         return (
                             <div key={key+value} className='attribute-container'>
-                                <h3>{key}</h3>
+                                <h3>{key + check}</h3>
                                 <ul>
                                 {
                                     [...value].map(((course, index) => {
-                                        return <li key={index}>{course}</li>
+                                        return <li key={course+index}>{course}</li>
                                     }))
                                 }
                                 </ul>
@@ -146,10 +147,10 @@ function SelectionBar(props) {
     }
 
     function renderSelectionBar() {
-        const compentenciesCompleted = getCompentenciesCompleted(path);
-        const title = `${compentenciesCompleted}/11 Completed`;
+        const count = getCompentenciesCompleted(path);
+        const title = `${count}/11 Completed`;
 
-        const style = getNUPathBackgroundColor(compentenciesCompleted);
+        const style = getNUPathBackgroundColor(count);
 
         return (
             <div className='requirements-bar'>
@@ -164,7 +165,6 @@ function SelectionBar(props) {
             </div>
         )
     }
-
        
     return (
         <div className='selection-container' >

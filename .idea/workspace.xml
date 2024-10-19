@@ -5,16 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a72a46f0-6265-4295-bf8c-3e2435230758" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/react-app/src/Components/CourseButton.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/AcademicYear.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/AcademicYear.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/Calender.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/Calender.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/SelectionBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/SelectionBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/Semester.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/Semester.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/Helpers/converter.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Helpers/converter.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/react-app/src/Pages/ScheduleMaker.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Pages/ScheduleMaker.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/react-app/src/Styles/Schedule.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Styles/Schedule.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/courses.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/courses.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/neu_database.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/neu_database.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/repositories/computerScienceRepo.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server/repositories/computerScienceRepo.mjs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,10 +82,16 @@
       <workItem from="1729111832249" duration="4263000" />
       <workItem from="1729124330149" duration="3321000" />
       <workItem from="1729137122901" duration="3297000" />
+      <workItem from="1729218140024" duration="339000" />
+      <workItem from="1729289301328" duration="5872000" />
+      <workItem from="1729295377285" duration="7010000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.sql" />
   </component>
 </project>

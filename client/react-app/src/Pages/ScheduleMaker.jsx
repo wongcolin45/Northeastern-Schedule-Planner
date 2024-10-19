@@ -19,8 +19,6 @@ function ScheduleMaker() {
 
     const [courseSelection, setCourseSelection] = useState();
 
-
-
     function courseTaken(course) {
         if (!schedule) {
             return false;

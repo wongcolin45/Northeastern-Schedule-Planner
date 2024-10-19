@@ -31,7 +31,7 @@ function Calender(props) {
     
 
     return (
-        <>
+        <div className='calender-section'>
             <div>
                 {
                     props.schedule.map((_,index) => {
@@ -43,7 +43,7 @@ function Calender(props) {
                 <button className="add-year-button" onClick={handleAddYearClick}>Add Year</button>
                 <button className="add-year-button" onClick={handleRemoveYearClick}>Remove Year</button>
             </div>
-        </>
+        </div>
     )
 }
 
