@@ -2,7 +2,7 @@ import sequelize from "../Configuration/connection.mjs";
 import { Course } from "../Models/Course.mjs";
 import { CSCore } from "../Models/CSCore.mjs";
 import { Sequelize } from "sequelize";
-
+import getCourseById from "./coursesRepo.mjs";
 
 Course.hasMany(CSCore, { foreignKey: 'courseID', as: 'requirements' });
 CSCore.belongsTo(Course, { foreignKey: 'courseID', as: 'course' });
@@ -45,6 +45,8 @@ async function getSubRequirements(requirement) {
     }
 }
 
+
+
 async function getCourses(requirement, subRequirement) {
     try {
         const data = await CSCore.findAll({ 
@@ -59,7 +61,8 @@ async function getCourses(requirement, subRequirement) {
                         [sequelize.col('course_name'), 'courseName'],
                         [sequelize.col('department'), 'department'],
                         [sequelize.col('course_number'), 'courseNumber'],     
-                        [sequelize.col('attributes'), 'attributes'], 
+                        [sequelize.col('attributes'), 'attributes'],
+                        [sequelize.col('prerequisite'), 'prerequisite']
                     ]
                 }
             ],
@@ -74,7 +77,12 @@ async function getCourses(requirement, subRequirement) {
             const mandatory = d.mandatory === 1;
             const courseCode = d.course.department + ' ' + d.course.courseNumber;
             const attributes = (d.course.attributes) ? d.course.attributes : null;
-            const courseInfo = {className: courseName, mandatory: mandatory, courseCode: courseCode, attributes: attributes}
+            const prerequisite = getCourseById(d.course.prerequisite);
+            const courseInfo = {className: courseName,
+                                     mandatory: mandatory,
+                                     courseCode: courseCode,
+                                     attributes: attributes,
+                                     prerequisite: prerequisite}
             return courseInfo;
         });
         return courses;

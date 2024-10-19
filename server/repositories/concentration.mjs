@@ -1,7 +1,7 @@
 import sequelize from "../Configuration/connection.mjs";
 import { Course } from "../Models/Course.mjs";
-import { CSCore } from "../Models/CSCore.mjs";
 import { Sequelize } from "sequelize";
+import getCourseById from "./coursesRepo.mjs";
 
 import { AIConcentration, 
          HCCConcentration, 
@@ -56,7 +56,8 @@ async function getCourses(Model, section) {
                         [sequelize.col('course_name'), 'courseName'],
                         [sequelize.col('department'), 'department'],
                         [sequelize.col('course_number'), 'courseNumber'],    
-                        [sequelize.col('attributes'), 'attributes'],   
+                        [sequelize.col('attributes'), 'attributes'],
+                        [sequelize.col('prerequisite'), 'prerequisite']
                     ]
                 }
         ],
@@ -70,7 +71,12 @@ async function getCourses(Model, section) {
         const courseName = r[alias].courseName
         const courseCode = r[alias].department + r[alias].courseNumber;
         const attributes = r[alias].dataValues.attributes;
-        const courseInfo =  {className: courseName, courseCode: courseCode, mandatory: mandatory, attributes: attributes}
+        const prerequisite = getCourseById([alias].prerequisite);
+        const courseInfo =  {className: courseName,
+                                  courseCode: courseCode,
+                                  mandatory: mandatory,
+                                  attributes: attributes,
+                                  prerequisite: prerequisite}
         return courseInfo;
       });
       return courses
@@ -119,13 +125,6 @@ async function getConcentration(tag) {
   return concentration;
 }
 
-async function main() {
-    const tag = "ai";
-    const c = await getConcentration(tag);
-    console.log(c);
-}
-
-//main();
 
 
 export default getConcentration;
