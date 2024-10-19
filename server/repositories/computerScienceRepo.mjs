@@ -71,18 +71,20 @@ async function getCourses(requirement, subRequirement) {
                 subRequirementName: subRequirement
             }
         });
-        const courses = data.map(element => {
+        const courses = data.map(async element => {
             const d = element.get({plain: true});
             const courseName = d.course.courseName;
             const mandatory = d.mandatory === 1;
             const courseCode = d.course.department + ' ' + d.course.courseNumber;
             const attributes = (d.course.attributes) ? d.course.attributes : null;
-            const prerequisite = getCourseById(d.course.prerequisite);
-            const courseInfo = {className: courseName,
-                                     mandatory: mandatory,
-                                     courseCode: courseCode,
-                                     attributes: attributes,
-                                     prerequisite: prerequisite}
+            const prerequisite = await getCourseById(d.course.prerequisite);
+            const courseInfo = {
+                className: courseName,
+                mandatory: mandatory,
+                courseCode: courseCode,
+                attributes: attributes,
+                prerequisite: prerequisite
+            }
             return courseInfo;
         });
         return courses;

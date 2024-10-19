@@ -65,19 +65,21 @@ async function getCourses(Model, section) {
             sectionRequirement: section
         }
       });
-      const courses = data.map(r => {
-        const alias = `course-${Model.tableName}`
-        const mandatory = (r.mandatory === undefined) ? false : r.mandatory === 1;
-        const courseName = r[alias].courseName
-        const courseCode = r[alias].department + r[alias].courseNumber;
-        const attributes = r[alias].dataValues.attributes;
-        const prerequisite = getCourseById([alias].prerequisite);
-        const courseInfo =  {className: courseName,
-                                  courseCode: courseCode,
-                                  mandatory: mandatory,
-                                  attributes: attributes,
-                                  prerequisite: prerequisite}
-        return courseInfo;
+      const courses = data.map(async r => {
+          const alias = `course-${Model.tableName}`
+          const mandatory = (r.mandatory === undefined) ? false : r.mandatory === 1;
+          const courseName = r[alias].courseName
+          const courseCode = r[alias].department + r[alias].courseNumber;
+          const attributes = r[alias].dataValues.attributes;
+          const prerequisite = await getCourseById([alias].prerequisite);
+          const courseInfo = {
+              className: courseName,
+              courseCode: courseCode,
+              mandatory: mandatory,
+              attributes: attributes,
+              prerequisite: prerequisite
+          }
+          return courseInfo;
       });
       return courses
     } catch (error) {
