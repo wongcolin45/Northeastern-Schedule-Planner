@@ -1,15 +1,5 @@
 # Northeastern Schedule Planner
 
-## Table of Contents
-- [Introduction](#introduction)
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Installation](#installation)
-- [Usage](#usage)
-- [API Endpoints](#api-endpoints)
-- [Contributing](#contributing)
-- [License](#license)
-
 ## Introduction
 The **Northeastern Schedule Planner** is a web application designed to help students manage their schedules effectively. The application allows users to view, create, and modify their class schedules, providing an intuitive interface and helpful features to keep track of their courses and commitments.
 
