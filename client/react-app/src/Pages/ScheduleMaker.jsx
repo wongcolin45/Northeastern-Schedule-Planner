@@ -13,27 +13,47 @@ function ScheduleMaker() {
 
     const {startYear, setPath} = useContext(MyContext);
 
+
+
     const [schedule, setSchedule] = useState([{ Year: 1, 
                                                 plans: [{year: startYear, semester: "Fall", courses: [null, null, null, null]}]
                                               }]);
 
     const [courseSelection, setCourseSelection] = useState();
 
-    function courseTaken(course) {
-        if (!schedule) {
-            return false;
+    function courseTakenBefore(courseCode, prerequisiteCode) {
+        if (!schedule || courseCode === null || prerequisiteCode === null) {
+            return true;
         }
-       
-        const result = schedule.some(y => {
-            return y.plans.some(p => {
-                    return p.courses.some(c => {  
-                        return c !== null && c.courseCode === course.courseCode
-                    })
-                })
-        })
-        return result;
+
+        for (const y of schedule) {
+            for (const p of y.plans) {
+                for (const c of p.courses) {
+                    if (c !== null) {
+                       if (c.courseCode === courseCode) {
+                           return false;
+                       }else if (c.courseCode === prerequisiteCode) {
+                           return true;
+                       }
+                    }
+                }
+            }
+        }
     }
 
+    function courseTaken(courseCode) {
+        if (!schedule || courseCode === null) {
+            return true;
+        }
+        return schedule.some(y => {
+            y.plans.some(p => {
+                p.courses.some(c => {
+                    return (c !== null && c.courseCode === courseCode);
+                })
+            })
+        })
+
+    }
 
     function updateNUPath(courseData) {
         const data = courseData.attributes;
@@ -82,7 +102,7 @@ function ScheduleMaker() {
 
     return (
         <ScheduleContext.Provider value={{courseSelection, setCourseSelection,
-                                          schedule, setSchedule, courseTaken}}>
+                                          schedule, setSchedule, courseTaken, courseTakenBefore}}>
             <Header/>
             <SelectionBar courseSelection={courseSelection} setCourseSelection={setCourseSelection}
                         courseTaken={courseTaken}

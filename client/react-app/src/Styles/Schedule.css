@@ -169,6 +169,15 @@
     box-shadow: 0 0.4rem #dfd9d9;
 }
 
+.warning-message {
+    font-size: 10px;
+    text-align: center;
+}
+
+.course-selection:hover .warning-message {
+    visibility: visible;
+}
+
 
   
   .add-remove-container {

@@ -6,7 +6,9 @@ import {ScheduleContext} from "../Pages/ScheduleMaker.jsx";
 function CourseButton(props) {
     const {courseTaken, courseSelection, setCourseSelection} = useContext(ScheduleContext);
 
-    if (courseTaken(props.course)) {
+
+
+    if (courseTaken(props.course.courseCode)) {
         return (
             <button
                 style={{ textDecoration: 'line-through' }}>

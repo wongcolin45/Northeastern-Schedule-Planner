@@ -49,6 +49,7 @@ function App() {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
             const data = await response.json();
+
             setOutline(data);
 
         }catch(error) {
@@ -71,6 +72,7 @@ function App() {
         });
       });
       setCourseSelections(requirements);
+
       
       
     }
@@ -102,14 +104,14 @@ function App() {
       <Routes>
 
         <Route path="/" element={
-            <MyContext.Provider value={{outline: outline,
-                                        courseSelections: courseSelections, 
-                                        setCourseSelections: setCourseSelections,
-                                        concentration: concentration,
-                                        concentrationSelections: concentrationSelections,
-                                        startYear: startYear,
-                                        path : path,
-                                        setPath : setPath
+            <MyContext.Provider value={{outline,
+                                        courseSelections,
+                                        setCourseSelections,
+                                        concentration,
+                                        concentrationSelections,
+                                        startYear,
+                                        path,
+                                        setPath
 
             }}>
               <ScheduleMaker/>

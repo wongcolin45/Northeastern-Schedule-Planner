@@ -2,17 +2,15 @@ import {useContext, useState, useEffect} from 'react';
 import { ScheduleContext } from '../Pages/ScheduleMaker';
 import { fetchSchedule } from '../API/courseRequirementsAPI';
 import PropTypes from "prop-types";
+import ViewableCourse from "./ViewableCourse.jsx";
 
 
 function Semester(props) {
 
-    const {courseSelection, schedule, setSchedule} = useContext(ScheduleContext);
-
-
+    const {schedule, setSchedule} = useContext(ScheduleContext);
 
     const [full, setFull] = useState(false);
 
-    
     useEffect(() => {
         const Year = schedule[props.yearIndex].plans;
         const courses = Year[props.semesterIndex].courses;
@@ -23,21 +21,6 @@ function Semester(props) {
         }
     })
 
-    function handleTrashClick(index, name) {
-        if (name.length > 0) {
-            setSchedule(prev => {
-                const newSchedule = [...prev];
-                
-                const Year = newSchedule[props.yearIndex].plans;
-    
-                const courses = Year[props.semesterIndex].courses;
-    
-                courses[index] = null;
-    
-                return newSchedule;
-            })
-        }
-    }
 
     function renderGenerateClearButton() {
         if (full) {
@@ -89,42 +72,16 @@ function Semester(props) {
         }) 
     }
 
-    function handleClick(index) { 
-        if (courseSelection) {
-            setSchedule(prev => {
-                const newSchedule = [...prev];
-                const Year = newSchedule[props.yearIndex].plans;
-                const courses = Year[props.semesterIndex].courses;
-                courses[index] = courseSelection; 
-                return newSchedule;
-            })
-        }else {
-            console.log('no course has been selected');
-        }
-    }
-
-    function renderCourse(course, index) {
-        const name = (course !== null) ? (course.courseCode + ' - ' + course.className) : '';
-        return (
-            <div className='course-container' key={index}>
-                <button className="course-selection" 
-                        key={index}
-                        onClick={() => handleClick(index)}>
-                    {name}
-                </button> 
-                <button key={'trash' + index} 
-                        className='trash-button'
-                        onClick={() => handleTrashClick(index, name)}>🗑️</button>
-            </div>
-        )       
-    }
-
     return (
         <div className="semester-container">
             <h1>{props.semester}</h1>
             {
                 props.courses.map((course, index) => {
-                    return renderCourse(course, index);
+                    return <ViewableCourse course={course}
+                                           index={index}
+                                           semesterIndex={props.semesterIndex}
+                                           yearIndex={props.yearIndex}
+                                           key={index}/>
                       
                 })
             }

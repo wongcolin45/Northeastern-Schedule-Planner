@@ -17,7 +17,7 @@ function SelectionBar(props) {
         const section = sections[index];
         let count = 0;
         section.courses.forEach(course => {
-            if (props.courseTaken(course)) {
+            if (props.courseTaken(course.courseCode)) {
                 count++;
             }
         })
@@ -77,7 +77,7 @@ function SelectionBar(props) {
                         return (
                             <div key={key+value} className='attribute-container'>
                                 <h3>{key + check}</h3>
-                                <ul>
+                                <ul key={key+check+value}>
                                 {
                                     [...value].map(((course, index) => {
                                         return <li key={course+index}>{course}</li>
