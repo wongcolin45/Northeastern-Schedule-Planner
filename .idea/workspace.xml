@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a72a46f0-6265-4295-bf8c-3e2435230758" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/AcademicYear.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/AcademicYear.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/Calender.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/Calender.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/SelectionBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/SelectionBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/Pages/ScheduleMaker.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Pages/ScheduleMaker.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/Styles/Schedule.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Styles/Schedule.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/courses.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/courses.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/neu_database.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/neu_database.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/repositories/computerScienceRepo.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server/repositories/computerScienceRepo.mjs" afterDir="false" />
-    </list>
+    <list default="true" id="a72a46f0-6265-4295-bf8c-3e2435230758" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,6 +20,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "wongcolin45"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/wongcolin45/Northeastern-Schedule-Planner.git",
+    "accountId": "583d2c6e-a9f5-4967-9da2-5e2066f83d5b"
+  }
+}]]></component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
