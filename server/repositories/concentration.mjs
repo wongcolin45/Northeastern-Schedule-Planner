@@ -65,7 +65,7 @@ async function getCourses(Model, section) {
             sectionRequirement: section
         }
       });
-      const courses = data.map(async r => {
+      const courses = await Promise.all(data.map(async r => {
           const alias = `course-${Model.tableName}`
           const mandatory = (r.mandatory === undefined) ? false : r.mandatory === 1;
           const courseName = r[alias].courseName
@@ -80,7 +80,7 @@ async function getCourses(Model, section) {
               prerequisite: prerequisite
           }
           return courseInfo;
-      });
+      }));
       return courses
     } catch (error) {
       throw error

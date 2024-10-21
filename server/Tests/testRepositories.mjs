@@ -4,6 +4,7 @@ import { CSCore } from "../Models/CSCore.mjs";
 import { Course } from "../Models/Course.mjs";
 
 import sequelize from "../Configuration/connection.mjs";
+import getCSCore from "../repositories/computerScienceRepo.mjs";
 
 
 
@@ -21,9 +22,10 @@ async function tableReal(model) {
 
 
 
+
 async function runTests() {
-    await tableReal(CSCore);
-    await tableReal(Course);
+    const core = await getCSCore();
+    console.log(core[0].sections);
 }
 
-runTests();
+await runTests();

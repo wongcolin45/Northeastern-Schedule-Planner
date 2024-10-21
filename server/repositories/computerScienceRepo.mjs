@@ -45,8 +45,6 @@ async function getSubRequirements(requirement) {
     }
 }
 
-
-
 async function getCourses(requirement, subRequirement) {
     try {
         const data = await CSCore.findAll({ 
@@ -71,7 +69,7 @@ async function getCourses(requirement, subRequirement) {
                 subRequirementName: subRequirement
             }
         });
-        const courses = data.map(async element => {
+        const courses = await Promise.all(data.map(async element => {
             const d = element.get({plain: true});
             const courseName = d.course.courseName;
             const mandatory = d.mandatory === 1;
@@ -86,7 +84,7 @@ async function getCourses(requirement, subRequirement) {
                 prerequisite: prerequisite
             }
             return courseInfo;
-        });
+        }));
         return courses;
         
     } catch (error) {
@@ -129,6 +127,8 @@ async function getCSCore() {
             
             const courses = await getCourses(requirement, subRequirement);
 
+            console.log(courses);
+
             const coursesRequired = await getCoursesRequired(requirement, subRequirement);
 
             const section = {name: subRequirement, courses: courses, coursesRequired: coursesRequired}
@@ -141,6 +141,9 @@ async function getCSCore() {
 
     return outline
 }
+
+
+
 
 export default getCSCore;
 
