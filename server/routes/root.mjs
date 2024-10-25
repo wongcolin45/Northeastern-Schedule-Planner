@@ -1,14 +1,14 @@
 
-import getCSCore from '../repositories/computerScienceRepo.mjs';
+import getCSCore from '../repositories/computerScienceRepository.mjs';
 
-import getConcentration from '../repositories/concentration.mjs';
+import getConcentration from '../repositories/concentrationRepository.mjs';
 
 import express from 'express';
 
 import cors from 'cors';
-import { generateSchedule } from '../repositories/scheduleRepo.mjs';
+import { generateSchedule } from '../repositories/scheduleRepository.mjs';
 
-import { getAttributes } from '../repositories/nuPathRepo.mjs';
+import { getAttributes } from '../repositories/nuPathRepository.mjs';
 
 
 

@@ -4,7 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a72a46f0-6265-4295-bf8c-3e2435230758" name="Changes" comment="" />
+    <list default="true" id="a72a46f0-6265-4295-bf8c-3e2435230758" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/API/courseRequirementsAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/API/courseRequirementsAPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/SelectionBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/SelectionBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Pages/ScheduleMaker.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Pages/ScheduleMaker.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Styles/Schedule.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Styles/Schedule.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Models/User.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Models/User.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Tests/testRepositories.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Tests/testRepositories.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/repositories/computerScienceRepo.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server/repositories/computerScienceRepository.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/repositories/concentration.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server/repositories/concentrationRepository.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/repositories/coursesRepo.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server/repositories/coursesRepository.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/repositories/nuPathRepo.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server/repositories/nuPathRepository.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/repositories/scheduleRepo.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server/repositories/scheduleRepository.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/root.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/root.mjs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,18 +36,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "wongcolin45"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;wongcolin45&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/wongcolin45/Northeastern-Schedule-Planner.git",
-    "accountId": "583d2c6e-a9f5-4967-9da2-5e2066f83d5b"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/wongcolin45/Northeastern-Schedule-Planner.git&quot;,
+    &quot;accountId&quot;: &quot;583d2c6e-a9f5-4967-9da2-5e2066f83d5b&quot;
   }
-}]]></component>
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -85,6 +101,11 @@
       <workItem from="1729218140024" duration="339000" />
       <workItem from="1729289301328" duration="5872000" />
       <workItem from="1729295377285" duration="7010000" />
+      <workItem from="1729625083836" duration="3372000" />
+      <workItem from="1729824469417" duration="24000" />
+      <workItem from="1729878509623" duration="3999000" />
+      <workItem from="1729886910364" duration="278000" />
+      <workItem from="1729887295249" duration="1727000" />
     </task>
     <servers />
   </component>

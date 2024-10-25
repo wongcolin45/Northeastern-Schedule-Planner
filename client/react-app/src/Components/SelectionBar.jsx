@@ -99,10 +99,11 @@ function SelectionBar(props) {
     }
 
     function getBackgroundColor(index) {
-       
+       // background-color: #2A2B32;
+        //   color: lightgrey;
         const left = getLeft(index);
         if (left === sections[index].left) {
-            return {backgroundColor: '#E0E0E0'}
+            return {backgroundColor: '#2A2B32'}
         }else if (left > 0) {
             return {backgroundColor: '#F5E6CC'}
         }else {

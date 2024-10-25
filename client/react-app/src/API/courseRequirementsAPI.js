@@ -26,7 +26,6 @@ async function fetchConcentration(concentration) {
 
 async function fetchSchedule(schedule) {
     try {
-        
         const response = await fetch('http://localhost:3000/api/computerscienceSchedule', {
             method: 'POST', // HTTP method
             headers: {

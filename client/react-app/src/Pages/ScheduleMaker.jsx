@@ -101,6 +101,7 @@ function ScheduleMaker() {
 
 
     return (
+        <div className="ScheduleMaker-container">
         <ScheduleContext.Provider value={{courseSelection, setCourseSelection,
                                           schedule, setSchedule, courseTaken, courseTakenBefore}}>
             <Header/>
@@ -111,6 +112,7 @@ function ScheduleMaker() {
                       courseSelection={courseSelection}
             />
         </ScheduleContext.Provider>
+        </div>
     )
 }
 

@@ -4,7 +4,7 @@ import { CSCore } from "../Models/CSCore.mjs";
 import { Course } from "../Models/Course.mjs";
 
 import sequelize from "../Configuration/connection.mjs";
-import getCSCore from "../repositories/computerScienceRepo.mjs";
+import getCSCore from "../repositories/computerScienceRepository.mjs";
 
 
 

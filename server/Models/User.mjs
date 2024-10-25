@@ -1,6 +1,6 @@
 
 import { Model, DataTypes } from 'sequelize';
-import { Course } from './Course.mjs';
+
 
 import sequelize from '../Configuration/connection.mjs';
 

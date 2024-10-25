@@ -2,7 +2,7 @@ import sequelize from "../Configuration/connection.mjs";
 import { Course } from "../Models/Course.mjs";
 import { CSCore } from "../Models/CSCore.mjs";
 import { Sequelize } from "sequelize";
-import getCourseById from "./coursesRepo.mjs";
+import getCourseById from "./coursesRepository.mjs";
 
 Course.hasMany(CSCore, { foreignKey: 'courseID', as: 'requirements' });
 CSCore.belongsTo(Course, { foreignKey: 'courseID', as: 'course' });
@@ -141,9 +141,6 @@ async function getCSCore() {
 
     return outline
 }
-
-
-
 
 export default getCSCore;
 

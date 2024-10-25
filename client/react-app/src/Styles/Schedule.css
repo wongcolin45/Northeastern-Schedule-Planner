@@ -1,6 +1,5 @@
 
 
-
 /* 
 ==========================================
                Selection Bar 
@@ -10,22 +9,26 @@
 .selection-container {
   display: flex;
   flex-direction: row;
-    margin-bottom: -20px;
+  margin-bottom: -20px;
+
 }
 
 .requirements-bar {
   display: flex;
   flex-direction: column;
-  border: 0.5px solid black;
+  border: 0.5px solid whitesmoke;
   height: 320px;
 
   margin-right: 5px;
   overflow:scroll;
   background-color: #efefee;
-  box-shadow: 0 0.4rem #dfd9d9;
+
+
   padding: 5px;
 
-  
+    background-color: #2A2B32;
+    color: lightgrey;
+
 
 }
 
@@ -42,10 +45,12 @@
   width: 100%;
   font-size: 14px;
   padding: 10px;
-  background-color: white;
   margin-bottom: 5px;
-  border: 0.1px solid black;
-  box-shadow: 0 0.4rem #dfd9d9;
+  border: 0.5px solid darkgrey;
+
+
+    color: lightgrey;
+
 }
 
 .requirements-bar button:active {
@@ -67,30 +72,31 @@
 
   
 .course-selection-container {
-    border: 0.5px solid black;
+    border: 0.5px solid whitesmoke;
     padding: 40px;
     width: 100%;
     height: 250px;
     margin: auto;
     margin-bottom: 30px;
     background-color: #efefee;
-    box-shadow: 0 0.4rem #dfd9d9;
+
+
 }
   
 .course-selection-container h1 {
     margin-top: -20px;
+    color: whitesmoke;
 }
 
 .nupath-selection-container {
     border: 0.5px solid black;
     padding: 40px;
-    width: 100%;
-    height: 380px;
-    box-shadow: 2px 2px;
     margin: auto;
     margin-bottom: 30px;
     background-color: #efefee;
-    box-shadow: 0 0.4rem #dfd9d9;
+
+    width: 100%;
+    height: 250px;
     overflow: scroll;
 
 }
@@ -140,18 +146,21 @@
     font-size: 15px;
     font-weight: bold;
     margin-top: 0px;
+    color: whitesmoke;
 }
   
 .semester-container{
     display: flex;
     flex-direction: column;
-    border: 0.5px solid black;
+    border: 0.5px solid whitesmoke;
     width: 566px;
     width: 100%;
     padding: 20px;
     height: 250px;
     background-color: whitesmoke;
     box-shadow: none;
+
+    background-color: #2A2B32;
 }
   
 
@@ -160,13 +169,17 @@
 .semester-container .course-selection {
     width: 100%;
     height: 30px;
-    box-shadow: 2px 2px;
     border: 0.5px solid black;
-    background-color: white;
+    background-color: whitesmoke;
     max-width: 800px;
     text-align: center;
     font-size: 12px;
-    box-shadow: 0 0.4rem #dfd9d9;
+    box-shadow: 0 0.1rem rgba(211, 211, 211, 0.5);
+
+
+
+
+
 }
 
 .warning-message {
@@ -187,15 +200,17 @@
   
   .add-semester-button {
     background-color: white;
-    border: 0.5px solid black;
+    border: 0.5px solid whitesmoke;
     height: 100%;
     width: 50px;
     font-weight: bold;
+      background-color: #2A2B32;
+      color: whitesmoke;
   }
   
   .add-semester-button:active {
     box-shadow: none;
-    transform: translate(2px, 2px);
+    opacity: 0.7;
   }
   
   
@@ -209,19 +224,21 @@
   
   .add-year-button {
     background-color: white;
-    border: 0.5px solid black;
+    border: 0.5px solid whitesmoke;
     width: 500px;
     height: 50px;
     margin-top: 20px;
-
+      background-color: #2A2B32;
+      color: whitesmoke;
     font-weight:bold;
     margin-left: 20px;
-      box-shadow: 0 0.4rem #dfd9d9;
+
     
   }
   
   .add-year-button:active {
     box-shadow: none;
+
     transform: translate(2px, 2px);
   }
   
@@ -275,17 +292,18 @@
     box-shadow: 0 0.1rem black;
     font-size: 12px;
     padding: 10px;
+
     
 }
 
 .trash-button {
-    background-color: white;
+    background-color: whitesmoke;
     border: 0.5px solid black;
     width: 30px;
     height: 30px;
     box-shadow: 2px 2px;
     margin-left: 10px;
-    box-shadow: 0 0.4rem #dfd9d9;
+    box-shadow: 0 0.1rem rgba(211, 211, 211, 0.5);
 }
 
 .trash-button:active {
@@ -297,32 +315,11 @@
 
 
 .selection-bar button:hover {
-cursor: pointer;
-}
-
-.left-button, .right-button {
-    border: 0.5px solid black;
-    box-shadow: 2px 2px;
-    box-shadow: 0 0.4rem #dfd9d9;
-    width: 50px;
-    height: 436px;
-    font-weight: bold;
-}
-  
-.left-button:active, .right-button:active {
     cursor: pointer;
-    box-shadow: none;
-    background-color: lightgrey;
-    transform: translateY(2px);
 }
 
-.left-button:active {
-    transform: translateX(2px);
-}
 
-.right-button:active {
-    transform: translateX(-2px);
-}
+
 
 .selection-button {
     border: 0.5px solid black;
@@ -346,7 +343,7 @@ cursor: pointer;
   font-size: 14px;
   font-weight: bold;
   margin: auto;
-  box-shadow: 0 0.4rem #dfd9d9;
+  box-shadow: 0 0.2rem rgba(211, 211, 211, 0.5);
  
 }
 

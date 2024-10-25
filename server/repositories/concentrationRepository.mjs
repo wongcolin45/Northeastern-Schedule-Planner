@@ -1,7 +1,7 @@
 import sequelize from "../Configuration/connection.mjs";
 import { Course } from "../Models/Course.mjs";
 import { Sequelize } from "sequelize";
-import getCourseById from "./coursesRepo.mjs";
+import getCourseById from "./coursesRepository.mjs";
 
 import { AIConcentration, 
          HCCConcentration, 

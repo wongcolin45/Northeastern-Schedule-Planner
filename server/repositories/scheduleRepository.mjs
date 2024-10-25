@@ -1,14 +1,7 @@
-import getCSCore from "./computerScienceRepo.mjs"
-import getConcentration from "./concentration.mjs"
+import getCSCore from "./computerScienceRepository.mjs"
+import getConcentration from "./concentrationRepository.mjs"
 
 
-
-function testValue(name, value) {
-    console.log('==================================');
-    console.log('       CHECKING : '+name);
-    console.log('==================================');
-    console.log(value);
-}
 
 
 
@@ -63,20 +56,12 @@ async function getIncompleteRequirements(outline, courses) {
     return requirements;
 }
 
-
-
-
-
-
-
 async function getIncomplete(outline, schedule) {
     
     const courses = getCourses(schedule);
     const incomplete = await getIncompleteRequirements(outline, courses);
     return incomplete;
 }
-
-
 
 
 async function generateSchedule(schedule, length) {
