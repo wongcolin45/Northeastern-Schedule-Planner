@@ -1,15 +1,16 @@
-import NavBar from "../Components/NavBar";
+
 import React, {useState, useContext} from 'react';
 import { MyContext } from "../App";
 
 
 import '../Styles/Settings.css';
+import Header from "../Components/Header.jsx";
 
 function Settings() {
 
     const {concentration, setConcentration, startYear, setStartYear} = useContext(MyContext);
 
-    const concentrations = ['Artificial Inteligence', 'Human Centered Computing', 'Sotware', 'Systems', 'Foundations'];
+    const concentrations = ['Artificial Intelligence', 'Human Centered Computing', 'Sotware', 'Systems', 'Foundations'];
 
     const majors = ['Computer Science', 'Data Science', 'Cybersecurity'];
 
@@ -32,7 +33,7 @@ function Settings() {
 
     return (
         <>
-            <NavBar/>
+            <Header/>
             <div className="profile-container">
                 <h1>Academic Profile</h1>
                 <h2>Select Major</h2>
@@ -45,9 +46,9 @@ function Settings() {
                 <h2>Select Concentration</h2>
                 {
                     concentrations.map((name, index) => {
-                        const selected =  (concentration.name === name) ? 'selected' : '';
-                        console.log('selected is '+selected);
-                        return <button key={index} className={selected}
+                        const style =  (concentration.name === name) ? {'backgroundColor': 'whitesmoke', color: 'black'} : {};
+
+                        return <button key={index} style={style}
                                        onClick={() => handleConcentrationClick(name)}>{name}</button>
                     })
                 } 

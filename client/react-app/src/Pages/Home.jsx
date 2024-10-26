@@ -1,12 +1,9 @@
-import NavBar from "../Components/NavBar";
+
+import Header from "../Components/Header.jsx";
 
 function Home() {
     return (
-        <div>
-            <NavBar/>
-            
-            
-        </div>
+        <Header/>
     )
 }
 

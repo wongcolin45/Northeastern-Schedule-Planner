@@ -51,9 +51,13 @@ function SelectionBar(props) {
         const sectionTitle = (section.name.includes('section')) ? section.name.slice(0, -12) : section.name;
         const style = getBackgroundColor(index);
 
+        const left = getLeft(index);
+
+        const message = (left <= 0) ? 'Complete' : `${left } left`;
+
         return (
             <div className='course-selection-container' style={style}>
-                <h1>{`${sectionTitle}`}</h1>
+                <h1>{`${sectionTitle} (${message})`}</h1>
                 <div className='courses-container' style={style}>
                 {
                     section.courses.map((course,index) => {
@@ -116,7 +120,7 @@ function SelectionBar(props) {
         const style = getBackgroundColor(index)
         const arrow = (current === index) ? "*" : "";
         
-        if (index === 11) {
+        if (index === 12) {
             return (
                 <>
                     <h2 key={index}>{concentration.name+ ' Requirements'}</h2>

@@ -6,6 +6,10 @@ import {useState, useEffect,createContext} from 'react';
 import ScheduleMaker from './Pages/ScheduleMaker';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import { fetchConcentration } from './API/courseRequirementsAPI';
+import Settings from "./Pages/Settings.jsx";
+import Home from "./Pages/Home.jsx";
+import TransferCredit from "./Pages/TransferCredit.jsx";
+import Login from "./Pages/Login.jsx";
 
 
 
@@ -102,8 +106,19 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+          <Route path="/" element={
+              <Home/>
+          }>
+          </Route>
 
-        <Route path="/" element={
+          <Route path="/Home" element={
+              <Home/>
+          }>
+          </Route>
+
+
+
+        <Route path="/schedule" element={
             <MyContext.Provider value={{outline,
                                         courseSelections,
                                         setCourseSelections,
@@ -118,14 +133,22 @@ function App() {
             </MyContext.Provider>
         }></Route>
 
-        {/* <Route path="/login" element={
+          <Route path="/transfer-credit" element={
+              <TransferCredit/>
+          }>
+          </Route>
+
+        <Route path="/settings" element={
           <MyContext.Provider value={{concentration: concentration, setConcentration: setConcentration,
                                       startYear: startYear, setStartYear: setStartYear}}>
              <Settings/>
           </MyContext.Provider>
         }></Route>
 
-         */}
+        <Route path="/Login" element={
+          <Login/>
+        }>
+        </Route>
 
       </Routes>
     </BrowserRouter>

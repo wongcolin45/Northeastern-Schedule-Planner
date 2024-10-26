@@ -19,3 +19,13 @@ To get started with the Northeastern Schedule Planner, follow these steps:
 1. Clone the repository:
    ```bash
    git clone https://github.com/wongcolin45/northeastern-schedule-planner.git
+   
+## Features to Add
+### Frontend
+- add navigation bar and pages for setting, and pages for setting (selecting concentration) and login
+- fix issue with error message for prerequisite - fundies taken semester after fundies 2 should not satisfy error
+- 
+### Backend
+- allow generate schedule button to pull from concentration courses
+- add to database elective courses so user can satisfy nu path requirements
+  - then allow to generate schedule to pull from these new courses

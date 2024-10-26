@@ -1,40 +1,31 @@
-import { Link, useLocation } from "react-router-dom";
-import React, {useState} from 'react';
-import Header from "./Header";
+import { Link } from "react-router-dom";
+
 
 function NavBar() {
 
-    const pages = [{name: 'Profile', path: '/home'},
-                   {name: 'Requirements', path: '/requirementshub'},
-                   {name: 'Schedule', path: '/schedulemaker'},
-                   {name: 'Settings', path: '/login'}
+    const pages = [{name: 'Home', path: '/'},
+                   {name: 'Schedule', path: '/schedule'},
+                   {name: 'Transfer Credit', path: '/transfer-credit'},
+                   {name: 'Settings', path: '/settings'},
+                   {name: 'Login', path: '/login'}
     ]
 
     return (
-        <>
-            <Header/>
-            <div className="navigation-bar">
+        <div className="navigation-bar">
+            {
+                pages.map((page, index) => {
 
-                {
-                    pages.map((page, index) => {
-                        const loc = useLocation().pathname;
-                        
-                        const className = (loc === page.path) ? "button-link-active":"button-link"
-                       
-                        return (
-                                <Link to={page.path} className={className}key={page+index}>
-                                    <button>
-                                        {page.name} 
-                                    </button>
-                                 </Link>
-                        )      
-                        
-                    })
-                }
-               
-            </div>
-            <hr className="nav-line"></hr>
-        </>
+                    return (
+                            <Link to={page.path} key={page+index}>
+                                <button>
+                                    {page.name}
+                                </button>
+                             </Link>
+                    )
+                })
+            }
+
+        </div>
     );
 }
 

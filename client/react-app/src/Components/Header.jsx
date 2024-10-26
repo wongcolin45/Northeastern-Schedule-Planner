@@ -1,3 +1,4 @@
+import NavBar from "./NavBar.jsx";
 
 function Header() {
     /**
@@ -5,18 +6,14 @@ function Header() {
      */
     return (
         <div className="header-container">
+            <div className="header-contents">
+                <h1>Khoury Planner </h1>
 
+            </div>
 
-
-            <h1>Khoury Planner </h1>
-            <span>Beta Version</span>
-
-
-
-
-
-
+            <NavBar/>
         </div>
+
     )
 }
 

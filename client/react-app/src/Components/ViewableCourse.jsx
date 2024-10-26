@@ -42,20 +42,21 @@ function ViewableCourse(props) {
         }
     }
 
-    function handleTrashClick(index, name) {
-        if (name.length > 0) {
-            setSchedule(prev => {
-                const newSchedule = [...prev];
+    function handleTrashClick(index) {
+        console.log('trash button clicked');
 
-                const Year = newSchedule[props.yearIndex].plans;
+        setSchedule(prev => {
+            const newSchedule = [...prev];
 
-                const courses = Year[props.semesterIndex].courses;
+            const Year = newSchedule[props.yearIndex].plans;
 
-                courses[index] = null;
+            const courses = Year[props.semesterIndex].courses;
 
-                return newSchedule;
-            })
-        }
+            courses[index] = null;
+
+            return newSchedule;
+        })
+
     }
 
 
@@ -72,7 +73,7 @@ function ViewableCourse(props) {
                 </button>
                 <button key={'trash' + props.index}
                         className='trash-button'
-                        onClick={() => handleTrashClick(props.index, name)}>🗑️</button>
+                        onClick={() => handleTrashClick(props.index)}>🗑️</button>
             </div>
             {(!courseTakenBefore(props.course, props.course.prerequisite)) &&
                 <span className='warning-message'>{`*Missing Prerequisite: ${props.course.prerequisite}`}</span>}
