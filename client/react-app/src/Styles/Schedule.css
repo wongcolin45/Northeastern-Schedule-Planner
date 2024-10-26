@@ -14,19 +14,14 @@
 }
 
 .requirements-bar {
-  display: flex;
-  flex-direction: column;
-  border: 0.5px solid whitesmoke;
-  height: 320px;
-
-  margin-right: 5px;
-  overflow:scroll;
-  background-color: #efefee;
-
-
-  padding: 5px;
-
+    display: flex;
+    flex-direction: column;
+    border: 0.5px solid whitesmoke;
+    height: 320px;
+    margin-right: 5px;
+    overflow-y: scroll;
     background-color: #2A2B32;
+    padding: 5px;
     color: lightgrey;
 
 
@@ -49,12 +44,13 @@
   border: 0.5px solid darkgrey;
 
 
-    color: lightgrey;
+    color: whitesmoke;
+    background-color: #2A2B32;
 
 }
 
 .requirements-bar button:active {
-  background-color: lightgrey;
+  opacity: 0.7;
 }
 
 .selection-bar {
@@ -81,6 +77,7 @@
     background-color: #efefee;
 
 
+
 }
   
 .course-selection-container h1 {
@@ -93,7 +90,7 @@
     padding: 40px;
     margin: auto;
     margin-bottom: 30px;
-    background-color: #efefee;
+    background-color: #2A2B32;
 
     width: 100%;
     height: 250px;
@@ -110,7 +107,7 @@
     border: 0.5px solid black;
     padding: 4%;
     padding-top: 0%;
-    background-color: white;
+    background-color: #2A2B32;
     box-shadow: 0 0.4rem black;
 }
 
@@ -127,6 +124,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
+    background-color: #2A2B32;
 }
   
   

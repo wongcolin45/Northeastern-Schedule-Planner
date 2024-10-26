@@ -51,7 +51,7 @@ function App() {
             const data = await response.json();
 
             setOutline(data);
-
+            console.log(data);
         }catch(error) {
             console.log(`Error fetching data ${error}`);
         }

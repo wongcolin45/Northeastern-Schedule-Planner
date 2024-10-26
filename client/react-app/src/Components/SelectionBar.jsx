@@ -139,7 +139,7 @@ function SelectionBar(props) {
 
     function getNUPathBackgroundColor(left) {
         if (left === 11) {
-            return {backgroundColor: '#A3D9B1'}
+            return {backgroundColor: '#2A2B32'}
         }else if (left > 0) {
             return {backgroundColor: '#F5E6CC'}
         }else {

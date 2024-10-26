@@ -6,8 +6,6 @@ import {ScheduleContext} from "../Pages/ScheduleMaker.jsx";
 function CourseButton(props) {
     const {courseTaken, courseSelection, setCourseSelection} = useContext(ScheduleContext);
 
-
-
     if (courseTaken(props.course.courseCode)) {
         return (
             <button
@@ -19,9 +17,14 @@ function CourseButton(props) {
 
     const style = (courseSelection === props.course) ? {backgroundColor : "lightyellow"} : {};
 
+    function handleClick() {
+        console.log('Is course '+props.course.courseCode + 'taken '+ courseTaken(props.course.courseCode));
+        setCourseSelection(props.course);
+    }
+
     return (
         <button
-                onClick={() => setCourseSelection(props.course)}
+                onClick={handleClick}
                 style={style}>
             {props.course.courseCode + ' - ' + props.course.className}
         </button>

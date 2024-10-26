@@ -6,20 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="a72a46f0-6265-4295-bf8c-3e2435230758" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/API/courseRequirementsAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/API/courseRequirementsAPI.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/CourseButton.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/CourseButton.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/SelectionBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/SelectionBar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/react-app/src/Pages/ScheduleMaker.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Pages/ScheduleMaker.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/react-app/src/Styles/Schedule.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Styles/Schedule.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/Models/User.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Models/User.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/Tests/testRepositories.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server/Tests/testRepositories.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/repositories/computerScienceRepo.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server/repositories/computerScienceRepository.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/repositories/concentration.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server/repositories/concentrationRepository.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/repositories/coursesRepo.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server/repositories/coursesRepository.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/repositories/nuPathRepo.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server/repositories/nuPathRepository.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/repositories/scheduleRepo.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server/repositories/scheduleRepository.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/root.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/root.mjs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +96,8 @@
       <workItem from="1729824469417" duration="24000" />
       <workItem from="1729878509623" duration="3999000" />
       <workItem from="1729886910364" duration="278000" />
-      <workItem from="1729887295249" duration="1727000" />
+      <workItem from="1729887295249" duration="2521000" />
+      <workItem from="1729894045729" duration="4081000" />
     </task>
     <servers />
   </component>

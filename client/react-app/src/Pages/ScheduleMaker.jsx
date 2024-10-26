@@ -45,14 +45,15 @@ function ScheduleMaker() {
         if (!schedule || courseCode === null) {
             return true;
         }
-        return schedule.some(y => {
-            y.plans.some(p => {
-                p.courses.some(c => {
-                    return (c !== null && c.courseCode === courseCode);
-                })
-            })
-        })
 
+        return schedule.some(y =>
+            y.plans.some(p =>
+                p.courses.some(c => {
+                    return (c != null && c.courseCode === courseCode)
+
+                })
+            )
+        );
     }
 
     function updateNUPath(courseData) {
