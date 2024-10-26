@@ -55,7 +55,8 @@ VALUES
 --Mathematics Courses
 INSERT INTO cs_requirements 
     (sub_requirement_name, courses_required, course_id)
-VALUES 
+VALUES
+    ('Mathematics Courses', 2, 72),
     ('Mathematics Courses', 2, 73),
     ('Mathematics Courses', 2, 75);
 --Computing and Social Issues

@@ -1,7 +1,7 @@
 import sequelize from "../Configuration/connection.mjs";
-import { Course } from "../Models/Course.mjs";
-import { CSCore } from "../Models/CSCore.mjs";
-import { Sequelize } from "sequelize";
+import {Course} from "../Models/Course.mjs";
+import {CSCore} from "../Models/CSCore.mjs";
+import {Sequelize} from "sequelize";
 import getCourseById from "./coursesRepository.mjs";
 
 Course.hasMany(CSCore, { foreignKey: 'courseID', as: 'requirements' });
@@ -45,6 +45,8 @@ async function getSubRequirements(requirement) {
     }
 }
 
+
+
 async function getCourses(requirement, subRequirement) {
     try {
         const data = await CSCore.findAll({ 
@@ -69,23 +71,22 @@ async function getCourses(requirement, subRequirement) {
                 subRequirementName: subRequirement
             }
         });
-        const courses = await Promise.all(data.map(async element => {
+
+        return await Promise.all(data.map(async element => {
             const d = element.get({plain: true});
             const courseName = d.course.courseName;
             const mandatory = d.mandatory === 1;
             const courseCode = d.course.department + ' ' + d.course.courseNumber;
             const attributes = (d.course.attributes) ? d.course.attributes : null;
             const prerequisite = await getCourseById(d.course.prerequisite);
-            const courseInfo = {
+            return {
                 className: courseName,
                 mandatory: mandatory,
                 courseCode: courseCode,
                 attributes: attributes,
                 prerequisite: prerequisite
-            }
-            return courseInfo;
-        }));
-        return courses;
+            };
+        }))
         
     } catch (error) {
         console.error('Error fetching data:', error);
@@ -124,10 +125,8 @@ async function getCSCore() {
 
         for (const subRequirement of subRequirements) {
 
-            
             const courses = await getCourses(requirement, subRequirement);
 
-            console.log(courses);
 
             const coursesRequired = await getCoursesRequired(requirement, subRequirement);
 
@@ -141,6 +140,9 @@ async function getCSCore() {
 
     return outline
 }
+
+
+
 
 export default getCSCore;
 
