@@ -7,11 +7,12 @@ function Header() {
         <div className="header-container">
 
 
-            <div className="header-content">
-                <h1>Khoury Planner</h1>
-                <span>Northeastern Schedule Maker for CS Students</span>
 
-            </div>
+            <h1>Khoury Planner </h1>
+            <span>Beta Version</span>
+
+
+
 
 
 

@@ -13,7 +13,13 @@ function ScheduleMaker() {
 
     const {startYear, setPath} = useContext(MyContext);
 
-
+    const scrollToBottom = () => {
+        console.log('scroll to bottom called');
+        window.scrollTo({
+            bottom: document.documentElement.scrollHeight, // Scroll to the total height of the document
+            behavior: 'smooth', // Smooth scrolling effect
+        });
+    };
 
     const [schedule, setSchedule] = useState([{ Year: 1, 
                                                 plans: [{year: startYear, semester: "Fall", courses: [null, null, null, null]}]
@@ -104,7 +110,9 @@ function ScheduleMaker() {
     return (
         <div className="ScheduleMaker-container">
         <ScheduleContext.Provider value={{courseSelection, setCourseSelection,
-                                          schedule, setSchedule, courseTaken, courseTakenBefore}}>
+                                          schedule, setSchedule,
+                                          courseTaken, courseTakenBefore,
+                                          scrollToBottom}}>
             <Header/>
             <SelectionBar courseSelection={courseSelection} setCourseSelection={setCourseSelection}
                         courseTaken={courseTaken}

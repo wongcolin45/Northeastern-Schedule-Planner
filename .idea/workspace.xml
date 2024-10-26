@@ -5,59 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a72a46f0-6265-4295-bf8c-3e2435230758" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/server/Tests/testRepositories.test.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/react-app/src/Styles/Calendar.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/cs_requirements.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/cs_requirements.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/Tests/testRepositories.mjs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/body-parser/HISTORY.md" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/body-parser/HISTORY.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/body-parser/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/body-parser/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/body-parser/lib/types/urlencoded.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/body-parser/lib/types/urlencoded.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/body-parser/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/body-parser/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/cookie/HISTORY.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/cookie/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/cookie/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/cookie/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/cookie/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/encodeurl/HISTORY.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/encodeurl/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/encodeurl/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/encodeurl/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/encodeurl/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/encodeurl/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/encodeurl/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/escalade/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/escalade/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/escalade/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/escalade/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/escalade/sync/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/escalade/sync/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/express/History.md" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/express/History.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/express/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/express/Readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/express/lib/response.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/express/lib/response.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/express/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/express/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/finalhandler/HISTORY.md" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/finalhandler/HISTORY.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/finalhandler/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/finalhandler/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/finalhandler/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/finalhandler/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/finalhandler/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/finalhandler/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/merge-descriptors/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/merge-descriptors/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/merge-descriptors/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/merge-descriptors/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/merge-descriptors/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/merge-descriptors/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/path-to-regexp/History.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/path-to-regexp/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/path-to-regexp/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/path-to-regexp/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/path-to-regexp/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/qs/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/qs/.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/qs/.eslintrc" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/qs/.eslintrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/qs/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/qs/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/qs/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/qs/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/qs/dist/qs.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/qs/dist/qs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/qs/lib/parse.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/qs/lib/parse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/qs/lib/stringify.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/qs/lib/stringify.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/qs/lib/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/qs/lib/utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/qs/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/qs/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/qs/test/parse.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/qs/test/parse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/qs/test/stringify.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/qs/test/stringify.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/send/HISTORY.md" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/send/HISTORY.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/send/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/send/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/send/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/send/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/serve-static/HISTORY.md" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/serve-static/HISTORY.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/serve-static/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/serve-static/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/node_modules/serve-static/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/serve-static/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/repositories/computerScienceRepository.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server/repositories/computerScienceRepository.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/AcademicYear.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/AcademicYear.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/Calender.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/Calender.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/CourseButton.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/CourseButton.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/SelectionBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/SelectionBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/ViewableCourse.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/ViewableCourse.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Pages/ScheduleMaker.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Pages/ScheduleMaker.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Styles/Schedule.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Styles/Schedule.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +26,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JSX File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -97,22 +56,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/colinwong/Documents/Personal Projects/SchedulePlanner&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/colinwong/Documents/Personal Projects/SchedulePlanner",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -144,7 +104,7 @@
       <workItem from="1729878509623" duration="3999000" />
       <workItem from="1729886910364" duration="278000" />
       <workItem from="1729887295249" duration="2521000" />
-      <workItem from="1729894045729" duration="7263000" />
+      <workItem from="1729894045729" duration="18626000" />
     </task>
     <servers />
   </component>

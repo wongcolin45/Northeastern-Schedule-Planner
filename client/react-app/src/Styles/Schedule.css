@@ -22,7 +22,7 @@
     overflow-y: scroll;
     background-color: #2A2B32;
     padding: 5px;
-    color: lightgrey;
+    color: whitesmoke;
 
 
 }
@@ -36,21 +36,22 @@
 }
 
 .requirements-bar button {
-  height: 150px;
-  width: 100%;
-  font-size: 14px;
-  padding: 10px;
-  margin-bottom: 5px;
-  border: 0.5px solid darkgrey;
-
-
+    height: 150px;
+    width: 100%;
+    font-size: 14px;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 0.5px solid whitesmoke;
     color: whitesmoke;
     background-color: #2A2B32;
-
 }
 
-.requirements-bar button:active {
-  opacity: 0.7;
+.requirements-bar button:active{
+    transform: translate(0px, 0.1rem);
+}
+
+.requirements-bar button:hover {
+    opacity: 0.7;
 }
 
 .selection-bar {
@@ -74,50 +75,56 @@
     height: 250px;
     margin: auto;
     margin-bottom: 30px;
-    background-color: #efefee;
-
-
 
 }
   
 .course-selection-container h1 {
     margin-top: -20px;
-    color: whitesmoke;
+    color: inherit;
+    background-color: inherit;
 }
 
 .nupath-selection-container {
-    border: 0.5px solid black;
+    border: 0.5px solid whitesmoke;
     padding: 40px;
-    margin: auto;
-    margin-bottom: 30px;
-    background-color: #2A2B32;
-
+    margin: auto auto 30px;
     width: 100%;
     height: 250px;
-    overflow: scroll;
-
+    overflow-y: scroll;
 }
 
 .nupath-selection-container h1 {
     margin-top: -20px;
 
+
 }
 
 .attribute-container {
     border: 0.5px solid black;
-    padding: 4%;
-    padding-top: 0%;
-    background-color: #2A2B32;
+    padding: 0% 4% 4%;
+    background-color: whitesmoke;
     box-shadow: 0 0.4rem black;
+    color: black !important;
 }
+
 
 .attribute-container li{
     margin-left: -20px;
-    font-size: 12px;
+    font-size: 11px;
+    background-color: whitesmoke;
+    color: black
+}
+
+.attribute-container ul{
+    background-color: whitesmoke;
+    color: black !important;
 }
 
 .attribute-container h3{
     font-size: 14px;
+    background-color: whitesmoke;'
+    color: black !important;
+    margin-bottom: -10px;
 }
 
 .nupath-contents-container {
@@ -126,137 +133,43 @@
     gap: 10px;
     background-color: #2A2B32;
 }
-  
-  
+
+
 
   
 
   
 
-.calender-container {
-    display: flex;
-    flex: column;
-    width: 100%;
-}
   
-.semester-container h1 {
-    text-align: center;
-    font-size: 15px;
-    font-weight: bold;
-    margin-top: 0px;
-    color: whitesmoke;
-}
-  
-.semester-container{
-    display: flex;
-    flex-direction: column;
-    border: 0.5px solid whitesmoke;
-    width: 566px;
-    width: 100%;
-    padding: 20px;
-    height: 250px;
-    background-color: whitesmoke;
-    box-shadow: none;
 
-    background-color: #2A2B32;
-}
+
   
 
 
 
-.semester-container .course-selection {
-    width: 100%;
-    height: 30px;
-    border: 0.5px solid black;
-    background-color: whitesmoke;
-    max-width: 800px;
-    text-align: center;
-    font-size: 12px;
-    box-shadow: 0 0.1rem rgba(211, 211, 211, 0.5);
 
 
 
-
-
-}
-
-.warning-message {
-    font-size: 10px;
-    text-align: center;
-}
-
-.course-selection:hover .warning-message {
-    visibility: visible;
-}
 
 
   
-  .add-remove-container {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .add-semester-button {
-    background-color: white;
-    border: 0.5px solid whitesmoke;
-    height: 100%;
-    width: 50px;
-    font-weight: bold;
-      background-color: #2A2B32;
-      color: whitesmoke;
-  }
-  
-  .add-semester-button:active {
-    box-shadow: none;
-    opacity: 0.7;
-  }
-  
-  
-  
-  .change-year-container {
-    display: flex;
-    flex-direction: row;
-    width: 1000px;
-    margin: auto;
-  }
-  
-  .add-year-button {
-    background-color: white;
-    border: 0.5px solid whitesmoke;
-    width: 500px;
-    height: 50px;
-    margin-top: 20px;
-      background-color: #2A2B32;
-      color: whitesmoke;
-    font-weight:bold;
-    margin-left: 20px;
 
-    
-  }
-  
-  .add-year-button:active {
-    box-shadow: none;
-
-    transform: translate(2px, 2px);
-  }
-  
   
 .year-header {
-    background-color: whitesmoke;
-    font-size: 14px;
+    background-color: #2A2B32;
+    color: whitesmoke;
+    font-size: 12px;
     font-weight: bold;
     width: 100%;
-    box-shadow: 0 0.4rem #dfd9d9;
-    border: 0.5px solid black;
-    height: 40px;
-
+    border: 0.5px solid whitesmoke;
+    height: 30px;
+    text-align: left;
+    padding-left: 20px;
 }
   
-  .year-header:active {
-    box-shadow: none;
-    transform: translate(2px, 2px);
+.year-header:active {
+    opacity: 0.7;
   }
-
 
 
 .course-container {
@@ -264,6 +177,7 @@
     margin: auto;
     width: 100%;
     max-width: 850px;
+    background-color: inherit;
 }
 
 .course {
@@ -290,7 +204,6 @@
     box-shadow: 0 0.1rem black;
     font-size: 12px;
     padding: 10px;
-
     
 }
 
@@ -305,7 +218,8 @@
 }
 
 .trash-button:active {
-    transform: translate(2px, 2px);
+    box-shadow: none;
+    transform: translate(0px, 0.1rem);
 }
 
 
@@ -346,8 +260,9 @@
 }
 
 .generate-schedule-button:active {
-  background-color: lightgrey;
-  transform: translate(2px, 2px);
+  opacity: 0.7;
+    box-shadow: none;
+  transform: translate(0px, 0.2rem);
 }
 
 

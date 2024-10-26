@@ -13,6 +13,7 @@ function SelectionBar(props) {
 
     const [pathClicked, setPathClicked] = useState(false);
 
+
     function coursesTaken(index) {
         const section = sections[index];
         let count = 0;
@@ -46,13 +47,14 @@ function SelectionBar(props) {
         if (section === undefined) {
             return <h1>Section is Undefined</h1>
         }
+
         const sectionTitle = (section.name.includes('section')) ? section.name.slice(0, -12) : section.name;
         const style = getBackgroundColor(index);
 
         return (
             <div className='course-selection-container' style={style}>
                 <h1>{`${sectionTitle}`}</h1>
-                <div className='courses-container'>
+                <div className='courses-container' style={style}>
                 {
                     section.courses.map((course,index) => {
                        return <CourseButton course={course} key={index}/>
@@ -69,8 +71,8 @@ function SelectionBar(props) {
         const style = getNUPathBackgroundColor(completed);
         return (
             <div style={style} className='nupath-selection-container'>
-                <h1>NU Path Requirements</h1>
-                <div className='nupath-contents-container'>
+                <h1 style = {style} >NU Path Requirements</h1>
+                <div style={style} className='nupath-contents-container'>
                 {
                     Object.entries(path).map(([key, value]) => {
                         const check = (value.size >= 2) ? " ✔" : '';
@@ -99,15 +101,13 @@ function SelectionBar(props) {
     }
 
     function getBackgroundColor(index) {
-       // background-color: #2A2B32;
-        //   color: lightgrey;
         const left = getLeft(index);
         if (left === sections[index].left) {
-            return {backgroundColor: '#2A2B32'}
+            return {backgroundColor: '#2A2B32', color: 'whitesmoke'}
         }else if (left > 0) {
-            return {backgroundColor: '#F5E6CC'}
+            return {backgroundColor: '#F5E6CC', color: 'black'}
         }else {
-            return {backgroundColor: '#A3D9B1'}
+            return {backgroundColor: '#A3D9B1', color: 'black'}
         }
     }
 
@@ -138,23 +138,29 @@ function SelectionBar(props) {
     }
 
     function getNUPathBackgroundColor(left) {
-        if (left === 11) {
-            return {backgroundColor: '#2A2B32'}
-        }else if (left > 0) {
-            return {backgroundColor: '#F5E6CC'}
+        if (left === 0) {
+            return {backgroundColor: '', color: 'whitesmoke'};
+        }else if (left < 11) {
+            return {backgroundColor: '#F5E6CC', color: 'black'}
         }else {
-            return {backgroundColor: '#E0E0E0'}
+            return {backgroundColor: '#A3D9B1', color: 'black'}
         }
+
+
+
+
+
     }
 
     function renderSelectionBar() {
         const count = getCompentenciesCompleted(path);
         const title = `${count}/11 Completed`;
 
+
         const style = getNUPathBackgroundColor(count);
 
         return (
-            <div className='requirements-bar'>
+            <div className='requirements-bar' key={'requirements-bar'}>
                 <h2>Computer Science Requirements</h2>
                 {   
                     sections.map((section, index) => {
@@ -162,7 +168,7 @@ function SelectionBar(props) {
                     })
                 }
                 <h2>NU Path Requirements</h2>
-                <button style={style} onClick={() => setPathClicked(p => !p)}>{title}</button>
+                <button id='nupath-button' style={style} onClick={() => setPathClicked(p => !p)}>{title}</button>
             </div>
         )
     }

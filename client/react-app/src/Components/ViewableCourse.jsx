@@ -8,9 +8,6 @@ function ViewableCourse(props) {
 
     const {courseSelection, setSchedule, courseTakenBefore} = useContext(ScheduleContext);
 
-
-
-
     if (props.course === null) {
         return (
             <div className='course-container' key={props.index}>
@@ -19,11 +16,6 @@ function ViewableCourse(props) {
             </div>
         )
     }
-
-
-
-
-
 
 
     function getStyle() {
@@ -66,9 +58,9 @@ function ViewableCourse(props) {
         }
     }
 
+
     return (
         <>
-            {(!courseTakenBefore(props.course, props.course.prerequisite)) && <span className='warning-message'>{`*Missing Prerequisite: ${props.course.prerequisite}`}</span>}
             <div className='course-container' key={props.index}>
 
                 <button className="course-selection"
@@ -82,6 +74,8 @@ function ViewableCourse(props) {
                         className='trash-button'
                         onClick={() => handleTrashClick(props.index, name)}>🗑️</button>
             </div>
+            {(!courseTakenBefore(props.course, props.course.prerequisite)) &&
+                <span className='warning-message'>{`*Missing Prerequisite: ${props.course.prerequisite}`}</span>}
         </>
 
     )

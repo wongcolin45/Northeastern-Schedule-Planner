@@ -1,12 +1,16 @@
 import AcademicYear from "./AcademicYear";
-
+import {useContext} from "react";
 import PropTypes from "prop-types";
-
+import '../Styles/Calendar.css';
+import { ScheduleContext } from '../Pages/ScheduleMaker';
 
 function Calender(props) {
-    
+
+    const {scrollToBottom} = useContext(ScheduleContext);
+
 
     function handleAddYearClick() {
+        scrollToBottom();
         props.setSchedule(prev => {
             const newSchedule = [...prev];
             const l = prev[prev.length -1].plans.length

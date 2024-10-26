@@ -1,10 +1,12 @@
 import Semester from "./Semester";
-
+import {useState} from "react";
 import PropTypes from "prop-types";
 
 
 
 function AcademicYear(props) {
+    const [visible, setVisible] = useState(true);
+
     const YearPlan = props.schedule[props.yearIndex];
 
     function getLastSemester(year) {
@@ -50,28 +52,39 @@ function AcademicYear(props) {
     }
 
     return (
-        <div className="calender-container">
+        <>
+            <button className='year-header' onClick={() => setVisible(p => !p)}>{`Year ${props.yearIndex+1}`}</button>
             {
-                YearPlan.plans.map((p, index) => {
+                visible &&
+                <div className="calender-container">
+                    {
+                        YearPlan.plans.map((p, index) => {
 
-                    return (
-                        <Semester
-                            year={p.year}
-                            yearIndex={props.yearIndex}
-                            semester={p.semester}
-                            semesterIndex={index}
-                            courses = {p.courses}
-                            key={props.year + p.year + p.semester+props}/>
-                        )
-                })
+                            return (
+                                <Semester
+                                    year={p.year}
+                                    yearIndex={props.yearIndex}
+                                    semester={p.semester}
+                                    semesterIndex={index}
+                                    courses={p.courses}
+                                    key={props.year + p.year + p.semester + props}/>
+                            )
+                        })
+                    }
+                    <div className="add-remove-container">
+                        <button className="add-semester-button" onClick={() => handleAddClick(props.yearIndex)}
+                                key={'add1'}>+
+                        </button>
+                        <button className="add-semester-button" onClick={() => handleRemoveClick(props.yearIndex)}
+                                key={'remove1'}>-
+                        </button>
+                    </div>
+                </div>
             }
-            <div className="add-remove-container">
-                <button className="add-semester-button" onClick={() => handleAddClick(props.yearIndex)} key={'add1'}>+</button>
-                <button className="add-semester-button" onClick={() => handleRemoveClick(props.yearIndex)} key={'remove1'}>-</button>
-            </div>
-        </div>
+        </>
     )
 }
+
 export default AcademicYear;
 
 AcademicYear.propTypes = {
