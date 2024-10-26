@@ -22,7 +22,7 @@ function App() {
 
   const [startYear, setStartYear] = useState(2024);
 
-  const [concentration, setConcentration] = useState({name: "Artificial Inteligence", tag: 'ai'});
+  const [concentration, setConcentration] = useState({name: "Artificial Intelligence", tag: 'ai'});
 
   const [courseSelections, setCourseSelections] = useState([]);
 
@@ -43,7 +43,6 @@ function App() {
   });
 
 
-
   useEffect(() => {    
     async function fetchRequirements() {
         const url = 'http://localhost:3000/api/requirements';
@@ -55,7 +54,6 @@ function App() {
             const data = await response.json();
 
             setOutline(data);
-            console.log(data);
         }catch(error) {
             console.log(`Error fetching data ${error}`);
         }
@@ -64,16 +62,16 @@ function App() {
   },[]);
 
   useEffect(() => {
+
     if (outline.length > 0) {
-      const requirements = [];
-      outline.forEach(r => {
-  
-        r.sections.forEach(s => {
-          
-          const info = {name: s.name, courses: s.courses, left: s.coursesRequired,};
-           
-          requirements.push(info);
-        });
+        console.log('outline check');
+        console.log(outline);
+        const requirements = [];
+        outline.forEach(r => {
+            r.sections.forEach(s => {
+                const info = {name: s.name, courses: s.courses, left: s.coursesRequired,};
+                requirements.push(info);
+            });
       });
       setCourseSelections(requirements);
 

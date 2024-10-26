@@ -71,10 +71,10 @@ VALUES
     ('Computing and Social Issues', 1, 68),
     ('Computing and Social Issues', 1, 79),
     ('Computing and Social Issues', 1, 78),
+    ('Computing and Social Issues', 2, 86),
     ('Computing and Social Issues', 1, 87),
-    ('Computing and Social Issues', 1, 88),
-    ('Computing and Social Issues', 1, 89);
---Eletrical Engineering
+    ('Computing and Social Issues', 1, 88);
+--Electrical Engineering
 INSERT INTO cs_requirements 
     (sub_requirement_name, must_take, courses_required, course_id)
 VALUES 
@@ -103,8 +103,7 @@ VALUES
     ('Science Requirement', 2, 81),
     ('Science Requirement', 2, 82),
     ('Science Requirement', 2, 83),
-    ('Science Requirement', 2, 84),
-    ('Science Requirement', 2, 85);
+    ('Science Requirement', 2, 84);
 --College Writing
 INSERT INTO cs_requirements 
     (sub_requirement_name, courses_required, must_take, course_id)
@@ -160,7 +159,7 @@ VALUES
     ('Complete two of the following not already taken', 2, 27),
     ('Complete two of the following not already taken', 2, 53),
     ('Complete two of the following not already taken', 2, 70),
-    ('Complete two of the following not already taken', 2, 86);
+    ('Complete two of the following not already taken', 2, 85);
 --Foundations
 CREATE TABLE foundations_concentration (
     requirement_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -187,7 +186,7 @@ VALUES
     ('Complete two of the following not already taken', 2, 32),
     ('Complete two of the following not already taken', 2, 33),
     ('Complete two of the following not already taken', 2, 49);
---Human Centerd Computing 
+--Human Centered Computing
 CREATE TABLE hcc_concentration (
     requirement_id INTEGER PRIMARY KEY AUTOINCREMENT,
     section_requirement TEXT DEFAULT NULL,
