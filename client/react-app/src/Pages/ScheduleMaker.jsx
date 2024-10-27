@@ -21,9 +21,7 @@ function ScheduleMaker() {
         });
     };
 
-    const [schedule, setSchedule] = useState([{ Year: 1, 
-                                                plans: [{year: startYear, semester: "Fall", courses: [null, null, null, null]}]
-                                              }]);
+    const [schedule, setSchedule] = useState(loadSchedule());
 
     const [courseSelection, setCourseSelection] = useState();
 
@@ -89,6 +87,17 @@ function ScheduleMaker() {
 
     }
 
+    function loadSchedule() {
+        const savedSchedule = localStorage.getItem('userSchedule');
+
+        if (savedSchedule) {
+            return JSON.parse(savedSchedule);
+        }
+        return [{ Year: 1,
+            plans: [{year: startYear, semester: "Fall", courses: [null, null, null, null]}]
+        }];
+    }
+
     useEffect(() => {
         clearNUPath();
         schedule.forEach(year => {
@@ -104,6 +113,10 @@ function ScheduleMaker() {
 
     useEffect(() => {
         setCourseSelection(null);
+        if (schedule) {
+            localStorage.setItem('userSchedule', JSON.stringify(schedule));
+        }
+
     },[schedule])
 
 

@@ -89,6 +89,7 @@ VALUES
     ('Science Requirement', 2, 5),
     ('Science Requirement', 2, 6),
     ('Science Requirement', 2, 7),
+    ('Science Requirement', 2, 89),
     ('Science Requirement', 2, 59),
     ('Science Requirement', 2, 60),
     ('Science Requirement', 2, 61),
@@ -113,8 +114,8 @@ VALUES
 INSERT INTO cs_requirements 
     (sub_requirement_name, courses_required, course_id)
 VALUES
-    ('Advanced Writing in the Disciplines', 1, 57),
-    ('Advanced Writing in the Disciplines', 1, 58);
+    ('Advanced Writing in the Disciplines', 1, 56),
+    ('Advanced Writing in the Disciplines', 1, 57);
 ------------------------------------
 --Setting Requirement Names
 ------------------------------------

@@ -3,6 +3,7 @@ import { MyContext } from '../App';
 import PropTypes from 'prop-types';
 import {getCompentenciesCompleted} from "../Helpers/converter.jsx";
 import CourseButton from './CourseButton';
+import Loader from "./Loader.jsx";
 
 function SelectionBar(props) {
     const {concentration, courseSelections, concentrationSelections, path} = useContext(MyContext);
@@ -40,13 +41,17 @@ function SelectionBar(props) {
             return renderNUPathSection();
         }
 
-        if (sections[index] === undefined) {
-            return <p>index bad or sometihing</p>
+        if (sections[index] === undefined || section === undefined) {
+            return (
+                <div className='course-selection-container' style={{'height' : '5%','text-align': 'center'}}>
+
+                    <Loader/>
+                    <h3>{'hold up, waiting on backend...'}</h3>
+                </div>
+            )
         }
         const section = sections[index];
-        if (section === undefined) {
-            return <h1>Section is Undefined</h1>
-        }
+
 
         const sectionTitle = (section.name.includes('section')) ? section.name.slice(0, -12) : section.name;
         const style = getBackgroundColor(index);
@@ -116,6 +121,8 @@ function SelectionBar(props) {
     }
 
     function renderSectionSelections(section, index) {
+
+
         const sectionTitle = (section.name.includes('section')) ? section.name.slice(0, -12) : section.name;
         const style = getBackgroundColor(index)
         const arrow = (current === index) ? "*" : "";
@@ -157,10 +164,15 @@ function SelectionBar(props) {
     }
 
     function renderSelectionBar() {
+        if (sections.length === 0) {
+            return (
+                <></>
+            )
+        }
+
+
         const count = getCompentenciesCompleted(path);
         const title = `${count}/11 Completed`;
-
-
         const style = getNUPathBackgroundColor(count);
 
         return (

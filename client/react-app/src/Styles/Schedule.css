@@ -75,7 +75,13 @@
     height: 250px;
     margin: auto;
     margin-bottom: 30px;
+}
 
+.course-selection-container h3 {
+    color: whitesmoke;
+    text-align: center;
+    margin-bottom: -20px;
+    font-weight: normal;
 }
   
 .course-selection-container h1 {

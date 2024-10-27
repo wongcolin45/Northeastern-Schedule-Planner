@@ -27,7 +27,6 @@ Models.forEach((Model, index) => {
 
 
 async function getSections(Model) {
-    console.log('===========GET SECTION===========');
     try {
         const data = await Model.findAll({
         attributes: [ 
@@ -104,9 +103,8 @@ function getModel(tag) {
 }
 
 function getConcentrationName(tag) {
-  console.log('============ GOT a tag of '+ tag+ '================');
   if (tag.length === 2) 
-    return "Artificial Inteligence";
+    return "Artificial Intelligence";
   else if (tag.length ===3)
     return "Human Centered Computing";
   return tag.charAt(0).toUpperCase() + tag.slice(1);

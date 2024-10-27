@@ -8,7 +8,7 @@ function Header() {
         <div className="header-container">
             <div className="header-contents">
                 <h1>Khoury Planner </h1>
-
+                <h1 id={'beta'}>Beta</h1>
             </div>
 
             <NavBar/>

@@ -5,10 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a72a46f0-6265-4295-bf8c-3e2435230758" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/client/react-app/src/Components/Loader.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/react-app/src/Styles/Loader.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/API/courseRequirementsAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/API/courseRequirementsAPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/SelectionBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/SelectionBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Pages/ScheduleMaker.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Pages/ScheduleMaker.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Styles/Schedule.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Styles/Schedule.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/cs_requirements.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/cs_requirements.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/neu_database.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/repositories/concentrationRepository.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server/repositories/concentrationRepository.mjs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +26,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JSX File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -98,7 +106,9 @@
       <workItem from="1729886910364" duration="278000" />
       <workItem from="1729887295249" duration="2521000" />
       <workItem from="1729894045729" duration="19979000" />
-      <workItem from="1729972701577" duration="5968000" />
+      <workItem from="1729972701577" duration="6612000" />
+      <workItem from="1729979331337" duration="1631000" />
+      <workItem from="1729996298849" duration="6137000" />
     </task>
     <servers />
   </component>

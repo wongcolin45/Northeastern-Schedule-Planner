@@ -5,10 +5,11 @@ const base = 'http://localhost:3000/api/computerscience/';
 /**
  * Fetches CS Concentration requirements from backend.
  * @param concentration the name of the concentration
- * @returns {Promise<any>} data in json format
+ * @returns {Promise<Object>} data in json format
  */
 async function fetchConcentration(concentration) {
-    const url = base + concentration;
+    const url = base + concentration.tag;
+    console.log('fecthgin concentation with '+concentration);
     try {
         const response = await fetch(url);
          
