@@ -1,7 +1,7 @@
 import {useState, useContext} from 'react';
 import { MyContext } from '../App';
 import PropTypes from 'prop-types';
-import {getCompentenciesCompleted} from "../Helpers/converter.jsx";
+import {getCompetenciesCompleted} from "../Helpers/converter.jsx";
 import CourseButton from './CourseButton';
 import Loader from "./Loader.jsx";
 
@@ -41,9 +41,9 @@ function SelectionBar(props) {
             return renderNUPathSection();
         }
 
-        if (sections[index] === undefined || section === undefined) {
+        if (sections[index] === undefined || sections === undefined) {
             return (
-                <div className='course-selection-container' style={{'height' : '5%','text-align': 'center'}}>
+                <div className='course-selection-container' style={{'height' : '5%','textAlign': 'center'}}>
 
                     <Loader/>
                     <h3>{'hold up, waiting on backend...'}</h3>
@@ -76,7 +76,7 @@ function SelectionBar(props) {
     }
 
     function renderNUPathSection() {
-        const completed = getCompentenciesCompleted(path)
+        const completed = getCompetenciesCompleted(path)
         const style = getNUPathBackgroundColor(completed);
         return (
             <div style={style} className='nupath-selection-container'>
@@ -127,7 +127,7 @@ function SelectionBar(props) {
         const style = getBackgroundColor(index)
         const arrow = (current === index) ? "*" : "";
         
-        if (index === 12) {
+        if (index === 11) {
             return (
                 <>
                     <h2 key={index}>{concentration.name+ ' Requirements'}</h2>
@@ -171,7 +171,7 @@ function SelectionBar(props) {
         }
 
 
-        const count = getCompentenciesCompleted(path);
+        const count = getCompetenciesCompleted(path);
         const title = `${count}/11 Completed`;
         const style = getNUPathBackgroundColor(count);
 

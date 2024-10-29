@@ -9,7 +9,7 @@ import cors from 'cors';
 import { generateSchedule } from '../repositories/scheduleRepository.mjs';
 
 import { getAttributes } from '../repositories/nuPathRepository.mjs';
-
+import {getAPCourses} from "../repositories/apCreditsRepository.js";
 
 
 const app = express();
@@ -33,6 +33,13 @@ app.get('/api/requirements', async (req, res) => {
     }
 });
 
+app.get('/api/aps', async (req, res) => {
+    const courses = await getAPCourses();
+    if (courses) {
+        return res.json(courses);
+    }
+    return res.status(500).send('failed to fetch courses');
+});
 
 app.get('/api/computerscience/:concentration', async (request, response) => {
     const {concentration} = request.params;
@@ -45,14 +52,12 @@ app.get('/api/computerscience/:concentration', async (request, response) => {
     }
 });
 
-
 app.post('/api/computerscienceSchedule', async (request, response) => {
     const schedule = request.body;
     const data = await generateSchedule(schedule, 4);
     
     return response.status(200).send(data);
 });
-
 
 app.post('/api/nupath', (request, response) => {
     const courses = request.body;

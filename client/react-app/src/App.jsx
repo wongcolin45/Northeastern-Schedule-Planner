@@ -42,6 +42,7 @@ function App() {
     "Demonstrating Thought and Action in a Capstone": new Set()
   });
 
+  const saveData = false;
 
   useEffect(() => {    
     async function fetchRequirements() {
@@ -124,7 +125,8 @@ function App() {
                                         concentrationSelections,
                                         startYear,
                                         path,
-                                        setPath
+                                        setPath,
+                                        saveData
 
             }}>
               <ScheduleMaker/>
@@ -132,13 +134,16 @@ function App() {
         }></Route>
 
           <Route path="/transfer-credit" element={
-              <TransferCredit/>
+              <MyContext.Provider value={{path, setPath}}>
+                  <TransferCredit/>
+              </MyContext.Provider>
+
           }>
           </Route>
 
         <Route path="/settings" element={
-          <MyContext.Provider value={{concentration: concentration, setConcentration: setConcentration,
-                                      startYear: startYear, setStartYear: setStartYear}}>
+          <MyContext.Provider value={{concentration, setConcentration,
+                                      startYear, setStartYear, saveData}}>
              <Settings/>
           </MyContext.Provider>
         }></Route>

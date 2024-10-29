@@ -80,11 +80,13 @@ function ScheduleMaker() {
         setPath(prev => {
             const newPath = {...prev};
             for (let key in newPath) {
-                newPath[key].clear();
+                // Convert the Set to an array, filter out non-'AP' values, and reassign the filtered Set
+                newPath[key] = new Set(
+                    [...newPath[key]].filter(name => name.includes('AP '))
+                );
             }
             return newPath;
         })
-
     }
 
     function loadSchedule() {

@@ -109,7 +109,7 @@ VALUES
 INSERT INTO cs_requirements 
     (sub_requirement_name, courses_required, must_take, course_id)
 VALUES 
-    ('College Writing', 1, 1, 56);
+    ('College Writing', 1, 1, 55);
 --Advanced Writing in the Disciplines
 INSERT INTO cs_requirements 
     (sub_requirement_name, courses_required, course_id)
@@ -125,11 +125,11 @@ WHERE requirement_id <= 23;
 
 UPDATE cs_requirements
 SET requirement_name = 'Supporting Courses'
-WHERE requirement_id BETWEEN 24 AND 59;
+WHERE requirement_id BETWEEN 24 AND 60;
 
 UPDATE cs_requirements
 SET requirement_name = 'Computer Science Writing Requirement'
-WHERE requirement_id > 59;
+WHERE requirement_id > 60;
 
 
 

@@ -2,10 +2,6 @@ import getCSCore from "./computerScienceRepository.mjs"
 import getConcentration from "./concentrationRepository.mjs"
 
 
-
-
-
-
 function getCourses(schedule) {
     const courses = []
     schedule.forEach(y => {
@@ -59,8 +55,7 @@ async function getIncompleteRequirements(outline, courses) {
 async function getIncomplete(outline, schedule) {
     
     const courses = getCourses(schedule);
-    const incomplete = await getIncompleteRequirements(outline, courses);
-    return incomplete;
+    return await getIncompleteRequirements(outline, courses);
 }
 
 
@@ -99,12 +94,11 @@ async function generateSchedule(schedule, length) {
         return plan;
     }
 
-   
- ;
+
     if (plan.length === 0) { 
         
         const coreIndex = incomplete.findIndex(r => r.name === 'Computer Science Required Courses');
-        if (coreIndex != -1) {
+        if (coreIndex !== -1) {
             const current = incomplete[coreIndex]
             let left = current.left;     
             while (left > 0 && plan.length < 2) {
@@ -126,13 +120,15 @@ async function generateSchedule(schedule, length) {
 
     while (plan.length < length && i < incomplete.length) {
         const current = incomplete[i];
+        if (!current) {
+            break;
+        }
         plan.push(current.options[0]);
         i++;
     }
     return plan;
 
 }
-
 
 
 export {generateSchedule}

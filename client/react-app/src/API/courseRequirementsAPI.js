@@ -9,12 +9,11 @@ const base = 'http://localhost:3000/api/computerscience/';
  */
 async function fetchConcentration(concentration) {
     const url = base + concentration.tag;
-    console.log('fecthgin concentation with '+concentration);
     try {
         const response = await fetch(url);
          
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            console.log(`HTTP error! status: ${response.status}`);
         }
 
         const data = await response.json()
@@ -70,6 +69,19 @@ async function fetchNUPath(courses) {
 }
 
 
+async function fetchAPCourses() {
+    const url = 'http://localhost:3000/api/aps';
+    console.log('trying url '+url);
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            console.log(`HTTP error! status: ${response.status}`);
+        }
+        return await response.json();
+    }catch (error) {
+        console.log(error);
+    }
+}
 
 
-export {fetchConcentration, fetchSchedule, fetchNUPath};
+export {fetchConcentration, fetchSchedule, fetchNUPath, fetchAPCourses};

@@ -11,6 +11,7 @@ async function getCourseById(courseID) {
             attributes: [
                 [sequelize.col('department'), 'department'],
                 [sequelize.col('course_number'), 'courseNumber'],
+
             ],
             where: {
                 courseID: courseID
