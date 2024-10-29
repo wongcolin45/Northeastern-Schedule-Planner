@@ -157,7 +157,7 @@ VALUES
 INSERT INTO courses
     (course_name, department, course_number, prerequisite, attributes)
 VALUES
-    ('Photography: The City through Data, Texts, Maps, and Networks', 'INSH', 2102, NULL, 'Interpreting Culture,Societies/Institutions');
+    ('Bostonography: The City through Data, Texts, Maps, and Networks', 'INSH', 2102, NULL, 'Interpreting Culture,Societies/Institutions');
 -- Information Science
 INSERT INTO courses
     (course_name, department, course_number, prerequisite, attributes)

@@ -84,7 +84,7 @@ function SelectionBar(props) {
                 <div style={style} className='nupath-contents-container'>
                 {
                     Object.entries(path).map(([key, value]) => {
-                        const check = (value.size >= 2) ? " ✔" : '';
+                        const check = (value.size >= 1) ? " ✔" : '';
                         return (
                             <div key={key+value} className='attribute-container'>
                                 <h3>{key + check}</h3>

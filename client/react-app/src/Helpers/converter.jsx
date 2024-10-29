@@ -36,7 +36,7 @@ function convertAttributes(attributes) {
 function getCompetenciesCompleted(pathDict) {
     let total = 0;
     for (const key in pathDict) {
-        if (pathDict[key].size >= 2) {
+        if (pathDict[key].size >= 1) {
             total++;
         }
     }

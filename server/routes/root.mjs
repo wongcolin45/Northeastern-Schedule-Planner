@@ -1,16 +1,15 @@
 
+import express from 'express';
+
+import cors from 'cors';
+
 import getCSCore from '../repositories/computerScienceRepository.mjs';
 
 import getConcentration from '../repositories/concentrationRepository.mjs';
 
-import express from 'express';
-
-import cors from 'cors';
 import { generateSchedule } from '../repositories/scheduleRepository.mjs';
 
-import { getAttributes } from '../repositories/nuPathRepository.mjs';
 import {getAPCourses} from "../repositories/apCreditsRepository.js";
-
 
 const app = express();
 

@@ -5,13 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a72a46f0-6265-4295-bf8c-3e2435230758" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/client/react-app/src/Styles/Home.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/repositories/apCreditsRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/repositories/apCreditsRepository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/repositories/computerScienceRepository.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server/repositories/computerScienceRepository.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/repositories/concentrationRepository.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server/repositories/concentrationRepository.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/repositories/coursesRepository.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server/repositories/coursesRepository.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/repositories/nuPathRepository.mjs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/repositories/scheduleRepository.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server/repositories/scheduleRepository.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/SelectionBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/SelectionBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Helpers/converter.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Helpers/converter.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Pages/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Pages/Home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/courses.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/courses.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/cs_requirements.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/cs_requirements.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/neu_database.db" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server/routes/root.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/root.mjs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -109,7 +110,7 @@
       <workItem from="1729996298849" duration="17811000" />
       <workItem from="1730054798664" duration="2510000" />
       <workItem from="1730145897978" duration="1739000" />
-      <workItem from="1730147913900" duration="24367000" />
+      <workItem from="1730147913900" duration="28272000" />
     </task>
     <servers />
   </component>

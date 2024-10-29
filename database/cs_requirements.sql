@@ -66,11 +66,11 @@ VALUES
     ('Computing and Social Issues', 1, 1),
     ('Computing and Social Issues', 1, 47),
     ('Computing and Social Issues', 1, 48),
+    ('Computing and Social Issues', 1, 65),
     ('Computing and Social Issues', 1, 66),
     ('Computing and Social Issues', 1, 67),
-    ('Computing and Social Issues', 1, 68),
-    ('Computing and Social Issues', 1, 79),
     ('Computing and Social Issues', 1, 78),
+    ('Computing and Social Issues', 1, 77),
     ('Computing and Social Issues', 2, 86),
     ('Computing and Social Issues', 1, 87),
     ('Computing and Social Issues', 1, 88);

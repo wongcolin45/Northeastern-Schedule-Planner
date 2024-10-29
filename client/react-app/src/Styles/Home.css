@@ -1,0 +1,10 @@
+
+.home-container {
+    padding: 16px;
+    border: 0.5px solid whitesmoke;
+    color: whitesmoke;
+}
+
+.home-container a {
+    color: whitesmoke;
+}
