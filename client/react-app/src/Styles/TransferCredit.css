@@ -29,8 +29,9 @@ Search Bar and AP Courses Section
 }
 
 .transfer-container input {
-    border: 1px solid whitesmoke;
-    color: whitesmoke;
+    border: 1px solid black;
+    background-color: white;
+    color: black;
     width: 490px;
     height: 30px;
     font-size: 20px;
@@ -50,7 +51,6 @@ Search Bar and AP Courses Section
 
 .ap-courses-container button {
     width: 490px;
-    background-color: whitesmoke;
     background-color: #87CEFA;
     color: black;
     border: 0.5px solid whitesmoke;

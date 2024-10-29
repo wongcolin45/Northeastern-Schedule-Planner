@@ -79,11 +79,11 @@
 .add-year-button {
     background-color: white;
     border: 0.5px solid whitesmoke;
+    border-radius: 5px;
     width: 500px;
     height: 30px;
     margin-top: 20px;
-    background-color: #2A2B32;
-    color: whitesmoke;
+    color: black;
     font-weight:bold;
     margin-left: 20px;
 

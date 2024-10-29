@@ -5,13 +5,13 @@ import {useState, useEffect,createContext} from 'react';
 
 import ScheduleMaker from './Pages/ScheduleMaker';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import { fetchConcentration } from './API/courseRequirementsAPI';
+import { fetchConcentration } from './API/requirementsAPI.js';
 import Settings from "./Pages/Settings.jsx";
 import Home from "./Pages/Home.jsx";
 import TransferCredit from "./Pages/TransferCredit.jsx";
 import Login from "./Pages/Login.jsx";
 
-
+import {fetchRequirements} from "./API/requirementsAPI.js";
 
 
 export const MyContext = createContext();
@@ -45,28 +45,14 @@ function App() {
   const saveData = false;
 
   useEffect(() => {    
-    async function fetchRequirements() {
-        const url = 'http://localhost:3000/api/requirements';
-        try {
-            const response = await fetch(url);
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            const data = await response.json();
-
-            setOutline(data);
-        }catch(error) {
-            console.log(`Error fetching data ${error}`);
-        }
-    }
-    fetchRequirements();
+    fetchRequirements()
+        .then(data => {
+            setOutline(data)
+    });
   },[]);
 
   useEffect(() => {
-
     if (outline.length > 0) {
-        console.log('outline check');
-        console.log(outline);
         const requirements = [];
         outline.forEach(r => {
             r.sections.forEach(s => {
@@ -75,21 +61,16 @@ function App() {
             });
       });
       setCourseSelections(requirements);
-
-      
-      
     }
   },[outline])
 
+
   useEffect(() => {
     const fetchSelections = async () => {
-      
       const data = await fetchConcentration(concentration);
       const newConcentrationSelections = []
-   
       data.sections.forEach(s => {
         newConcentrationSelections.push({name: s.name, courses: s.courses, left: s.coursesRequired})
-      
       });
 
       setConcentrationSelections(newConcentrationSelections);

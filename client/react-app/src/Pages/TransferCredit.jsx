@@ -1,5 +1,5 @@
 import Header from "../Components/Header.jsx";
-import {fetchAPCourses} from "../API/courseRequirementsAPI.js";
+import {fetchAPCourses} from "../API/requirementsAPI.js";
 import {useEffect, useState, useContext} from "react";
 import {MyContext} from "../App.jsx";
 import {convertAttributes} from "../Helpers/converter.jsx";
@@ -81,7 +81,7 @@ function TransferCredit() {
      * If courses taken returns button that when pressed will add it to coursesTaken.
      * Otherwise, returns button that when pressed will remove it from coursesTaken.
      * @param course the course to get
-     * @param index the index valule
+     * @param index the index value
      * @returns {JSX.Element} the button component
      */
     function getCourseButton(course, index) {
@@ -117,7 +117,6 @@ function TransferCredit() {
             </div>
         )
     }
-
 
 
     /**

@@ -1,6 +1,6 @@
 import {useContext, useState, useEffect} from 'react';
 import { ScheduleContext } from '../Pages/ScheduleMaker';
-import { fetchSchedule } from '../API/courseRequirementsAPI';
+import { fetchSchedule } from '../API/requirementsAPI.js';
 import PropTypes from "prop-types";
 import ViewableCourse from "./ViewableCourse.jsx";
 
