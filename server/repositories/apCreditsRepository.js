@@ -6,6 +6,10 @@ Course.hasMany(APCredit, { foreignKey: 'courseID', as: 'transferCredit' });
 APCredit.belongsTo(Course, { foreignKey: 'courseID', as: 'course' });
 
 
+/**
+ * Gets the AP courses objects with their name, attributes, and equivalent nu course.
+ * @returns {Promise<{name: String, attributes: String, courseMatch: null|string}[]>}
+ */
 async function getAPCourses() {
     try {
         const data = await APCredit.findAll({
@@ -15,21 +19,16 @@ async function getAPCourses() {
                 ['course_id', 'courseID']
             ]
         });
-
-        const courses = await Promise.all(data.map(async r => {
+        return await Promise.all(data.map(async r => {
             const {name, attributes, courseID} = r.dataValues;
             const courseMatch = (courseID !== null) ? await getCourseById(courseID) : null;
             return {'name': name, 'attributes': attributes, 'courseMatch': courseMatch};
         }));
-        return courses;
     } catch (error) {
         console.log('Error fetching requirements:', error);
         throw error
     }
 }
-
-
-await getAPCourses();
 
 
 export {getAPCourses};

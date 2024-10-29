@@ -1,14 +1,15 @@
 import sequelize from "../Configuration/connection.mjs";
-import { Course } from "../Models/Course.mjs";
-import { Sequelize } from "sequelize";
+import {Course} from "../Models/Course.mjs";
+import {Sequelize} from "sequelize";
 import getCourseById from "./coursesRepository.mjs";
 
-import { AIConcentration, 
-         HCCConcentration, 
-         SoftwareConcentration, 
-         SystemsConcentration, 
-         FoundationsConcentration } 
-from '../Models/CSConcentration.mjs';
+import {
+    AIConcentration,
+    FoundationsConcentration,
+    HCCConcentration,
+    SoftwareConcentration,
+    SystemsConcentration
+} from '../Models/CSConcentration.mjs';
 
 //===============================================================
 //              Get Concentration Requirements
@@ -17,15 +18,20 @@ from '../Models/CSConcentration.mjs';
 const Models = [AIConcentration, HCCConcentration, SoftwareConcentration, SystemsConcentration, FoundationsConcentration];
 
 
-
-
-
 Models.forEach((Model, index) => {
     Course.hasMany(Model, { foreignKey: 'courseID', as: `${Model.tableName}` });
     Model.belongsTo(Course, { foreignKey: 'courseID', as: `course-${Model.tableName}` });
 });
 
+/**=========================
+ * Helper Methods
+ *=========================/
 
+/**
+ * Gets the section requirement names
+ * @param Model the concentration model to use
+ * @returns {Promise<String[]>}
+ */
 async function getSections(Model) {
     try {
         const data = await Model.findAll({
@@ -33,14 +39,19 @@ async function getSections(Model) {
           [Sequelize.fn('DISTINCT', Sequelize.col('section_requirement')), 'sectionRequirement']
         ]
       });
-      const sections = data.map(r => r.sectionRequirement);
-      return sections;
+        return data.map(r => r.sectionRequirement);
     } catch (error) {
       console.log('Error fetching requirements:', error);
       throw error
     }
 }
 
+/**
+ * Get the courses for the given section requirement
+ * @param Model the concentration model
+ * @param section the section requirement name
+ * @returns {Promise<Awaited<{courseCode: string, prerequisite: string, className: string, attributes: string, mandatory: boolean}>[]>}
+ */
 async function getCourses(Model, section) {
     try {
         const data = await Model.findAll({
@@ -86,10 +97,19 @@ async function getCourses(Model, section) {
     }
 }
 
-
+/**
+ * Gets the number of courses required
+ * @param description
+ * @returns {number}
+ */
 const getCoursesRequired = (description) => (description.includes('both') || description.includes('two')) ? 2 : 1;
 
-
+/**
+ * Given the tag - represent the concentration,
+ * get the model that represent the concentration
+ * @param tag the tag alias for the concentration name
+ * @returns {Object} the model linked to the concentration data
+ */
 function getModel(tag) {
   if (tag === "ai")
     return Models[0]
@@ -102,6 +122,11 @@ function getModel(tag) {
   return Models[4]
 }
 
+/**
+ * Gets the name of the concentration.
+ * @param tag the alias of the name
+ * @returns {string} the concentration name
+ */
 function getConcentrationName(tag) {
   if (tag.length === 2) 
     return "Artificial Intelligence";
@@ -110,6 +135,17 @@ function getConcentrationName(tag) {
   return tag.charAt(0).toUpperCase() + tag.slice(1);
 }
 
+
+
+/**=========================
+ * Main Method
+ *=========================/
+
+/**
+ * Gets the outline of the given concentration requirements.
+ * @param tag the alias of the concentration
+ * @returns {Promise<{name: string, sections: Object[]}>}
+ */
 async function getConcentration(tag) {
 
   const Model = getModel(tag);

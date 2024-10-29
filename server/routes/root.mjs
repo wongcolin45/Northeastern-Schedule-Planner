@@ -24,6 +24,10 @@ app.listen(port, () => {
     console.log('Server running on port 3000');
 });
 
+
+/**
+ * Returns a json outline of computer science requirements.
+ */
 app.get('/api/requirements', async (req, res) => {
     const outline = await getCSCore();
     if (outline) {
@@ -33,6 +37,7 @@ app.get('/api/requirements', async (req, res) => {
     }
 });
 
+
 app.get('/api/aps', async (req, res) => {
     const courses = await getAPCourses();
     if (courses) {
@@ -41,6 +46,9 @@ app.get('/api/aps', async (req, res) => {
     return res.status(500).send('failed to fetch courses');
 });
 
+/**
+ * Returns a json outline of the requirements for the given cs concentration.
+ */
 app.get('/api/computerscience/:concentration', async (request, response) => {
     const {concentration} = request.params;
     
@@ -52,18 +60,17 @@ app.get('/api/computerscience/:concentration', async (request, response) => {
     }
 });
 
+/**
+ * Return an up to 4 courses schedule based on
+ * the users current schedule and the computer science requirements satisfied.
+ */
 app.post('/api/computerscienceSchedule', async (request, response) => {
     const schedule = request.body;
     const data = await generateSchedule(schedule, 4);
-    
     return response.status(200).send(data);
 });
 
-app.post('/api/nupath', (request, response) => {
-    const courses = request.body;
-    const data = getAttributes(request.body);
-    return response.status(200).send(data)
-});
+
 
 
 

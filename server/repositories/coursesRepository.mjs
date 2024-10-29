@@ -1,7 +1,11 @@
 import {Course} from "../Models/Course.mjs";
 import sequelize from "../Configuration/connection.mjs";
 
-
+/**
+ * Gets the course info from the given id.
+ * @param courseID the id of the course
+ * @returns {Promise<string|null>}
+ */
 async function getCourseById(courseID) {
     if (courseID == null) {
         return null;

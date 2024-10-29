@@ -2,6 +2,15 @@ import getCSCore from "./computerScienceRepository.mjs"
 import getConcentration from "./concentrationRepository.mjs"
 
 
+/**=========================
+ * Helper Methods
+ *=========================/
+
+/**
+ * Gets the courses taken from the schedule.
+ * @param schedule the user's schedule
+ * @returns {Object[]} the course info
+ */
 function getCourses(schedule) {
     const courses = []
     schedule.forEach(y => {
@@ -16,17 +25,29 @@ function getCourses(schedule) {
     return courses;
 }
 
+/**
+ * Get the index of the course in courseTaken.
+ * @param coursesTaken the courses taken
+ * @param course the course to check
+ * @returns {int} the index of the course
+ */
 const getCourseIndex = (coursesTaken, course) => {
     return coursesTaken.findIndex(c => c.courseCode === course.courseCode);
 }
 
+/**
+ * Gets the courses options still needed to take.
+ * @param coursesTaken the courses the user has taken
+ * @param courseOptions the course options
+ * @param coursesRequired the number of courses required
+ * @returns {{options: Object[], left}}
+ */
 function getCourseOptions(coursesTaken, courseOptions, coursesRequired) {
     let left = coursesRequired;
     const options = []
     courseOptions.forEach(course => {
         const index = getCourseIndex(coursesTaken, course);
-        if (index != -1) {
-            
+        if (index !== -1) {
             left--;
         }else {
             options.push(course);
@@ -35,8 +56,13 @@ function getCourseOptions(coursesTaken, courseOptions, coursesRequired) {
     return {options: options, left: left}
 }
 
+/**
+ * Gets the requirements need to complete.
+ * @param outline the outline of cs requirements
+ * @param courses the courses the user has complete
+ * @returns {Promise<Object[]>} the requirement with the courses options to take
+ */
 async function getIncompleteRequirements(outline, courses) {
-    
     const requirements = [];
     outline.forEach(requirement => {
         requirement.sections.forEach(section => {
@@ -52,6 +78,14 @@ async function getIncompleteRequirements(outline, courses) {
     return requirements;
 }
 
+
+/**
+ * Gets the incomplete requirements outline.
+ * @param outline the outline of the requirements (in this case cs core requirements)
+ * @param schedule the user's schedule
+ * @returns {Promise<Object[]>} the outline of requirements, how many courses left
+ *                              along with the course options that can satisfy them
+ */
 async function getIncomplete(outline, schedule) {
     
     const courses = getCourses(schedule);
@@ -59,6 +93,18 @@ async function getIncomplete(outline, schedule) {
 }
 
 
+
+
+/**=========================
+ * Main Method
+ *=========================/
+
+/**
+ * Generates the users schedule for a semester (up to 4 courses)
+ * @param schedule the user's current schedule
+ * @param length how many courses the generated schedule should be
+ * @returns {Promise<Object[]>} the list of course objects that make up the generated schedule
+ */
 async function generateSchedule(schedule, length) {
     const plan = [];
     const core = await getCSCore()
@@ -73,7 +119,6 @@ async function generateSchedule(schedule, length) {
 
     const fundiesIndex = incomplete.findIndex(r => r.name.includes('Fundamentals'));
 
-   
     if (fundiesIndex !== -1) {
         const options = incomplete[fundiesIndex].options;
         const index1 = options.findIndex(course => course.className === 'Fundamentals of Computer Science 1');
@@ -94,7 +139,6 @@ async function generateSchedule(schedule, length) {
         return plan;
     }
 
-
     if (plan.length === 0) { 
         
         const coreIndex = incomplete.findIndex(r => r.name === 'Computer Science Required Courses');
@@ -111,12 +155,8 @@ async function generateSchedule(schedule, length) {
         }
     }
 
-    
-
-
     let i = incomplete.findIndex(r => !r.name.includes('Computer Science'));
 
-  
 
     while (plan.length < length && i < incomplete.length) {
         const current = incomplete[i];

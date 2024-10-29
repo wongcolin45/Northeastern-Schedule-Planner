@@ -8,10 +8,14 @@ Course.hasMany(CSCore, { foreignKey: 'courseID', as: 'requirements' });
 CSCore.belongsTo(Course, { foreignKey: 'courseID', as: 'course' });
 
 
-//===============================================================
-//                     Get Core Requirements
-//===============================================================
+/**===================
+ * Helper Methods
+ ===================*/
 
+/**
+ * Get the names of each requirement.
+ * @returns {Promise<String[]>}
+ */
 async function getRequirements() {
     try {
         const data = await CSCore.findAll({
@@ -27,6 +31,11 @@ async function getRequirements() {
     }
 }
 
+/**
+ * Gets the names of the sub requirements for the given requirement.
+ * @param requirement the name of the requirement
+ * @returns {Promise<String[]>}
+ */
 async function getSubRequirements(requirement) {
     try {
         let subRequirements = await CSCore.findAll({
@@ -45,8 +54,12 @@ async function getSubRequirements(requirement) {
     }
 }
 
-
-
+/**
+ * Gets the courses under the given requirement and sub requirement.
+ * @param requirement the requirement name
+ * @param subRequirement the sub requirement name
+ * @returns {Promise<{courseCode: string, prerequisite: string|null, className: String, attributes: String|null, mandatory: boolean}[]>}
+ */
 async function getCourses(requirement, subRequirement) {
     try {
         const data = await CSCore.findAll({ 
@@ -94,6 +107,12 @@ async function getCourses(requirement, subRequirement) {
     }
 }
 
+/**
+ * Gets the number of courses required to take for the given requirement and sub requirement.
+ * @param requirement the requirement name
+ * @param subRequirement the sub requirement name
+ * @returns {Promise<int>}
+ */
 async function getCoursesRequired(requirement, subRequirement) {
     try {
         const data = await CSCore.findOne({
@@ -112,6 +131,15 @@ async function getCoursesRequired(requirement, subRequirement) {
     }
 }
 
+
+/**===================
+ * Main Method
+ ===================*/
+
+/**
+ * Gets the outline of the cs core requirements.
+ * @returns {Promise<Object[]>}
+ */
 async function getCSCore() {
     const outline = [];
 
@@ -140,8 +168,6 @@ async function getCSCore() {
 
     return outline
 }
-
-
 
 
 export default getCSCore;
