@@ -90,13 +90,13 @@ function TransferCredit() {
                 <button key={index+course}
                     style={{'textDecoration': 'line-through', 'backgroundColor': 'grey'}}
                     onClick={() => handleRemoveClick(course)}>
-                {course.name}</button>
+                {'AP ' + course.name}</button>
             )
         }
         return (
             <button key={index+course}
                     onClick={() => handleAddClick(course)}>
-                {course.name}</button>
+                {'AP '+course.name}</button>
         )
     }
 
@@ -109,7 +109,6 @@ function TransferCredit() {
             <div className='ap-courses-container'>
             {
                 courses.map(((course, index) => {
-                    console.log('check if '+course.name + ' has '+ input);
                     if (course.name.toLowerCase().includes(input.toLowerCase())) {
                        return getCourseButton(course, index);
                     }
@@ -194,7 +193,7 @@ function TransferCredit() {
                 <table className="results-table">
                     <thead>
                     <tr>
-                        <th>AP Course Name</th>
+                        <th>Course Name</th>
                         <th>Equivalent NU Courses</th>
                         <th>Attributes</th>
                     </tr>
@@ -202,12 +201,12 @@ function TransferCredit() {
                     <tbody>
                     {
                         coursesTaken.map((course, index) => {
-                            const match = (course.courseMatch) ? course.courseMatch : '-';
-                            const attributes = (course.attributes) ? course.attributes : '-';
+                            const match = (course.courseMatch) ? course.courseMatch : 'N/A';
+                            const attributes = (course.attributes) ? course.attributes : 'N/A';
                             left--;
                             return (
                                 <tr key={index}>
-                                    <th>{course.name}</th>
+                                    <th>{'AP ' + course.name}</th>
                                     <th>{match}</th>
                                     <th>{attributes}</th>
                                 </tr>

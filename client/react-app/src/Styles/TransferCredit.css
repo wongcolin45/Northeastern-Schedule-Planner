@@ -51,6 +51,7 @@ Search Bar and AP Courses Section
 .ap-courses-container button {
     width: 490px;
     background-color: whitesmoke;
+    background-color: #87CEFA;
     color: black;
     border: 0.5px solid whitesmoke;
     margin-bottom: 5px;
@@ -58,6 +59,7 @@ Search Bar and AP Courses Section
     text-align: center;
     font-size: 16px;
     padding: 10px;
+    font-weight: bold;
 
 }
 
