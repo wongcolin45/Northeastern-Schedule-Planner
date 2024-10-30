@@ -55,7 +55,7 @@ INSERT INTO courses
 VALUES
     --Computer Science Overview
     ('First Year Seminar', 'CS', 1200, NULL, NULL, 1),
-    ('Professional Development for Khoury Co-op', 'CS', 1210, NULL, NULL, 1),
+    ('Professional Development for Khoury Co-op', 'CS', 1210, 16, NULL, 1),
     --Computer Science Fundamental Courses
     ('Discrete Structures', 'CS', 1800, NULL, 'Formal/Quant Reasoning', 4),
     ('Fundamentals of Computer Science 1', 'CS', 2500, NULL,  'Formal/Quant Reasoning,Natural/Designed World', 4),

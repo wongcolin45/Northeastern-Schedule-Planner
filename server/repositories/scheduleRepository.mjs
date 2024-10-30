@@ -117,30 +117,55 @@ async function generateSchedule(schedule, length) {
         return plan;
     }
 
-    const fundiesIndex = incomplete.findIndex(r => r.name.includes('Fundamentals'));
-
-    if (fundiesIndex !== -1) {
-        const options = incomplete[fundiesIndex].options;
-        const index1 = options.findIndex(course => course.className === 'Fundamentals of Computer Science 1');
-        const index2 = options.findIndex(course => course.className === 'Fundamentals of Computer Science 2');
-        const index3 = options.findIndex(course => course.className === 'Discrete Structures');
-        if (index1 !== -1) {
-            plan.push(options[index1]);
-        }else if (index2 !== -1) {
-            plan.push(options[index2]);
+    // Checks for CS Core Stuff
+    if (incomplete.length > 0) {
+        // Check if First Year Seminar Taken
+        // If First Year Seminar not taken add it to schedule
+        const options = incomplete[0].options;
+        const seminarIndex = options.findIndex(course => course.className === 'First Year Seminar');
+        if (seminarIndex !== -1) {
+            plan.push(options[seminarIndex]);
         }
-        if (index3 !== -1 && plan.length < length) {
-            plan.push(options[index3]);
+
+        // Check if Fundamentals 1 and Fundamentals 2 Taken
+        const fundamentalsIndex = incomplete.findIndex(r => r.name.includes('Fundamentals'));
+
+        // Check if Fundamentals 1, 2 and Discrete Structures are taken.
+        // If either Fundamentals 1 and Discrete Structure not taken add them to schedule them
+        // If Fundamentals 1 complete take Fundamentals 2 if not already taken
+        if (fundamentalsIndex !== -1) {
+            const options = incomplete[fundamentalsIndex].options;
+            const index1 = options.findIndex(course => course.className === 'Fundamentals of Computer Science 1');
+            const index2 = options.findIndex(course => course.className === 'Fundamentals of Computer Science 2');
+            const index3 = options.findIndex(course => course.className === 'Discrete Structures');
+            if (index1 !== -1) {
+                plan.push(options[index1]);
+            }else if (index2 !== -1) {
+                plan.push(options[index2]);
+            }
+            if (index3 !== -1 && plan.length < length) {
+                plan.push(options[index3]);
+            }
+        }
+
+        // If all Fundamentals Courses Taken add the Khoury Co-op courses if not already taken
+        const coopIndex = options.findIndex(course => course.className === 'Professional Development for Khoury Co-op');
+        if (coopIndex !== -1 && fundamentalsIndex === -1) {
+            plan.push(options[coopIndex]);
         }
 
     }
 
+
+
+
+    // If schedule meets length return it
     if (plan.length === length) {
         return plan;
     }
 
-    if (plan.length === 0) { 
-        
+    if (plan.length === 0) {
+
         const coreIndex = incomplete.findIndex(r => r.name === 'Computer Science Required Courses');
         if (coreIndex !== -1) {
             const current = incomplete[coreIndex]
@@ -156,7 +181,6 @@ async function generateSchedule(schedule, length) {
     }
 
     let i = incomplete.findIndex(r => !r.name.includes('Computer Science'));
-
 
     while (plan.length < length && i < incomplete.length) {
         const current = incomplete[i];

@@ -6,13 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="a72a46f0-6265-4295-bf8c-3e2435230758" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/API/courseRequirementsAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/API/requirementsAPI.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/Semester.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/Semester.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/Pages/TransferCredit.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Pages/TransferCredit.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/SelectionBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/SelectionBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Pages/Settings.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Pages/Settings.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/react-app/src/Styles/Calendar.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Styles/Calendar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/Styles/TransferCredit.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Styles/TransferCredit.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/root.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/root.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Styles/Schedule.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Styles/Schedule.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Styles/Settings.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Styles/Settings.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/courses.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/courses.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/neu_database.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/neu_database.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/repositories/scheduleRepository.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server/repositories/scheduleRepository.mjs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +111,9 @@
       <workItem from="1730054798664" duration="2510000" />
       <workItem from="1730145897978" duration="1739000" />
       <workItem from="1730147913900" duration="28441000" />
-      <workItem from="1730222806624" duration="4418000" />
+      <workItem from="1730222806624" duration="8439000" />
+      <workItem from="1730235803384" duration="407000" />
+      <workItem from="1730261700617" duration="1746000" />
     </task>
     <servers />
   </component>

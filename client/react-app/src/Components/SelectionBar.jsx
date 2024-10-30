@@ -14,7 +14,6 @@ function SelectionBar(props) {
 
     const [pathClicked, setPathClicked] = useState(false);
 
-
     function coursesTaken(index) {
         const section = sections[index];
         let count = 0;
@@ -121,8 +120,6 @@ function SelectionBar(props) {
     }
 
     function renderSectionSelections(section, index) {
-
-
         const sectionTitle = (section.name.includes('section')) ? section.name.slice(0, -12) : section.name;
         const style = getBackgroundColor(index)
         const arrow = (current === index) ? "*" : "";
