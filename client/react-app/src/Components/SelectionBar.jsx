@@ -5,15 +5,33 @@ import {getCompetenciesCompleted} from "../Helpers/converter.jsx";
 import CourseButton from './CourseButton';
 import Loader from "./Loader.jsx";
 
+/**
+ * This represents the top portion of the Schedule Page.
+ * It includes the sidebar and region of selecting courses to place in the schedule area below.
+ */
 function SelectionBar(props) {
     const {concentration, courseSelections, concentrationSelections, path} = useContext(MyContext);
 
+    /**
+     * Adds the Major + concentration requirements into one.
+     */
     const sections = courseSelections.concat(concentrationSelections);
 
+    /**
+     * Keep track of the current requirement section's index.
+     */
     const [current, setCurrent] = useState(0);
 
+    /**
+     * Keeps track if the NU path section was clicked or not.
+     */
     const [pathClicked, setPathClicked] = useState(false);
 
+    /**
+     * Gets the number of courses taken for the section.
+     * @param index the index of the section
+     * @returns {number} the number of courses taken
+     */
     function coursesTaken(index) {
         const section = sections[index];
         let count = 0;
@@ -25,6 +43,11 @@ function SelectionBar(props) {
         return count;
     }
 
+    /**
+     * Gets how many course left in order to complete section.
+     * @param index the index of the section
+     * @returns {number} the number of courses left
+     */
     function getLeft(index) {
         const section = sections[index];
        
@@ -34,6 +57,12 @@ function SelectionBar(props) {
         return section.left - coursesTaken(index);
     }
 
+    /**
+     * Renders a individual section with the title and its courses.
+     * If NU path is clicked then just render the nu path section.
+     * @param index the index of the section
+     * @returns {JSX.Element} the section component
+     */
     function renderSection(index) {
     
         if (pathClicked) {
@@ -74,6 +103,10 @@ function SelectionBar(props) {
         )
     }
 
+    /**
+     * Renders the NU Path section.
+     * @returns {JSX.Element} the nu path section
+     */
     function renderNUPathSection() {
         const completed = getCompetenciesCompleted(path)
         const style = getNUPathBackgroundColor(completed);
@@ -103,10 +136,16 @@ function SelectionBar(props) {
         )
     }
 
+    /**
+     * Handles when a button on the sidebar is clicked.
+     * Sets the current section to the corresponding button that was pressed.
+     * @param index the index of the button - corresponds to its section
+     */
     const handleClick = (index) => {
         setPathClicked(false);
         setCurrent(index);
     }
+
 
     function getBackgroundColor(index) {
         const left = getLeft(index);
@@ -121,8 +160,13 @@ function SelectionBar(props) {
 
     function renderSectionSelections(section, index) {
         const sectionTitle = (section.name.includes('section')) ? section.name.slice(0, -12) : section.name;
-        const style = getBackgroundColor(index)
-        const arrow = (current === index) ? "*" : "";
+        let style = getBackgroundColor(index)
+        if (style.color === 'whitesmoke') {
+            style = {backgroundColor: 'whitesmoke', color: 'black'};
+        }
+        if (current === index) {
+            style = {...style, opacity: '0.7'};
+        }
         if (index === 12) {
             return (
                 <>
@@ -131,7 +175,7 @@ function SelectionBar(props) {
                             onClick={() => handleClick(index)} 
                             key={section.name+index}
                             className='selection-bar-button'
-                            >{arrow + ' '+ sectionTitle}</button>
+                            >{sectionTitle}</button>
                 </>
             )
         }
@@ -144,7 +188,7 @@ function SelectionBar(props) {
                             onClick={() => handleClick(index)}
                             key={section.name+index}
                             className='selection-bar-button'
-                            >{arrow + ' ' + sectionTitle}</button>
+                            >{sectionTitle}</button>
             </>
         )      
     }

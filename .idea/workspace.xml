@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a72a46f0-6265-4295-bf8c-3e2435230758" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/App.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/SelectionBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/SelectionBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/cs_requirements.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/cs_requirements.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/neu_database.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/neu_database.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
