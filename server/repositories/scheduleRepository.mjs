@@ -117,15 +117,28 @@ async function generateSchedule(schedule, length) {
         return plan;
     }
 
+    let options;
+    let index;
     // Checks for CS Core Stuff
     if (incomplete.length > 0) {
         // Check if First Year Seminar Taken
         // If First Year Seminar not taken add it to schedule
-        const options = incomplete[0].options;
+        options = incomplete[0].options;
         const seminarIndex = options.findIndex(course => course.className === 'First Year Seminar');
         if (seminarIndex !== -1) {
             plan.push(options[seminarIndex]);
         }
+
+        const pIndex = incomplete.findIndex(r => r.name === 'Computing and Social Issues');
+        if (pIndex !== -1) {
+            options = incomplete[pIndex].options;
+            const index = options.findIndex(c => c.className === 'Technology and Human Values');
+            if (index !== -1) {
+                plan.push(options[index]);
+            }
+        }
+
+
 
         // Check if Fundamentals 1 and Fundamentals 2 Taken
         const fundamentalsIndex = incomplete.findIndex(r => r.name.includes('Fundamentals'));
@@ -158,11 +171,13 @@ async function generateSchedule(schedule, length) {
 
 
 
-
     // If schedule meets length return it
     if (plan.length === length) {
         return plan;
     }
+
+
+
 
     if (plan.length === 0) {
 
@@ -181,6 +196,9 @@ async function generateSchedule(schedule, length) {
     }
 
     let i = incomplete.findIndex(r => !r.name.includes('Computer Science'));
+
+
+
 
     while (plan.length < length && i < incomplete.length) {
         const current = incomplete[i];

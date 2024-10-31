@@ -17,18 +17,17 @@ import {fetchRequirements} from "./API/requirementsAPI.js";
 export const MyContext = createContext();
 
 function App() {
+    const [outline, setOutline] = useState([]);
 
-  const [outline, setOutline] = useState([]);
+    const [startYear, setStartYear] = useState(2024);
 
-  const [startYear, setStartYear] = useState(2024);
+    const [concentration, setConcentration] = useState({name: "Artificial Intelligence", tag: 'ai'});
 
-  const [concentration, setConcentration] = useState({name: "Artificial Intelligence", tag: 'ai'});
+    const [courseSelections, setCourseSelections] = useState([]);
 
-  const [courseSelections, setCourseSelections] = useState([]);
+    const [concentrationSelections, setConcentrationSelections] = useState([]);
 
-  const [concentrationSelections, setConcentrationSelections] = useState([]);
-
-  const [path, setPath] = useState({
+    const [path, setPath] = useState({
     "Engaging with the Natural and Designed World": new Set(),
     "Exploring Creative Expression and Innovation": new Set(),
     "Interpreting Culture": new Set(),
@@ -42,16 +41,28 @@ function App() {
     "Demonstrating Thought and Action in a Capstone": new Set()
   });
 
-  const saveData = false;
+    const [apCourses, setAPCourses] = useState(loadAPCourses());
 
-  useEffect(() => {    
-    fetchRequirements()
+    const [coops, setCoops] = useState({});
+
+    const saveData = false;
+
+    function loadAPCourses() {
+        const savedCourses = localStorage.getItem('apCourses');
+        if (savedCourses) {
+            return JSON.parse(savedCourses);
+        }
+        return [];
+    }
+
+    useEffect(() => {
+        fetchRequirements()
         .then(data => {
             setOutline(data)
     });
-  },[]);
+    },[]);
 
-  useEffect(() => {
+    useEffect(() => {
     if (outline.length > 0) {
         const requirements = [];
         outline.forEach(r => {
@@ -62,10 +73,13 @@ function App() {
       });
       setCourseSelections(requirements);
     }
-  },[outline])
+    },[outline])
 
+    useEffect(() => {
+        localStorage.setItem('apCourses', JSON.stringify(apCourses));
+    },[apCourses])
 
-  useEffect(() => {
+    useEffect(() => {
     const fetchSelections = async () => {
       const data = await fetchConcentration(concentration);
       const newConcentrationSelections = []
@@ -77,15 +91,13 @@ function App() {
     }
     fetchSelections();
 
-  },[]);
-
+    },[]);
 
 
   
-  
-  return (
-    <BrowserRouter>
-      <Routes>
+    return (
+        <BrowserRouter>
+        <Routes>
           <Route path="/" element={
               <Home/>
           }>
@@ -95,9 +107,6 @@ function App() {
               <Home/>
           }>
           </Route>
-
-
-
         <Route path="/schedule" element={
             <MyContext.Provider value={{outline,
                                         courseSelections,
@@ -107,15 +116,15 @@ function App() {
                                         startYear,
                                         path,
                                         setPath,
-                                        saveData
-
+                                        saveData,
+                                        apCourses,
             }}>
               <ScheduleMaker/>
             </MyContext.Provider>
         }></Route>
 
           <Route path="/transfer-credit" element={
-              <MyContext.Provider value={{path, setPath}}>
+              <MyContext.Provider value={{path, setPath, apCourses, setAPCourses}}>
                   <TransferCredit/>
               </MyContext.Provider>
 
@@ -136,7 +145,7 @@ function App() {
 
       </Routes>
     </BrowserRouter>
-  )
+    )
 
   
 }

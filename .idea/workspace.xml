@@ -5,12 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a72a46f0-6265-4295-bf8c-3e2435230758" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/react-app/src/Styles/Login.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/Pages/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Pages/Home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/Pages/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Pages/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/Semester.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/Semester.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Helpers/converter.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Helpers/converter.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Pages/ScheduleMaker.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Pages/ScheduleMaker.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/react-app/src/Pages/TransferCredit.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Pages/TransferCredit.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/Styles/Settings.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Styles/Settings.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/ap_credits.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/ap_credits.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/electives.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/electives.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/neu_database.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/neu_database.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/repositories/scheduleRepository.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server/repositories/scheduleRepository.mjs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +116,7 @@
       <workItem from="1730235803384" duration="407000" />
       <workItem from="1730261700617" duration="4068000" />
       <workItem from="1730327431888" duration="378000" />
-      <workItem from="1730339012969" duration="481000" />
+      <workItem from="1730339012969" duration="8354000" />
     </task>
     <servers />
   </component>
@@ -121,5 +125,17 @@
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.sql" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/client/react-app/src/Pages/ScheduleMaker.jsx</url>
+          <line>125</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
