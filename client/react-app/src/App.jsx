@@ -16,15 +16,33 @@ import {fetchRequirements} from "./API/requirementsAPI.js";
 
 export const MyContext = createContext();
 
+/**
+ * This is the main app component.
+ */
 function App() {
+    /**
+     * This store the main outline of major requirements.
+     */
     const [outline, setOutline] = useState([]);
 
+    /**
+     * This is the start year when the user started college.
+     */
     const [startYear, setStartYear] = useState(2024);
 
+    /**
+     * This represents the user's chosen concentration
+     */
     const [concentration, setConcentration] = useState({name: "Artificial Intelligence", tag: 'ai'});
 
+    /**
+     * This store the major requirement sections along with the courses need to fulfill them.
+     */
     const [courseSelections, setCourseSelections] = useState([]);
 
+    /**
+     * This stores the concentration requirement sections along with the courses need to fulfill them.
+     */
     const [concentrationSelections, setConcentrationSelections] = useState([]);
 
     const [path, setPath] = useState({
@@ -55,6 +73,7 @@ function App() {
         return [];
     }
 
+
     useEffect(() => {
         fetchRequirements()
         .then(data => {
@@ -63,16 +82,16 @@ function App() {
     },[]);
 
     useEffect(() => {
-    if (outline.length > 0) {
-        const requirements = [];
-        outline.forEach(r => {
-            r.sections.forEach(s => {
-                const info = {name: s.name, courses: s.courses, left: s.coursesRequired,};
-                requirements.push(info);
-            });
-      });
-      setCourseSelections(requirements);
-    }
+        if (outline.length > 0) {
+            const requirements = [];
+            outline.forEach(r => {
+                r.sections.forEach(s => {
+                    const info = {requirementName: r.name, name: s.name, courses: s.courses, left: s.coursesRequired,};
+                    requirements.push(info);
+                });
+          });
+          setCourseSelections(requirements);
+        }
     },[outline])
 
     useEffect(() => {

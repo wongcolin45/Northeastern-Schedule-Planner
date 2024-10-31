@@ -123,7 +123,6 @@ function SelectionBar(props) {
         const sectionTitle = (section.name.includes('section')) ? section.name.slice(0, -12) : section.name;
         const style = getBackgroundColor(index)
         const arrow = (current === index) ? "*" : "";
-        
         if (index === 12) {
             return (
                 <>
@@ -136,12 +135,17 @@ function SelectionBar(props) {
                 </>
             )
         }
+
+
+
         return (
-            <button style={style} 
-                        onClick={() => handleClick(index)} 
-                        key={section.name+index}
-                        className='selection-bar-button'
-                        >{arrow + ' ' + sectionTitle}</button>
+            <>
+                <button style={style}
+                            onClick={() => handleClick(index)}
+                            key={section.name+index}
+                            className='selection-bar-button'
+                            >{arrow + ' ' + sectionTitle}</button>
+            </>
         )      
     }
 
@@ -162,22 +166,32 @@ function SelectionBar(props) {
 
     function renderSelectionBar() {
         if (sections.length === 0) {
-            return (
-                <></>
-            )
+            return <></>;
         }
-
-
         const count = getCompetenciesCompleted(path);
         const title = `${count}/11 Completed`;
         const style = getNUPathBackgroundColor(count);
 
+        let currentRequirement = sections[0].requirementName;
+
+        function renderRequirementName(section) {
+            if (section.requirementName !== currentRequirement) {
+                currentRequirement = section.requirementName;
+                return <h2>{currentRequirement}</h2>
+            }
+        }
+
         return (
             <div className='requirements-bar' key={'requirements-bar'}>
-                <h2>Computer Science Requirements</h2>
+                <h2>{currentRequirement}</h2>
                 {   
                     sections.map((section, index) => {
-                        return renderSectionSelections(section, index)
+                        return (
+                            <>
+                                {renderRequirementName(section)}
+                                {renderSectionSelections(section, index)}
+                            </>
+                        )
                     })
                 }
                 <h2>NU Path Requirements</h2>

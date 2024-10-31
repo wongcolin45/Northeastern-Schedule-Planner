@@ -120,17 +120,17 @@ VALUES
 INSERT INTO cs_requirements
     (sub_requirement_name, courses_required, course_id)
 VALUES
-    ('Khoury Electives', 2, 93),
-    ('Khoury Electives', 2, 94),
-    ('Khoury Electives', 2, 95),
-    ('Khoury Electives', 2, 96),
-    ('Khoury Electives', 2, 97),
-    ('Khoury Electives', 2, 98),
-    ('Khoury Electives', 2, 99),
-    ('Khoury Electives', 2, 100),
-    ('Khoury Electives', 2, 101),
-    ('Khoury Electives', 2, 102),
-    ('Khoury Electives', 2, 103);
+    ('Suggested Courses', 2, 93),
+    ('Suggested Courses', 2, 94),
+    ('Suggested Courses', 2, 95),
+    ('Suggested Courses', 2, 96),
+    ('Suggested Courses', 2, 97),
+    ('Suggested Courses', 2, 98),
+    ('Suggested Courses', 2, 99),
+    ('Suggested Courses', 2, 100),
+    ('Suggested Courses', 2, 101),
+    ('Suggested Courses', 2, 102),
+    ('Suggested Courses', 2, 103);
 ------------------------------------
 --Setting Requirement Names
 ------------------------------------
