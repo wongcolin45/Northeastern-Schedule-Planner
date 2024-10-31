@@ -1,0 +1,31 @@
+
+.login-container {
+    border: 0.5px solid whitesmoke;
+    color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 16px 30px;
+}
+
+
+.login-container input {
+    background-color: whitesmoke;
+    color: black;
+    width: 400px;
+    height: 30px;
+}
+
+#sign-in-button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: whitesmoke;
+    width: 400px;
+    height: 30px;
+}
+
+.bottom-container button {
+    border: none;
+    text-decoration: underline;
+    color: whitesmoke;
+}

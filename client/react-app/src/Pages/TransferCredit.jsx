@@ -26,6 +26,9 @@ function TransferCredit() {
      */
     const [input, setInput] = useState("");
 
+    /**
+     * Fetches the AP courses from backend on first render.
+     */
     useEffect(() => {
         async function fetchData() {
             const data = await fetchAPCourses();
@@ -58,6 +61,7 @@ function TransferCredit() {
         })
         localStorage.setItem("apCourses", JSON.stringify(coursesTaken));
     },[coursesTaken]);
+
 
     function loadAPCourses() {
         const apCourses = localStorage.getItem('apCourses');

@@ -24,17 +24,17 @@ function Home() {
                 <p>Currently the user login and authentication is not finished, but I have the project currently save your schedules made on the browser for now.</p>
                 <h3>Pages</h3>
                 <ul>
-                    <span><b>Home</b> - the current page your on right now</span>
+                    <span><b>Home</b>: The current page your on right now</span>
                     <br></br><br></br>
-                    <span><b>Schedule</b> - this is the main hub for mapping out your schedules</span>
+                    <span><b>Schedule</b>: This is the main hub for mapping out your schedules.</span>
                     <br></br><br></br>
-                    <span><b>Transfer Credit</b> - currently takes in ap credits (still in progress with some of the
+                    <span><b>Transfer Credit</b>: This currently takes in ap credits (still in progress with some of the
                         transfer courses)
                     </span>
                     <br></br><br></br>
-                    <span><b>Settings</b> - more option coming soon, but you can set your concentration here</span>
+                    <span><b>Settings</b>: This page has more option coming soon, but you can set your concentration here</span>
                     <br></br><br></br>
-                    <span><b>Login</b> - not set up at all, will take a while</span>
+                    <span><b>Login</b>: This isnot set up at all, will take a while...</span>
                 </ul>
                 <h2>Contribute on Github</h2>
                 <span>{'Project is far from finished feel free to contribute '}
