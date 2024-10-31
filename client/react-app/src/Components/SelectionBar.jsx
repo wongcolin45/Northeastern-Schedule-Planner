@@ -124,7 +124,7 @@ function SelectionBar(props) {
         const style = getBackgroundColor(index)
         const arrow = (current === index) ? "*" : "";
         
-        if (index === 11) {
+        if (index === 12) {
             return (
                 <>
                     <h2 key={index}>{concentration.name+ ' Requirements'}</h2>

@@ -116,20 +116,39 @@ INSERT INTO cs_requirements
 VALUES
     ('Advanced Writing in the Disciplines', 1, 56),
     ('Advanced Writing in the Disciplines', 1, 57);
+--Khoury Electives
+INSERT INTO cs_requirements
+    (sub_requirement_name, courses_required, course_id)
+VALUES
+    ('Khoury Electives', 2, 93),
+    ('Khoury Electives', 2, 94),
+    ('Khoury Electives', 2, 95),
+    ('Khoury Electives', 2, 96),
+    ('Khoury Electives', 2, 97),
+    ('Khoury Electives', 2, 98),
+    ('Khoury Electives', 2, 99),
+    ('Khoury Electives', 2, 100),
+    ('Khoury Electives', 2, 101),
+    ('Khoury Electives', 2, 102),
+    ('Khoury Electives', 2, 103);
 ------------------------------------
 --Setting Requirement Names
 ------------------------------------
 UPDATE cs_requirements
 SET requirement_name = 'Computer Science Requirements'
-WHERE requirement_id <= 23;
+WHERE requirement_id <= (23);
 
 UPDATE cs_requirements
 SET requirement_name = 'Supporting Courses'
-WHERE requirement_id BETWEEN 24 AND 60;
+WHERE requirement_id BETWEEN (24) AND (60);
 
 UPDATE cs_requirements
 SET requirement_name = 'Computer Science Writing Requirement'
-WHERE requirement_id > 60;
+WHERE requirement_id > (60);
+
+UPDATE cs_requirements
+SET requirement_name = 'Khoury Electives'
+WHERE requirement_id >= 64;
 
 
 

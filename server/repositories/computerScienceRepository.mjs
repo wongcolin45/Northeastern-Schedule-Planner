@@ -46,10 +46,12 @@ async function getSubRequirements(requirement) {
                 requirementName: requirement
             }
         });
+
         subRequirements = subRequirements.map(s => s.subRequirementName);
+        console.log('got subRequirements:', subRequirements);
         return subRequirements;
     }catch (error) {
-        console.error('Error fetching subrequirements', error);
+        console.error('Error fetching sub requirements', error);
         throw error;
     }
 }
@@ -165,7 +167,7 @@ async function getCSCore() {
         }
         outline.push({name: requirement, sections: sections})
     }
-
+    console.log(outline);
     return outline
 }
 
