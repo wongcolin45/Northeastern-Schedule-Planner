@@ -27,8 +27,6 @@ function Semester(props) {
         }
     })
 
-
-
     function renderGenerateClearButton() {
         if (full) {
             return <button className='generate-schedule-button' onClick={handleClearClick}>Clear Schedule</button>
@@ -91,8 +89,6 @@ function Semester(props) {
             </>
         )
     }
-
-
 
 
     function renderStatusButton() {
