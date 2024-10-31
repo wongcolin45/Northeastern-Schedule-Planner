@@ -1,5 +1,5 @@
 const conversions = {
-    "": "Employing Ethical Reasoning",
+    "Ethical Reasoning": "Employing Ethical Reasoning",
     "[]": [
 
         "Integrating Knowledge and Skills Through Experience"

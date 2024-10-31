@@ -2,14 +2,13 @@ import Header from "../Components/Header.jsx";
 import {fetchAPCourses} from "../API/requirementsAPI.js";
 import {useEffect, useState, useContext} from "react";
 import {MyContext} from "../App.jsx";
-import {convertAttributes} from "../Helpers/converter.jsx";
 import '../Styles/TransferCredit.css';
 
 /**
  * This is the Transfer Elements Page.
  */
 function TransferCredit() {
-    const {setPath} = useContext(MyContext);
+    const {setPath, apCourses, setAPCourses} = useContext(MyContext);
 
     /**
      * This represents all the AP courses a student can take.
@@ -19,7 +18,6 @@ function TransferCredit() {
     /**
      * This stores all the ap courses a student has taken.
      */
-    const [coursesTaken, setCoursesTaken] = useState(loadAPCourses());
 
     /**
      * Keeps track of the user input in the search bar.
@@ -44,32 +42,11 @@ function TransferCredit() {
      * for all the courses check if they satisfy any
      */
     useEffect(() => {
-        coursesTaken.forEach((course) => {
-            const attributes = convertAttributes(course.attributes);
-            const courseName = `AP ${course.name}`;
-            console.log('got attributes '+ attributes);
-            setPath(prev => {
-                const newData = {...prev};
-                attributes.forEach(attribute => {
-                    console.log('added to '+attribute);
-                    newData[attribute].add(courseName);
-                })
+        localStorage.setItem("apCourses", JSON.stringify(apCourses));
+    },[apCourses]);
 
 
-                return newData;
-            })
-        })
-        localStorage.setItem("apCourses", JSON.stringify(coursesTaken));
-    },[coursesTaken]);
 
-
-    function loadAPCourses() {
-        const apCourses = localStorage.getItem('apCourses');
-        if (apCourses) {
-            return JSON.parse(apCourses);
-        }
-        return [];
-    }
 
     /**
      * Checks if the Course is taken.
@@ -77,7 +54,7 @@ function TransferCredit() {
      * @returns {boolean} true if ap course is taken
      */
     function courseTaken(course) {
-        return coursesTaken.some(c => c.name === course.name);
+        return apCourses.some(c => c.name === course.name);
     }
 
     /**
@@ -128,8 +105,8 @@ function TransferCredit() {
      * @param course the course to add
      */
     function handleAddClick(course) {
-        if (coursesTaken.length < 8) {
-            setCoursesTaken(prev => {
+        if (apCourses.length < 8) {
+            setAPCourses(prev => {
                 const newCourses = [...prev];
                 newCourses.push(course);
                 return newCourses;
@@ -143,8 +120,7 @@ function TransferCredit() {
      * @param course the course to remove
      */
     function handleRemoveClick(course) {
-
-        setCoursesTaken(prev => {
+        setAPCourses(prev => {
             const newCourses = [...prev];
             const index = newCourses.findIndex(c => c.name === course.name);
 
@@ -165,13 +141,13 @@ function TransferCredit() {
         setPath(prev => {
             const newPath = {...prev};
             for (const key in newPath) {
-                coursesTaken.forEach(course => {
+                apCourses.forEach(course => {
                     newPath[key].delete('AP '+course.name); // Delete from the set
                 });
             }
             return newPath;
         });
-        coursesTaken.forEach((course) => {
+        apCourses.forEach((course) => {
             setPath(prev => {
                 const newPath = {...prev};
                 for (const key in newPath) {
@@ -180,7 +156,7 @@ function TransferCredit() {
                 return newPath;
             });
         })
-        setCoursesTaken([]);
+        setApCourses([]);
     }
     /**
      * Gets the Results Table Component for AP Courses.
@@ -188,7 +164,7 @@ function TransferCredit() {
      * @returns {JSX.Element} the component
      */
     function renderResultsTable() {
-        const creditsMessage = `${coursesTaken.length * 4} / 32 credits earned`;
+        const creditsMessage = `${apCourses.length * 4} / 32 credits earned`;
         let left = 8;
         return (
             <div className="results-container">
@@ -203,7 +179,7 @@ function TransferCredit() {
                     </thead>
                     <tbody>
                     {
-                        coursesTaken.map((course, index) => {
+                        apCourses.map((course, index) => {
                             const match = (course.courseMatch) ? course.courseMatch : 'N/A';
                             const attributes = (course.attributes) ? course.attributes : 'N/A';
                             left--;

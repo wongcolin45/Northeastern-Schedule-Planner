@@ -11,7 +11,7 @@ export const ScheduleContext = createContext();
 
 function ScheduleMaker() {
 
-    const {startYear, setPath} = useContext(MyContext);
+    const {startYear, setPath, apCourses} = useContext(MyContext);
 
     const scrollToBottom = () => {
         console.log('scroll to bottom called');
@@ -100,6 +100,7 @@ function ScheduleMaker() {
         }];
     }
 
+
     useEffect(() => {
         clearNUPath();
         schedule.forEach(year => {
@@ -120,6 +121,21 @@ function ScheduleMaker() {
         }
 
     },[schedule])
+
+    useEffect(() => {
+        apCourses.forEach((course) => {
+            const attributes = convertAttributes(course.attributes);
+            const courseName = `AP ${course.name}`;
+            setPath(prev => {
+                const newData = {...prev};
+                attributes.forEach(attribute => {
+                    newData[attribute].add(courseName);
+                })
+                return newData;
+            })
+        });
+    },[apCourses]);
+
 
 
     return (
