@@ -20,7 +20,6 @@ function convertAttributes(attributes) {
     if (attributes === undefined || attributes == null) {
         return [];
     }
-    console.log('check: '+attributes);
     const requirements = [];
     const names = attributes.split(',');
     names.forEach(name => {

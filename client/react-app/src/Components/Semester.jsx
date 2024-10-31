@@ -1,5 +1,7 @@
 import {useContext, useState, useEffect} from 'react';
 import { ScheduleContext } from '../Pages/ScheduleMaker';
+
+import { MyContext } from "../App";
 import { fetchSchedule } from '../API/requirementsAPI.js';
 import PropTypes from "prop-types";
 import ViewableCourse from "./ViewableCourse.jsx";
@@ -9,7 +11,11 @@ function Semester(props) {
 
     const {schedule, setSchedule} = useContext(ScheduleContext);
 
+    const {setCoops, startYear} = useContext(MyContext);
+
     const [full, setFull] = useState(false);
+
+    const [onCoop, setOnCoop] = useState(false);
 
     useEffect(() => {
         const Year = schedule[props.yearIndex].plans;
@@ -20,6 +26,7 @@ function Semester(props) {
             setFull(false);
         }
     })
+
 
 
     function renderGenerateClearButton() {
@@ -36,18 +43,14 @@ function Semester(props) {
             if (plan.length !== 0) {
                 setSchedule(prev => {
                     const newSchedule = [...prev];
-    
                     const Year = newSchedule[props.yearIndex].plans;
-    
                     const courses = Year[props.semesterIndex].courses;
-    
                     for (let i = 0; i < 4; i++) {
                         if (courses[i] === null) {
                             if (plan.length <= 0) {
                                 return newSchedule;
                             }
                             courses[i] = plan.pop();
-
                         }
                     }
                     return newSchedule;
@@ -72,20 +75,59 @@ function Semester(props) {
         }) 
     }
 
-    return (
-        <div className="semester-container">
-            <h1>{props.semester}</h1>
-            {
+    function renderContent() {
+        return (
+            <>
+                {
                 props.courses.map((course, index) => {
                     return <ViewableCourse course={course}
                                            index={index}
                                            semesterIndex={props.semesterIndex}
                                            yearIndex={props.yearIndex}
                                            key={index}/>
-                      
                 })
-            }
-            {renderGenerateClearButton()}
+                }
+                {renderGenerateClearButton()}
+            </>
+        )
+    }
+
+
+
+
+    function renderStatusButton() {
+        const status = (onCoop) ? 'Working Coop' : 'Attending School';
+
+        function handleClick() {
+            setOnCoop(p => !p);
+
+        }
+
+        return (
+            <button className='status-button'
+                    onClick={handleClick}>
+                {status}</button>
+        )
+    }
+
+    useEffect(() => {
+        if (onCoop) {
+            setCoops(prev => {
+                const newCoops = [...prev];
+                const name = `${props.semester} Coop - ${startYear + props.yearIndex}`;
+                if (!newCoops.includes(name)) {
+                    newCoops.push(name)
+                }
+                return newCoops;
+            })
+        }
+    }, [onCoop]);
+
+    return (
+        <div className="semester-container">
+            <h1>{props.semester}</h1>
+            {renderContent()}
+            {renderStatusButton()}
         </div>
     )
 }

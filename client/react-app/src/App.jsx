@@ -43,7 +43,7 @@ function App() {
 
     const [apCourses, setAPCourses] = useState(loadAPCourses());
 
-    const [coops, setCoops] = useState({});
+    const [coops, setCoops] = useState([]);
 
     const saveData = false;
 
@@ -93,6 +93,17 @@ function App() {
 
     },[]);
 
+    useEffect(() => {
+        setPath(prev => {
+            const newPath = {...prev};
+            coops.forEach(coop => {
+                newPath["Integrating Knowledge and Skills Through Experience"].add(coop);
+            })
+            return newPath;
+
+        })
+    }, [coops]);
+
 
   
     return (
@@ -118,6 +129,7 @@ function App() {
                                         setPath,
                                         saveData,
                                         apCourses,
+                                        setCoops
             }}>
               <ScheduleMaker/>
             </MyContext.Provider>

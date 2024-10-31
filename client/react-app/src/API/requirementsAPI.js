@@ -28,16 +28,13 @@ async function fetchRequirements() {
  */
 async function fetchConcentration(concentration) {
     const url = base + `requirements/computerscience/${concentration.tag}`;
-    console.log('Fetching concentration request to '+url);
     try {
         const response = await fetch(url);
 
         if (!response.ok) {
             console.log(`HTTP error! status: ${response.status}`);
         }
-
-        const data = await response.json()
-        return data;
+        return await response.json();
     }catch (error) {
         console.log(error);
     }

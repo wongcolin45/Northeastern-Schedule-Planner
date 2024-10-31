@@ -9,6 +9,10 @@ import {convertAttributes} from "../Helpers/converter.jsx";
 
 export const ScheduleContext = createContext();
 
+const emptySchedule =  [{ Year: 1,
+    plans: [{year: 2024, semester: "Fall", courses: [null, null, null, null]}]
+}];
+
 function ScheduleMaker() {
 
     const {startYear, setPath, apCourses} = useContext(MyContext);
@@ -21,7 +25,7 @@ function ScheduleMaker() {
         });
     };
 
-    const [schedule, setSchedule] = useState(loadSchedule());
+    const [schedule, setSchedule] = useState(loadSchedule);
 
     const [courseSelection, setCourseSelection] = useState();
 
@@ -69,8 +73,6 @@ function ScheduleMaker() {
                 attributes.forEach(attribute => {
                     newData[attribute].add(courseData.className);
                 })
-
-
                 return newData;
             })
         }
@@ -91,15 +93,15 @@ function ScheduleMaker() {
 
     function loadSchedule() {
         const savedSchedule = localStorage.getItem('userSchedule');
-
         if (savedSchedule) {
             return JSON.parse(savedSchedule);
         }
         return [{ Year: 1,
             plans: [{year: startYear, semester: "Fall", courses: [null, null, null, null]}]
         }];
-    }
 
+
+    }
 
     useEffect(() => {
         clearNUPath();
@@ -119,7 +121,6 @@ function ScheduleMaker() {
         if (schedule) {
             localStorage.setItem('userSchedule', JSON.stringify(schedule));
         }
-
     },[schedule])
 
     useEffect(() => {
@@ -135,6 +136,8 @@ function ScheduleMaker() {
             })
         });
     },[apCourses]);
+
+
 
 
 

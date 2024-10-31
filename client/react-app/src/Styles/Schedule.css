@@ -270,6 +270,17 @@
 }
 
 
+.status-button {
+
+    color: white;
+    padding: 10px;
+    border: 0.5px solid white;
+    border-radius: 5px;
+    width: 60%;
+    margin: auto;
+    margin-top: 10px;
+}
+
 
 
 
