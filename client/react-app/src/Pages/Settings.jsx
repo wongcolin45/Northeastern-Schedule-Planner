@@ -8,7 +8,7 @@ import Header from "../Components/Header.jsx";
 
 function Settings() {
 
-    const {concentration, setConcentration, startYear, setStartYear} = useContext(MyContext);
+    const {concentration, setConcentration, startYear, setStartYear, setAPCourses} = useContext(MyContext);
 
     const concentrations = ['Artificial Intelligence', 'Human Centered Computing', 'Sotware', 'Systems', 'Foundations'];
 
@@ -33,6 +33,8 @@ function Settings() {
 
     function handleResetClick() {
         localStorage.clear();
+        setAPCourses([]);
+
     }
 
     return (

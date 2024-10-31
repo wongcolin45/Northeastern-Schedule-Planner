@@ -46,8 +46,6 @@ function TransferCredit() {
     },[apCourses]);
 
 
-
-
     /**
      * Checks if the Course is taken.
      * @param course the course to check
@@ -136,7 +134,6 @@ function TransferCredit() {
         });
     }
 
-
     function handleClearClick() {
         setPath(prev => {
             const newPath = {...prev};
@@ -156,7 +153,7 @@ function TransferCredit() {
                 return newPath;
             });
         })
-        setApCourses([]);
+        setAPCourses([]);
     }
     /**
      * Gets the Results Table Component for AP Courses.
