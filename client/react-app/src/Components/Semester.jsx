@@ -90,7 +90,6 @@ function Semester(props) {
         )
     }
 
-
     function renderStatusButton() {
         const status = (onCoop) ? 'Working Coop' : 'Attending School';
 

@@ -9,9 +9,6 @@ import {convertAttributes} from "../Helpers/converter.jsx";
 
 export const ScheduleContext = createContext();
 
-const emptySchedule =  [{ Year: 1,
-    plans: [{year: 2024, semester: "Fall", courses: [null, null, null, null]}]
-}];
 
 function ScheduleMaker() {
 
@@ -30,6 +27,9 @@ function ScheduleMaker() {
     const [courseSelection, setCourseSelection] = useState();
 
     function courseTakenBefore(courseCode, prerequisiteCode) {
+        console.log('COURSE TAKEN BEFORE RUNNING')
+        console.log('Course taken before ' +  courseCode);
+        console.log('Course taken before ' +  prerequisiteCode);
         if (!schedule || courseCode === null || prerequisiteCode === null) {
             return true;
         }
@@ -39,14 +39,18 @@ function ScheduleMaker() {
                 for (const c of p.courses) {
                     if (c !== null) {
                        if (c.courseCode === courseCode) {
+                           console.log('found course code first returning true');
                            return false;
                        }else if (c.courseCode === prerequisiteCode) {
+                           console.log('found prerequisite code first returning true');
                            return true;
                        }
                     }
                 }
             }
         }
+
+        return false;
     }
 
     function courseTaken(courseCode) {
@@ -97,7 +101,8 @@ function ScheduleMaker() {
             return JSON.parse(savedSchedule);
         }
         return [{ Year: 1,
-            plans: [{year: startYear, semester: "Fall", courses: [null, null, null, null]}]
+            plans: [{year: startYear, semester: "Fall", courses: [null, null, null, null]},
+                    {year: startYear, semester: "Spring", courses: [null, null, null, null]}]
         }];
 
 

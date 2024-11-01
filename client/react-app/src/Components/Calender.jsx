@@ -15,7 +15,10 @@ function Calender(props) {
 
             newSchedule.push({Year: year, 
                               plans: 
-                              [{year: year, semester: "Fall", courses: [null, null, null, null]}]});
+                              [{year: year, semester: "Fall", courses: [null, null, null, null]},
+                              {year: year, semester: "Spring", courses: [null, null, null, null]}]
+                            });
+
             return newSchedule;
         })
     }

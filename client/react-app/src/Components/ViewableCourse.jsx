@@ -19,7 +19,7 @@ function ViewableCourse(props) {
 
 
     function getStyle() {
-        if (!courseTakenBefore(props.course, props.course.prerequisite)) {
+        if (!courseTakenBefore(props.course.courseCode, props.course.prerequisite)) {
             return {outline: '1px solid red'}
         }
         return {}
@@ -43,39 +43,30 @@ function ViewableCourse(props) {
     }
 
     function handleTrashClick(index) {
-        console.log('trash button clicked');
-
         setSchedule(prev => {
             const newSchedule = [...prev];
-
             const Year = newSchedule[props.yearIndex].plans;
-
             const courses = Year[props.semesterIndex].courses;
-
             courses[index] = null;
-
             return newSchedule;
         })
-
     }
 
 
     return (
         <>
             <div className='course-container' key={props.index}>
-
                 <button className="course-selection"
                         key={props.index}
                         onClick={() => handleClick(props.index)}
                         style={getStyle()}>
                     {getName()}
-
                 </button>
                 <button key={'trash' + props.index}
                         className='trash-button'
                         onClick={() => handleTrashClick(props.index)}>🗑️</button>
             </div>
-            {(!courseTakenBefore(props.course, props.course.prerequisite)) &&
+            {(!courseTakenBefore(props.course.courseCode, props.course.prerequisite)) &&
                 <span className='warning-message'>{`*Missing Prerequisite: ${props.course.prerequisite}`}</span>}
         </>
 

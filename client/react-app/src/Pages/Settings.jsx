@@ -67,7 +67,7 @@ function Settings() {
                 }
                 <div className='reset-container'>
                     <h2>Want to restart from Scratch?</h2>
-                    <buton id='reset-button' onClick={handleResetClick}>Reset All Data</buton>
+                    <button id='reset-button' onClick={handleResetClick}>Reset All Data</button>
                     <label>*You will lose all Progress</label>
                 </div>
             </div>
