@@ -54,11 +54,8 @@ function Semester(props) {
                     return newSchedule;
                 })
             }
-            
-
         }
         getSchedule();
-        
     }
 
     function handleClearClick() {

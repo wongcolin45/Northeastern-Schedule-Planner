@@ -27,29 +27,22 @@ function ScheduleMaker() {
     const [courseSelection, setCourseSelection] = useState();
 
     function courseTakenBefore(courseCode, prerequisiteCode) {
-        console.log('COURSE TAKEN BEFORE RUNNING')
-        console.log('Course taken before ' +  courseCode);
-        console.log('Course taken before ' +  prerequisiteCode);
         if (!schedule || courseCode === null || prerequisiteCode === null) {
             return true;
         }
-
         for (const y of schedule) {
             for (const p of y.plans) {
                 for (const c of p.courses) {
                     if (c !== null) {
                        if (c.courseCode === courseCode) {
-                           console.log('found course code first returning true');
                            return false;
                        }else if (c.courseCode === prerequisiteCode) {
-                           console.log('found prerequisite code first returning true');
                            return true;
                        }
                     }
                 }
             }
         }
-
         return false;
     }
 
@@ -121,12 +114,12 @@ function ScheduleMaker() {
         })
     }, [schedule])
 
-    useEffect(() => {
-        setCourseSelection(null);
-        if (schedule) {
-            localStorage.setItem('userSchedule', JSON.stringify(schedule));
-        }
-    },[schedule])
+    // useEffect(() => {
+    //     setCourseSelection(null);
+    //     if (schedule) {
+    //         localStorage.setItem('userSchedule', JSON.stringify(schedule));
+    //     }
+    // },[schedule])
 
     useEffect(() => {
         apCourses.forEach((course) => {
