@@ -3,6 +3,7 @@ import {fetchAPCourses} from "../API/requirementsAPI.js";
 import {useEffect, useState, useContext} from "react";
 import {MyContext} from "../App.jsx";
 import '../Styles/TransferCredit.css';
+import Loader from "../Components/Loader.jsx";
 
 /**
  * This is the Transfer Elements Page.
@@ -93,6 +94,13 @@ function TransferCredit() {
                     }
                 }))
             }
+                {(courses.length === 0) &&
+                    (<>
+                        <br></br>
+                        <br></br>
+                        <Loader/>
+                    </>)
+                }
             </div>
         )
     }

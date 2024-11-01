@@ -18,6 +18,7 @@ async function fetchRequirements() {
         return await response.json()
     }catch(error) {
         console.log(`Error fetching data ${error}`);
+        return [];
     }
 }
 
@@ -54,7 +55,8 @@ async function fetchAPCourses() {
         }
         return await response.json();
     }catch (error) {
-        console.log(error);
+        console.log('Error fetching ap courses: '+error);
+        return [];
     }
 }
 
