@@ -3,7 +3,8 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "./server/routes/root.mjs"
+      "dest": "/backend/server/routes/root.mjs"
     }
   ]
 }
+
