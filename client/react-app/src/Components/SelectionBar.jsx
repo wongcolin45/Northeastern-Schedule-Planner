@@ -10,6 +10,8 @@ import Loader from "./Loader.jsx";
  * It includes the sidebar and region of selecting courses to place in the schedule area below.
  */
 function SelectionBar(props) {
+
+
     const {concentration, courseSelections, concentrationSelections, path} = useContext(MyContext);
 
     /**
@@ -57,12 +59,7 @@ function SelectionBar(props) {
         return section.left - coursesTaken(index);
     }
 
-    /**
-     * Renders a individual section with the title and its courses.
-     * If NU path is clicked then just render the nu path section.
-     * @param index the index of the section
-     * @returns {JSX.Element} the section component
-     */
+
     function renderSection(index) {
     
         if (pathClicked) {
@@ -103,10 +100,6 @@ function SelectionBar(props) {
         )
     }
 
-    /**
-     * Renders the NU Path section.
-     * @returns {JSX.Element} the nu path section
-     */
     function renderNUPathSection() {
         const completed = getCompetenciesCompleted(path)
         const style = getNUPathBackgroundColor(completed);
@@ -145,7 +138,6 @@ function SelectionBar(props) {
         setPathClicked(false);
         setCurrent(index);
     }
-
 
     function getBackgroundColor(index) {
         const left = getLeft(index);
