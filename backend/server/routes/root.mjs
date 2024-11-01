@@ -23,6 +23,9 @@ app.listen(port, () => {
     console.log('Server running on port 3000');
 });
 
+app.get('/', (req, res) => {
+    return res.status(200).send('Planner API working!');
+})
 
 /**
  * Returns a json outline of computer science requirements.
