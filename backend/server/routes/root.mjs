@@ -70,7 +70,7 @@ app.post('/api/schedule/computerscience', async (request, response) => {
 });
 
 
-
+export default app;
 
 
 
