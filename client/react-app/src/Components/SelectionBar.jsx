@@ -206,7 +206,11 @@ function SelectionBar(props) {
         }
         const count = getCompetenciesCompleted(path);
         const title = `${count}/11 Completed`;
-        const style = getNUPathBackgroundColor(count);
+        let style = getNUPathBackgroundColor(count);
+        if (style.color === 'whitesmoke') {
+            style = {backgroundColor: 'whitesmoke', color: 'black'};
+        }
+
 
         let currentRequirement = sections[0].requirementName;
 
