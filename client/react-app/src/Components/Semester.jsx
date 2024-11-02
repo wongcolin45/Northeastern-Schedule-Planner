@@ -9,57 +9,41 @@ import ViewableCourse from "./ViewableCourse.jsx";
 
 function Semester(props) {
 
-    const {schedule, setSchedule, setCourseSelection} = useContext(ScheduleContext);
+    const {schedule, setSchedule} = useContext(ScheduleContext);
 
     const {setCoops, startYear} = useContext(MyContext);
 
-
-
     const [onCoop, setOnCoop] = useState(false);
 
-
-
     function renderGenerateClearButton() {
-        if (false) {
+        if (schedule.isSemesterFull(props.yearIndex, props.semesterIndex)) {
             return <button className='generate-schedule-button' onClick={handleClearClick}>Clear Schedule</button>
         }else {
             return <button className='generate-schedule-button' onClick={handleGenerateClick}>Generate Schedule</button>
         }
     }
-    
-    // function handleGenerateClick() {
-    //     setSchedule(prev => {
-    //         const newSchedule = prev.getSchedule();
-    //         newSchedule.generateSemesterPlan(props.yearIndex, props.semesterIndex);
-    //         return newSchedule.getSchedule();
-    //     });
-    //     setCourseSelection(null);
-    // }
 
     async function handleGenerateClick() {
         const newSchedule = await new Promise((resolve, reject) => {
             setSchedule(prev => {
-                const scheduleCopy = prev.getSchedule(); // Create a copy of the previous schedule
+                const scheduleCopy = prev.getSchedule();
                 scheduleCopy.generateSemesterPlan(props.yearIndex, props.semesterIndex)
                     .then(() => {
-                        resolve(scheduleCopy); // Resolve the promise with the modified schedule
+                        resolve(scheduleCopy);
                     })
-                    .catch(reject); // Handle errors
-                return scheduleCopy; // Return a shallow copy to avoid React's state mutation warnings
+                    .catch(reject);
+                return scheduleCopy;
             });
         });
-        setSchedule(newSchedule); // Update the schedule with the modified version
-        setCourseSelection(null);
+        setSchedule(newSchedule);
     }
 
-
-
-
-
-
-
     function handleClearClick() {
-
+        setSchedule(prev => {
+            const newSchedule = prev.getSchedule();
+            newSchedule.clearSemesterPlan(props.yearIndex, props.semesterIndex);
+            return newSchedule;
+        })
     }
 
     function renderContent() {

@@ -173,6 +173,12 @@ class Schedule {
 
     }
 
+    isSemesterFull(yearIndex, semesterIndex) {
+        return this.getSemesterPlan(yearIndex, semesterIndex).courses.every(course => {
+            return course !== null;
+        })
+    }
+
     clearSemesterPlan(yearIndex, semesterIndex) {
         this.getSemesterPlan(yearIndex, semesterIndex).courses = [null, null, null, null];
     }

@@ -53,13 +53,13 @@ function TransferCredit() {
                 <button key={index+course}
                     style={{'textDecoration': 'line-through', 'backgroundColor': 'grey'}}
                     onClick={() => handleRemoveClick(course)}>
-                {'AP ' + course.name}</button>
+                {'AP ' + course.className}</button>
             )
         }
         return (
             <button key={index+course}
                     onClick={() => handleAddClick(course)}>
-                {'AP '+course.name}</button>
+                {'AP '+course.className}</button>
         )
     }
 
@@ -72,7 +72,7 @@ function TransferCredit() {
             <div className='ap-courses-container'>
             {
                 courses.map(((course, index) => {
-                    if (course.name.toLowerCase().includes(input.toLowerCase())) {
+                    if (course.className.toLowerCase().includes(input.toLowerCase())) {
                        return getCourseButton(course, index);
                     }
                 }))
@@ -91,8 +91,7 @@ function TransferCredit() {
     function handleAddClick(course) {
         setSchedule(prev => {
             const newSchedule = prev.getSchedule();
-            newSchedule.addAPCourse(course);
-            console.log(course);
+            newSchedule.addAPCourse({...course, courseName: 'AP '+ course.courseName});
             return newSchedule;
         });
     }
@@ -106,25 +105,11 @@ function TransferCredit() {
     }
 
     function handleClearClick() {
-        setPath(prev => {
-            const newPath = {...prev};
-            for (const key in newPath) {
-                apCourses.forEach(course => {
-                    newPath[key].delete('AP '+course.name); // Delete from the set
-                });
-            }
-            return newPath;
-        });
-        apCourses.forEach((course) => {
-            setPath(prev => {
-                const newPath = {...prev};
-                for (const key in newPath) {
-                    newPath[key].delete(course.name)
-                }
-                return newPath;
-            });
+        setSchedule(prev => {
+            const newSchedule = prev.getSchedule();
+            newSchedule.clearAPCourses();
+            return newSchedule;
         })
-        setAPCourses([]);
     }
 
     function renderResultsTable() {
@@ -149,7 +134,7 @@ function TransferCredit() {
                             left--;
                             return (
                                 <tr key={index}>
-                                    <th>{'AP ' + course.name}</th>
+                                    <th>{course.className}</th>
                                     <th>{match}</th>
                                     <th>{attributes}</th>
                                 </tr>
