@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {getCompetenciesCompleted} from "../Helpers/converter.jsx";
 import CourseButton from './CourseButton';
 import Loader from "./Loader.jsx";
+import {ScheduleContext} from "../Pages/ScheduleMaker.jsx";
 
 /**
  * This represents the top portion of the Schedule Page.
@@ -11,6 +12,7 @@ import Loader from "./Loader.jsx";
  */
 function SelectionBar(props) {
 
+    const {schedule} = useContext(ScheduleContext);
 
     const {concentration, courseSelections, concentrationSelections, path} = useContext(MyContext);
 
@@ -38,7 +40,7 @@ function SelectionBar(props) {
         const section = sections[index];
         let count = 0;
         section.courses.forEach(course => {
-            if (props.courseTaken(course.courseCode)) {
+            if (schedule.courseTaken(course.courseCode)) {
                 count++;
             }
         })
@@ -58,7 +60,6 @@ function SelectionBar(props) {
         }
         return section.left - coursesTaken(index);
     }
-
 
     function renderSection(index) {
     

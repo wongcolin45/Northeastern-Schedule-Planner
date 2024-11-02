@@ -6,9 +6,10 @@ import '../Styles/Schedule.css';
 import { MyContext } from "../App";
 import Header from "../Components/Header";
 import {convertAttributes} from "../Helpers/converter.jsx";
-
+import Schedule from "../utils/Schedule.js";
 export const ScheduleContext = createContext();
 
+const start = new Schedule(2024);
 
 function ScheduleMaker() {
 
@@ -22,15 +23,17 @@ function ScheduleMaker() {
         });
     };
 
-    const [schedule, setSchedule] = useState(loadSchedule);
+    const [oldSchedule, setOldSchedule] = useState(loadSchedule);
+
+    const [schedule, setSchedule] = useState(start);
 
     const [courseSelection, setCourseSelection] = useState();
 
     function courseTakenBefore(courseCode, prerequisiteCode) {
-        if (!schedule || courseCode === null || prerequisiteCode === null) {
+        if (!oldSchedule || courseCode === null || prerequisiteCode === null) {
             return true;
         }
-        for (const y of schedule) {
+        for (const y of oldSchedule) {
             for (const p of y.plans) {
                 for (const c of p.courses) {
                     if (c !== null) {
@@ -47,11 +50,11 @@ function ScheduleMaker() {
     }
 
     function courseTaken(courseCode) {
-        if (!schedule || courseCode === null) {
+        if (!oldSchedule || courseCode === null) {
             return true;
         }
 
-        return schedule.some(y =>
+        return oldSchedule.some(y =>
             y.plans.some(p =>
                 p.courses.some(c => {
                     return (c != null && c.courseCode === courseCode)
@@ -103,7 +106,7 @@ function ScheduleMaker() {
 
     useEffect(() => {
         clearNUPath();
-        schedule.forEach(year => {
+        oldSchedule.forEach(year => {
             year.plans.forEach(p =>{
                 p.courses.forEach(course => {
                     if (course != null) {
@@ -112,7 +115,9 @@ function ScheduleMaker() {
                 })
             })
         })
-    }, [schedule])
+    }, [oldSchedule])
+
+
 
     // useEffect(() => {
     //     setCourseSelection(null);
@@ -142,14 +147,15 @@ function ScheduleMaker() {
     return (
         <div className="ScheduleMaker-container">
         <ScheduleContext.Provider value={{courseSelection, setCourseSelection,
-                                          schedule, setSchedule,
+                                          oldSchedule, setOldSchedule,
                                           courseTaken, courseTakenBefore,
-                                          scrollToBottom}}>
+                                          scrollToBottom,
+                                          schedule,setSchedule}}>
             <Header/>
             <SelectionBar courseSelection={courseSelection} setCourseSelection={setCourseSelection}
                         courseTaken={courseTaken}
             />
-            <Calender schedule={schedule} setSchedule={setSchedule}
+            <Calender schedule={oldSchedule} setSchedule={setOldSchedule}
                       courseSelection={courseSelection}
             />
         </ScheduleContext.Provider>

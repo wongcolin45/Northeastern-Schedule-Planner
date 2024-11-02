@@ -1,56 +1,32 @@
 import Semester from "./Semester";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import PropTypes from "prop-types";
-
+import {useContext} from "react";
+import {ScheduleContext} from "../Pages/ScheduleMaker.jsx";
 
 
 function AcademicYear(props) {
+
+    const {schedule, setSchedule} = useContext(ScheduleContext);
+
     const [visible, setVisible] = useState(true);
 
-    const YearPlan = props.schedule[props.yearIndex];
+    function handleAddClick() {
+        setSchedule(prev => {
+            const newSchedule = prev.getSchedule();
+            newSchedule.addSemester();
+            return newSchedule;
+        })
+    }
 
-    function getLastSemester(year) {
-        const plans = props.schedule[year].plans.length;
-        return props.schedule[year].plans[plans - 1];
+    function handleRemoveClick() {
+        setSchedule(prev => {
+            const newSchedule = prev.getSchedule();
+            newSchedule.removeSemester(props.yearIndex);
+            return newSchedule;
+        })
     }
     
-    function getNextSemester(year) {
-        const lastYear = getLastSemester(year).year;
-        const lastSemester = getLastSemester(year).semester;
-        if (lastSemester === 'Fall') {
-            return {year: lastYear + 1, semester: "Spring", courses: [null, null, null, null]}
-        }
-        return {year: lastYear, semester: "Summer", courses: [null, null, null, null]} 
-        
-    }
-
-
-    function handleAddClick(index) {
-        const plans = props.schedule[index].plans.length;
-        
-        if (plans < 3) {
-            props.setSchedule(s => { 
-                const newSchedule = [...s]    
-                const newSemester = getNextSemester(index)
-                newSchedule[index].plans.push(newSemester);
-                return newSchedule;
-            })
-        }
-        
-        
-    }
-
-    function handleRemoveClick(index) {
-        const plans = props.schedule[index].plans.length;
-        if (plans > 1) {
-            props.setSchedule(s => {
-                const newSchedule = [...s];
-                newSchedule[index].plans.pop();
-                return newSchedule;
-            })
-        }
-    }
-
     return (
         <>
             <button className='year-header' onClick={() => setVisible(p => !p)}>{`Year ${props.yearIndex+1}`}</button>
@@ -58,7 +34,7 @@ function AcademicYear(props) {
                 visible &&
                 <div className="calender-container">
                     {
-                        YearPlan.plans.map((p, index) => {
+                        schedule.getYearPlan(props.yearIndex).map((p, index) => {
 
                             return (
                                 <Semester
@@ -72,10 +48,10 @@ function AcademicYear(props) {
                         })
                     }
                     <div className="add-remove-container">
-                        <button className="add-semester-button" onClick={() => handleAddClick(props.yearIndex)}
+                        <button className="add-semester-button" onClick={handleAddClick}
                                 key={'add1'}>+
                         </button>
-                        <button className="add-semester-button" onClick={() => handleRemoveClick(props.yearIndex)}
+                        <button className="add-semester-button" onClick={handleRemoveClick}
                                 key={'remove1'}>-
                         </button>
                     </div>

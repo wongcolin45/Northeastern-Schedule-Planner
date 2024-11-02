@@ -4,11 +4,17 @@ import {useContext} from "react";
 import {ScheduleContext} from "../Pages/ScheduleMaker.jsx";
 
 
+/**
+ * This represents a course in the schedule view.
+ */
 function ViewableCourse(props) {
 
-    const {courseSelection, setSchedule, courseTakenBefore} = useContext(ScheduleContext);
+    const {courseSelection, setCourseSelection, setSchedule, schedule} = useContext(ScheduleContext);
 
-    if (props.course === null) {
+    const course = schedule.getCourse(props.yearIndex, props.semesterIndex, props.index);
+
+
+    if (course === null) {
         return (
             <div className='course-container' key={props.index}>
                 <button className="course-selection" key={props.index} onClick={() => handleClick(props.index)}></button>
@@ -18,40 +24,37 @@ function ViewableCourse(props) {
     }
 
 
+
+    const hasPrerequisite = () => props.course !== null && props.course.prerequisite !== null;
+
+    const isInvalidCourse = () => hasPrerequisite() && schedule.coursePrerequisiteMet(props.course.courseCode, props.course.prerequisite);
+
+    const getName = () => props.course.courseCode + ' - ' + props.course.className;
+
+
     function getStyle() {
-        if (!courseTakenBefore(props.course.courseCode, props.course.prerequisite)) {
+        if (isInvalidCourse()) {
             return {outline: '1px solid red'}
         }
         return {}
     }
 
-
-    const getName = () => props.course.courseCode + ' - ' + props.course.className;
-
     function handleClick(index) {
-        if (courseSelection) {
-            setSchedule(prev => {
-                const newSchedule = [...prev];
-                const Year = newSchedule[props.yearIndex].plans;
-                const courses = Year[props.semesterIndex].courses;
-                courses[index] = courseSelection;
-                return newSchedule;
-            })
-        }else {
-            console.log('no course has been selected');
-        }
+        setSchedule(prev => {
+            const newSchedule = prev.getSchedule();
+            newSchedule.addCourse(props.yearIndex, props.semesterIndex, index, courseSelection);
+            return newSchedule;
+        })
+        setCourseSelection(null);
     }
 
-    function handleTrashClick(index) {
+    function handleTrashClick() {
         setSchedule(prev => {
-            const newSchedule = [...prev];
-            const Year = newSchedule[props.yearIndex].plans;
-            const courses = Year[props.semesterIndex].courses;
-            courses[index] = null;
+            const newSchedule = prev.getSchedule();
+            newSchedule.removeCourse(props.yearIndex, props.semesterIndex, props.index);
             return newSchedule;
         })
     }
-
 
     return (
         <>
@@ -64,15 +67,13 @@ function ViewableCourse(props) {
                 </button>
                 <button key={'trash' + props.index}
                         className='trash-button'
-                        onClick={() => handleTrashClick(props.index)}>🗑️</button>
+                        onClick={handleTrashClick}>🗑️</button>
             </div>
-            {(!courseTakenBefore(props.course.courseCode, props.course.prerequisite)) &&
+            {(isInvalidCourse()) &&
                 <span className='warning-message'>{`*Missing Prerequisite: ${props.course.prerequisite}`}</span>}
         </>
-
     )
 }
-
 export default ViewableCourse;
 
 ViewableCourse.propTypes = {

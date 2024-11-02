@@ -2,79 +2,72 @@ import {useContext, useState, useEffect} from 'react';
 import { ScheduleContext } from '../Pages/ScheduleMaker';
 
 import { MyContext } from "../App";
-import { fetchSchedule } from '../API/requirementsAPI.js';
+
 import PropTypes from "prop-types";
 import ViewableCourse from "./ViewableCourse.jsx";
 
 
 function Semester(props) {
 
-    const {schedule, setSchedule} = useContext(ScheduleContext);
+    const {schedule, setSchedule, setCourseSelection} = useContext(ScheduleContext);
 
     const {setCoops, startYear} = useContext(MyContext);
 
-    const [full, setFull] = useState(false);
+
 
     const [onCoop, setOnCoop] = useState(false);
 
-    useEffect(() => {
-        const Year = schedule[props.yearIndex].plans;
-        const courses = Year[props.semesterIndex].courses;
-        if (courses.every(course => course !== null)) {
-            setFull(true);
-        }else {
-            setFull(false);
-        }
-    })
+
 
     function renderGenerateClearButton() {
-        if (full) {
+        if (false) {
             return <button className='generate-schedule-button' onClick={handleClearClick}>Clear Schedule</button>
         }else {
             return <button className='generate-schedule-button' onClick={handleGenerateClick}>Generate Schedule</button>
         }
     }
     
-    function handleGenerateClick() {
-        const getSchedule = async () => {
-            const plan = await fetchSchedule(schedule);
-            if (plan.length !== 0) {
-                setSchedule(prev => {
-                    const newSchedule = [...prev];
-                    const Year = newSchedule[props.yearIndex].plans;
-                    const courses = Year[props.semesterIndex].courses;
-                    for (let i = 0; i < 4; i++) {
-                        if (courses[i] === null) {
-                            if (plan.length <= 0) {
-                                return newSchedule;
-                            }
-                            courses[i] = plan.pop();
-                        }
-                    }
-                    return newSchedule;
-                })
-            }
-        }
-        getSchedule();
+    // function handleGenerateClick() {
+    //     setSchedule(prev => {
+    //         const newSchedule = prev.getSchedule();
+    //         newSchedule.generateSemesterPlan(props.yearIndex, props.semesterIndex);
+    //         return newSchedule.getSchedule();
+    //     });
+    //     setCourseSelection(null);
+    // }
+
+    async function handleGenerateClick() {
+        const newSchedule = await new Promise((resolve, reject) => {
+            setSchedule(prev => {
+                const scheduleCopy = prev.getSchedule(); // Create a copy of the previous schedule
+                scheduleCopy.generateSemesterPlan(props.yearIndex, props.semesterIndex)
+                    .then(() => {
+                        resolve(scheduleCopy); // Resolve the promise with the modified schedule
+                    })
+                    .catch(reject); // Handle errors
+                return scheduleCopy; // Return a shallow copy to avoid React's state mutation warnings
+            });
+        });
+        setSchedule(newSchedule); // Update the schedule with the modified version
+        setCourseSelection(null);
     }
 
+
+
+
+
+
+
     function handleClearClick() {
-        setSchedule(prev => {
-            const newSchedule = [...prev];
 
-            const Year = newSchedule[props.yearIndex].plans;
-
-            Year[props.semesterIndex].courses = [null, null, null, null];
-
-            return newSchedule;
-        }) 
     }
 
     function renderContent() {
+        const courses = schedule.getSemesterPlan(props.yearIndex, props.semesterIndex).courses;
         return (
             <>
                 {
-                props.courses.map((course, index) => {
+                courses.map((course, index) => {
                     return <ViewableCourse course={course}
                                            index={index}
                                            semesterIndex={props.semesterIndex}
