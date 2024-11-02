@@ -10,7 +10,7 @@ import {ScheduleContext} from "../Pages/ScheduleMaker.jsx";
  * This represents the top portion of the Schedule Page.
  * It includes the sidebar and region of selecting courses to place in the schedule area below.
  */
-function SelectionBar(props) {
+function SelectionBar() {
 
     const {schedule} = useContext(ScheduleContext);
 
@@ -61,12 +61,12 @@ function SelectionBar(props) {
         return section.left - coursesTaken(index);
     }
 
+
+
     function renderSection(index) {
-    
         if (pathClicked) {
             return renderNUPathSection();
         }
-
         if (sections[index] === undefined || sections === undefined) {
             return (
                 <div className='course-selection-container' style={{'height' : '5%','textAlign': 'center'}}>
@@ -78,11 +78,12 @@ function SelectionBar(props) {
         }
         const section = sections[index];
 
-
         const sectionTitle = (section.name.includes('section')) ? section.name.slice(0, -12) : section.name;
-        const style = getBackgroundColor(index);
-
         const left = getLeft(index);
+        const needed = sections[index].left;
+        const style = getStyle(left, needed);
+
+
 
         const message = (left <= 0) ? 'Complete' : `${left } left`;
 
@@ -151,39 +152,13 @@ function SelectionBar(props) {
         }
     }
 
-    function renderSectionSelections(section, index) {
-        const sectionTitle = (section.name.includes('section')) ? section.name.slice(0, -12) : section.name;
-        let style = getBackgroundColor(index)
-        if (style.color === 'whitesmoke') {
-            style = {backgroundColor: 'whitesmoke', color: 'black'};
+    function getStyle(completed, needed) {
+        if (completed >= needed) {
+            return {backgroundColor: '#2A2B32', color: 'whitesmoke'};
+        }else if (completed > 0) {
+            return {backgroundColor: '#F5E6CC', color: 'black'}
         }
-        if (current === index) {
-            style = {...style, opacity: '0.7'};
-        }
-        if (index === 12) {
-            return (
-                <>
-                    <h2 key={index}>{concentration.name+ ' Requirements'}</h2>
-                    <button style={style} 
-                            onClick={() => handleClick(index)} 
-                            key={section.name+index}
-                            className='selection-bar-button'
-                            >{sectionTitle}</button>
-                </>
-            )
-        }
-
-
-
-        return (
-            <>
-                <button style={style}
-                            onClick={() => handleClick(index)}
-                            key={section.name+index}
-                            className='selection-bar-button'
-                            >{sectionTitle}</button>
-            </>
-        )      
+        return {backgroundColor: '#A3D9B1', color: 'black'}
     }
 
     function getNUPathBackgroundColor(left) {
@@ -199,6 +174,48 @@ function SelectionBar(props) {
 
 
 
+    }
+
+    function renderSectionSelections(section, index) {
+        const sectionTitle = (section.name.includes('section')) ? section.name.slice(0, -12) : section.name;
+
+        const left = getLeft(index);
+        const needed = sections[index].left;
+
+
+        let style = getStyle(left, needed);
+
+        //let style = getBackgroundColor(index)
+        if (style.color === 'whitesmoke') {
+            style = {backgroundColor: 'whitesmoke', color: 'black'};
+        }
+        if (current === index) {
+            style = {...style, opacity: '0.7'};
+        }
+        if (index === 12) {
+            return (
+                <>
+                    <h2 key={index}>{concentration.name+ ' Requirements'}</h2>
+                    <button style={style}
+                            onClick={() => handleClick(index)}
+                            key={section.name+index}
+                            className='selection-bar-button'
+                    >{sectionTitle}</button>
+                </>
+            )
+        }
+
+
+
+        return (
+            <>
+                <button style={style}
+                        onClick={() => handleClick(index)}
+                        key={section.name+index}
+                        className='selection-bar-button'
+                >{sectionTitle}</button>
+            </>
+        )
     }
 
     function renderSelectionBar() {
@@ -257,8 +274,3 @@ function SelectionBar(props) {
 
 export default SelectionBar;
 
-SelectionBar.propTypes = {
-    courseTaken: PropTypes.func.isRequired,
-    courseSelection: PropTypes.object,
-    setCourseSelection: PropTypes.func.isRequired,
-}
