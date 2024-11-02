@@ -47,7 +47,6 @@ async function fetchConcentration(concentration) {
  */
 async function fetchAPCourses() {
     const url = 'http://localhost:3000/api/aps';
-    console.log('trying url '+url);
     try {
         const response = await fetch(url);
         if (!response.ok) {

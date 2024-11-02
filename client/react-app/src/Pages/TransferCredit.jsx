@@ -9,7 +9,7 @@ import Loader from "../Components/Loader.jsx";
  * This is the Transfer Elements Page.
  */
 function TransferCredit() {
-    const {setPath, apCourses, setAPCourses} = useContext(MyContext);
+    const {setPath, apCourses, setAPCourses, schedule, setSchedule} = useContext(MyContext);
 
     /**
      * This represents all the AP courses a student can take.
@@ -25,36 +25,19 @@ function TransferCredit() {
      */
     const [input, setInput] = useState("");
 
+
     /**
      * Fetches the AP courses from backend on first render.
      */
     useEffect(() => {
-        async function fetchData() {
-            const data = await fetchAPCourses();
-            setCourses(data);
-        }
         if (courses.length === 0) {
-            fetchData();
+            fetchAPCourses().then(data => {
+                setCourses(data);
+            });
         }
     },[]);
 
-    /**
-     * When coursesTaken is changed,
-     * for all the courses check if they satisfy any
-     */
-    useEffect(() => {
-        localStorage.setItem("apCourses", JSON.stringify(apCourses));
-    },[apCourses]);
 
-
-    /**
-     * Checks if the Course is taken.
-     * @param course the course to check
-     * @returns {boolean} true if ap course is taken
-     */
-    function courseTaken(course) {
-        return apCourses.some(c => c.name === course.name);
-    }
 
     /**
      * Helper for renderCourses(),
@@ -65,7 +48,7 @@ function TransferCredit() {
      * @returns {JSX.Element} the button component
      */
     function getCourseButton(course, index) {
-        if (courseTaken(course)) {
+        if (schedule.isAPCourseTaken(course)) {
             return (
                 <button key={index+course}
                     style={{'textDecoration': 'line-through', 'backgroundColor': 'grey'}}
@@ -105,40 +88,20 @@ function TransferCredit() {
         )
     }
 
-
-    /**
-     * Adds the courses to coursesTaken.
-     * @param course the course to add
-     */
     function handleAddClick(course) {
-        if (apCourses.length < 8) {
-            setAPCourses(prev => {
-                const newCourses = [...prev];
-                newCourses.push(course);
-                return newCourses;
-            });
-        }
-
+        setSchedule(prev => {
+            const newSchedule = prev.getSchedule();
+            newSchedule.addAPCourse(course);
+            console.log(course);
+            return newSchedule;
+        });
     }
 
-    /**
-     * Removes the course from coursesTaken.
-     * @param course the course to remove
-     */
     function handleRemoveClick(course) {
-        setAPCourses(prev => {
-            const newCourses = [...prev];
-            const index = newCourses.findIndex(c => c.name === course.name);
-
-            // Only splice if the course was found
-            if (index !== -1) {
-                newCourses.splice(index, 1);  // Corrected to use splice
-            }
-
-            console.log('Removing courses now:');
-
-
-            return newCourses;
+        setSchedule(prev => {
+            const newSchedule = prev.getSchedule();
+            newSchedule.addAPCourse(course);
+            return newSchedule;
         });
     }
 
@@ -163,11 +126,7 @@ function TransferCredit() {
         })
         setAPCourses([]);
     }
-    /**
-     * Gets the Results Table Component for AP Courses.
-     * Follows structure: name | equivalent northeastern course | nu attributes
-     * @returns {JSX.Element} the component
-     */
+
     function renderResultsTable() {
         const creditsMessage = `${apCourses.length * 4} / 32 credits earned`;
         let left = 8;
@@ -184,7 +143,7 @@ function TransferCredit() {
                     </thead>
                     <tbody>
                     {
-                        apCourses.map((course, index) => {
+                        schedule.getAPCourses().map((course, index) => {
                             const match = (course.courseMatch) ? course.courseMatch : 'N/A';
                             const attributes = (course.attributes) ? course.attributes : 'N/A';
                             left--;

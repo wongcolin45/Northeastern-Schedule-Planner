@@ -1,5 +1,81 @@
 import {fetchSchedule} from "../API/requirementsAPI.js";
+import {convertAttributes} from "../Helpers/converter.jsx";
 
+const conversions = {
+    "Ethical Reasoning": "Employing Ethical Reasoning",
+    "[]": [
+
+        "Integrating Knowledge and Skills Through Experience"
+    ],
+    "Natural/Designed World" : "Engaging with the Natural and Designed World",
+    "Formal/Quant Reasoning" : "Conducting Formal and Quantitative Reasoning",
+    "Creative Express/Innov": "Exploring Creative Expression and Innovation",
+    "Interpreting Culture": "Interpreting Culture",
+    "Societies/Institutions": "Understanding Societies and Institutions",
+    "Analyzing/Using Data": "Analyzing and Using Data",
+    "Difference/Diversity": "Engaging Differences and Diversity",
+    "Writing Intensive": "Writing Across Audiences and Genres",
+    "Capstone Experience": "Demonstrating Thought and Action in a Capstone"
+}
+
+class NUPath {
+
+    constructor() {
+        this.path = {
+            "Engaging with the Natural and Designed World": new Set(),
+            "Exploring Creative Expression and Innovation": new Set(),
+            "Interpreting Culture": new Set(),
+            "Conducting Formal and Quantitative Reasoning": new Set(),
+            "Understanding Societies and Institutions": new Set(),
+            "Analyzing and Using Data": new Set(),
+            "Engaging Differences and Diversity": new Set(),
+            "Employing Ethical Reasoning": new Set(),
+            "Writing Across Audiences and Genres": new Set(),
+            "Integrating Knowledge and Skills Through Experience": new Set(),
+            "Demonstrating Thought and Action in a Capstone": new Set()
+        }
+    }
+
+    convertAttributes(attributes) {
+        if (attributes === undefined || attributes == null) {
+            return [];
+        }
+        const requirements = [];
+        const names = attributes.split(',');
+        names.forEach(name => {
+            if (name in conversions) {
+                requirements.push(conversions[name]);
+            }
+        })
+        return requirements;
+    }
+
+    getCompetenciesCompleted() {
+        let total = 0;
+        for (const key in this.path) {
+            if (this.path[key].size >= 1) {
+                total++;
+            }
+        }
+        return total;
+    }
+
+    addCourses(courses) {
+        courses.forEach(course => {
+            const attributes = convertAttributes(course.attributes);
+            attributes.forEach(attribute => {
+                this.path[attribute].add(course.className);
+            })
+        })
+    }
+
+    getPathCopy() {
+        return Object.fromEntries(
+            Object.entries(this.path).map(([key, value]) => [key, new Set(value)])
+        );
+    }
+
+}
 
 /**
  * This class represents a schedule and related logic to editing it.
@@ -19,7 +95,11 @@ class Schedule {
             }];
         this.year = 2;
         this.startYear = startYear;
+        this.path = new NUPath();
+        this.apCourses = []
     }
+
+    // Course logic
 
     courseTaken(courseCode) {
         if (courseCode === null) {
@@ -136,13 +216,43 @@ class Schedule {
         }
     }
 
+    // NU path
+
+    getPath() {
+        this.path.addCourses(this.getCoursesTaken());
+        this.path.addCourses(this.apCourses);
+        return this.path.getPathCopy();
+    }
+
+    getNUPathCount() {
+        return 11 - this.path.getCompetenciesCompleted();
+    }
+
+    // Ap Courses
+
+    addAPCourse(course) {
+        if (this.apCourses.length < 8) {
+            this.apCourses.push(course);
+
+        }
+    }
+
+    isAPCourseTaken(course) {
+        return this.apCourses.includes(course);
+    }
+
+    getAPCourses() {
+        return this.apCourses;
+    }
+
+    clearAPCourses() {
+        this.apCourses = [];
+    }
 
     // Other methods
     getPlans() {
         return this.schedule;
     }
-
-
 
     getCoursesCopy(courses) {
         const copy = [];
@@ -174,7 +284,16 @@ class Schedule {
                 courses: this.getCoursesCopy(plan.courses) // Create a shallow copy of the courses array courses: [...plan.courses]
             }))
         }));
+
+        this.apCourses.forEach((course) => {
+            newSchedule.addAPCourse(course)
+        })
+
         newSchedule.year = this.year;
+        this.path = new NUPath();
+        this.path = this.getPath();
+
+
         return newSchedule;
     }
 
@@ -191,13 +310,6 @@ class Schedule {
         })
         return courses;
     }
-
-
-
-
-
-
-
 
 }
 

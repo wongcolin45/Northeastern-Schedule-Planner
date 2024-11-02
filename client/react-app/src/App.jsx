@@ -12,9 +12,12 @@ import TransferCredit from "./Pages/TransferCredit.jsx";
 import Login from "./Pages/Login.jsx";
 
 import {fetchRequirements} from "./API/requirementsAPI.js";
+import Schedule from "./utils/Schedule.js";
 
 
 export const MyContext = createContext();
+
+const start = new Schedule(2024);
 
 /**
  * This is the main app component.
@@ -24,6 +27,8 @@ function App() {
      * This store the main outline of major requirements.
      */
     const [outline, setOutline] = useState([]);
+
+    const [schedule, setSchedule] = useState(start);
 
     /**
      * This is the start year when the user started college.
@@ -148,14 +153,15 @@ function App() {
                                         setPath,
                                         saveData,
                                         apCourses,
-                                        setCoops
+                                        setCoops,
+                                        schedule, setSchedule,
             }}>
               <ScheduleMaker/>
             </MyContext.Provider>
         }></Route>
 
           <Route path="/transfer-credit" element={
-              <MyContext.Provider value={{path, setPath, apCourses, setAPCourses}}>
+              <MyContext.Provider value={{path, setPath, apCourses, setAPCourses, schedule, setSchedule}}>
                   <TransferCredit/>
               </MyContext.Provider>
 

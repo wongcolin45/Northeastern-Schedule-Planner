@@ -1,7 +1,5 @@
 import {useState, useContext} from 'react';
 import { MyContext } from '../App';
-import PropTypes from 'prop-types';
-import {getCompetenciesCompleted} from "../Helpers/converter.jsx";
 import CourseButton from './CourseButton';
 import Loader from "./Loader.jsx";
 import {ScheduleContext} from "../Pages/ScheduleMaker.jsx";
@@ -14,7 +12,7 @@ function SelectionBar() {
 
     const {schedule} = useContext(ScheduleContext);
 
-    const {concentration, courseSelections, concentrationSelections, path} = useContext(MyContext);
+    const {concentration, courseSelections, concentrationSelections} = useContext(MyContext);
 
     /**
      * Adds the Major + concentration requirements into one.
@@ -61,8 +59,6 @@ function SelectionBar() {
         return section.left - coursesTaken(index);
     }
 
-
-
     function renderSection(index) {
         if (pathClicked) {
             return renderNUPathSection();
@@ -103,14 +99,14 @@ function SelectionBar() {
     }
 
     function renderNUPathSection() {
-        const completed = getCompetenciesCompleted(path)
-        const style = getNUPathBackgroundColor(completed);
+        const completed = schedule.getNUPathCount();
+        const style = getStyle(completed, 11);
         return (
             <div style={style} className='nupath-selection-container'>
                 <h1 style = {style} >NU Path Requirements</h1>
                 <div style={style} className='nupath-contents-container'>
                 {
-                    Object.entries(path).map(([key, value]) => {
+                    Object.entries(schedule.getPath()).map(([key, value]) => {
                         const check = (value.size >= 1) ? " ✔" : '';
                         return (
                             <div key={key+value} className='attribute-container'>
@@ -141,17 +137,6 @@ function SelectionBar() {
         setCurrent(index);
     }
 
-    function getBackgroundColor(index) {
-        const left = getLeft(index);
-        if (left === sections[index].left) {
-            return {backgroundColor: '#2A2B32', color: 'whitesmoke'};
-        }else if (left > 0) {
-            return {backgroundColor: '#F5E6CC', color: 'black'}
-        }else {
-            return {backgroundColor: '#A3D9B1', color: 'black'}
-        }
-    }
-
     function getStyle(completed, needed) {
         if (completed >= needed) {
             return {backgroundColor: '#2A2B32', color: 'whitesmoke'};
@@ -159,21 +144,6 @@ function SelectionBar() {
             return {backgroundColor: '#F5E6CC', color: 'black'}
         }
         return {backgroundColor: '#A3D9B1', color: 'black'}
-    }
-
-    function getNUPathBackgroundColor(left) {
-        if (left === 0) {
-            return {backgroundColor: '', color: 'whitesmoke'};
-        }else if (left < 11) {
-            return {backgroundColor: '#F5E6CC', color: 'black'}
-        }else {
-            return {backgroundColor: '#A3D9B1', color: 'black'}
-        }
-
-
-
-
-
     }
 
     function renderSectionSelections(section, index) {
@@ -222,9 +192,9 @@ function SelectionBar() {
         if (sections.length === 0) {
             return <></>;
         }
-        const count = getCompetenciesCompleted(path);
-        const title = `${count}/11 Completed`;
-        let style = getNUPathBackgroundColor(count);
+        const count = schedule.getNUPathCount()
+        const title = `${11-count}/11 Completed`;
+        let style = getStyle(count, 11)
         if (style.color === 'whitesmoke') {
             style = {backgroundColor: 'whitesmoke', color: 'black'};
         }
