@@ -19,13 +19,18 @@ To get started with the Northeastern Schedule Planner, follow these steps:
 1. Clone the repository:
    ```bash
    git clone https://github.com/wongcolin45/northeastern-schedule-planner.git
+2. npm install in react-app
+3. probably need to install stuff in server too, I will look into that soon
    
-## Features to Add
+## Bugs
 ### Frontend
-- add navigation bar and pages for setting, and pages for setting (selecting concentration) and login
-- fix issue with error message for prerequisite - fundies taken semester after fundies 2 should not satisfy error
-- 
-### Backend
-- allow generate schedule button to pull from concentration courses
-- add to database elective courses so user can satisfy nu path requirements
-  - then allow to generate schedule to pull from these new courses
+- generate schedule button lagging - sometimes need to press multiple times before schedule appears
+- nu path button in selection bar does not rerender when new changes are made to schedule, fulfilling some nu path requirements
+- logic for requirements is faulty - getting course left to complete work but not for concentration requirements where it courses not taken before
+  - currently courses taken before will meet concentration requirements when they should not
+  - need to make it check that the courses taken that are not 'already taken' elsewhere
+  - only applies to some concentration requirements
+
+### Possible New Features
+- User login - save schedules
+- hosting express backend, most likely need to move over to Postgre - sqlite causing issues with hosting :(
