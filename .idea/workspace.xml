@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a72a46f0-6265-4295-bf8c-3e2435230758" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/API/requirementsAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/API/requirementsAPI.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/SelectionBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/SelectionBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/Pages/ScheduleMaker.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Pages/ScheduleMaker.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/Pages/TransferCredit.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Pages/TransferCredit.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/utils/Schedule.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/utils/Schedule.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/server/repositories/apCreditsRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server/repositories/apCreditsRepository.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +117,7 @@
       <workItem from="1730327431888" duration="378000" />
       <workItem from="1730339012969" duration="8354000" />
       <workItem from="1730474292249" duration="28117000" />
-      <workItem from="1730570108708" duration="13193000" />
+      <workItem from="1730570108708" duration="13300000" />
     </task>
     <servers />
   </component>
