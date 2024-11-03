@@ -1,8 +1,10 @@
-import {useState, useContext} from 'react';
-import { MyContext } from '../App';
+import {useContext, useEffect, useState} from 'react';
+import {MyContext} from '../App';
 import CourseButton from './CourseButton';
 import Loader from "./Loader.jsx";
 import {ScheduleContext} from "../Pages/ScheduleMaker.jsx";
+import NUPathView from "./NUPathView.jsx";
+import NUPathButton from "./NUPathButton.jsx";
 
 /**
  * This represents the top portion of the Schedule Page.
@@ -13,6 +15,12 @@ function SelectionBar() {
     const {schedule} = useContext(ScheduleContext);
 
     const {concentration, courseSelections, concentrationSelections} = useContext(MyContext);
+
+    const [pathCount, setPathCount] = useState(schedule.getNUPathCount());
+
+    useEffect(() => {
+        setPathCount(schedule.getNUPathCount());
+    },[schedule])
 
     /**
      * Adds the Major + concentration requirements into one.
@@ -29,11 +37,7 @@ function SelectionBar() {
      */
     const [pathClicked, setPathClicked] = useState(false);
 
-    /**
-     * Gets the number of courses taken for the section.
-     * @param index the index of the section
-     * @returns {number} the number of courses taken
-     */
+
     function coursesTaken(index) {
         const section = sections[index];
         let count = 0;
@@ -45,14 +49,8 @@ function SelectionBar() {
         return count;
     }
 
-    /**
-     * Gets how many course left in order to complete section.
-     * @param index the index of the section
-     * @returns {number} the number of courses left
-     */
     function getLeft(index) {
         const section = sections[index];
-       
         if (section.left - coursesTaken(index) <= 0) {
             return 0;
         }
@@ -61,12 +59,11 @@ function SelectionBar() {
 
     function renderSection(index) {
         if (pathClicked) {
-            return renderNUPathSection();
+            return <NUPathView style={getStyle(pathCount, 11)}/>
         }
         if (sections[index] === undefined || sections === undefined) {
             return (
                 <div className='course-selection-container' style={{'height' : '5%','textAlign': 'center'}}>
-
                     <Loader/>
                     <h3>{'hold up, waiting on backend...'}</h3>
                 </div>
@@ -77,9 +74,8 @@ function SelectionBar() {
         const sectionTitle = (section.name.includes('section')) ? section.name.slice(0, -12) : section.name;
         const left = getLeft(index);
         const needed = sections[index].left;
-        const style = getStyle(left, needed);
-
-
+        const completed = needed - left;
+        const style = getStyle(completed, needed);
 
         const message = (left <= 0) ? 'Complete' : `${left } left`;
 
@@ -98,49 +94,15 @@ function SelectionBar() {
         )
     }
 
-    function renderNUPathSection() {
-        const completed = schedule.getNUPathCount();
-        const style = getStyle(completed, 11);
-        return (
-            <div style={style} className='nupath-selection-container'>
-                <h1 style = {style} >NU Path Requirements</h1>
-                <div style={style} className='nupath-contents-container'>
-                {
-                    Object.entries(schedule.getPath()).map(([key, value]) => {
-                        const check = (value.size >= 1) ? " ✔" : '';
-                        return (
-                            <div key={key+value} className='attribute-container'>
-                                <h3>{key + check}</h3>
-                                <ul key={key+check+value}>
-                                {
-                                    [...value].map(((course, index) => {
-                                        return <li key={course+index}>{course}</li>
-                                    }))
-                                }
-                                </ul>
-                            </div>
-                        )
-                    })
-                }
-                </div>
-            </div>
-        )
-    }
-
-    /**
-     * Handles when a button on the sidebar is clicked.
-     * Sets the current section to the corresponding button that was pressed.
-     * @param index the index of the button - corresponds to its section
-     */
     const handleClick = (index) => {
         setPathClicked(false);
         setCurrent(index);
     }
 
     function getStyle(completed, needed) {
-        if (completed >= needed) {
+        if (completed === 0) {
             return {backgroundColor: '#2A2B32', color: 'whitesmoke'};
-        }else if (completed > 0) {
+        }else if (completed < needed) {
             return {backgroundColor: '#F5E6CC', color: 'black'}
         }
         return {backgroundColor: '#A3D9B1', color: 'black'}
@@ -148,14 +110,10 @@ function SelectionBar() {
 
     function renderSectionSelections(section, index) {
         const sectionTitle = (section.name.includes('section')) ? section.name.slice(0, -12) : section.name;
-
         const left = getLeft(index);
         const needed = sections[index].left;
-
-
-        let style = getStyle(left, needed);
-
-        //let style = getBackgroundColor(index)
+        const completed = needed - left;
+        let style = getStyle(completed, needed);
         if (style.color === 'whitesmoke') {
             style = {backgroundColor: 'whitesmoke', color: 'black'};
         }
@@ -192,9 +150,7 @@ function SelectionBar() {
         if (sections.length === 0) {
             return <></>;
         }
-        const count = schedule.getNUPathCount()
-        const title = `${11-count}/11 Completed`;
-        let style = getStyle(count, 11)
+        let style = getStyle(pathCount, 11)
         if (style.color === 'whitesmoke') {
             style = {backgroundColor: 'whitesmoke', color: 'black'};
         }
@@ -223,7 +179,12 @@ function SelectionBar() {
                     })
                 }
                 <h2>NU Path Requirements</h2>
-                <button id='nupath-button' style={style} onClick={() => setPathClicked(p => !p)}>{title}</button>
+                {/*<button id='nupath-button'*/}
+                {/*        style={style}*/}
+                {/*        onClick={handleNUPathClick}>{title}</button>*/}
+                <NUPathButton setPathClicked={setPathClicked}
+                              style={style}/>
+
             </div>
         )
     }

@@ -95,7 +95,6 @@ class Schedule {
             }];
         this.year = 2;
         this.startYear = startYear;
-        this.path = new NUPath();
         this.apCourses = []
     }
 
@@ -163,6 +162,7 @@ class Schedule {
         } else if (plans.length === 2) {
             plans.push({year: this.year, semester: "Summer", courses: [null, null, null, null]});
         }
+
     }
 
     removeSemester(yearIndex) {
@@ -220,18 +220,23 @@ class Schedule {
                 }
             })
         }
+        return this.getSchedule();
     }
 
     // NU path
 
     getPath() {
-        this.path.addCourses(this.getCoursesTaken());
-        this.path.addCourses(this.apCourses);
-        return this.path.getPathCopy();
+        const path = new NUPath();
+        path.addCourses(this.getCoursesTaken());
+        path.addCourses(this.apCourses);
+        return path.getPathCopy();
     }
 
     getNUPathCount() {
-        return 11 - this.path.getCompetenciesCompleted();
+        const path = new NUPath();
+        path.addCourses(this.apCourses);
+        path.addCourses(this.getCoursesTaken());
+        return path.getCompetenciesCompleted();
     }
 
     // Ap Courses
@@ -280,8 +285,6 @@ class Schedule {
 
     getSchedule() {
         const newSchedule = new Schedule(this.startYear);
-
-        // Deep copy of the schedule
         newSchedule.schedule = this.schedule.map(year => ({
             Year: year.Year,
             plans: year.plans.map(plan => ({
@@ -290,16 +293,10 @@ class Schedule {
                 courses: this.getCoursesCopy(plan.courses) // Create a shallow copy of the courses array courses: [...plan.courses]
             }))
         }));
-
         this.apCourses.forEach((course) => {
             newSchedule.addAPCourse(course)
         })
-
         newSchedule.year = this.year;
-        this.path = new NUPath();
-        this.path = this.getPath();
-
-
         return newSchedule;
     }
 

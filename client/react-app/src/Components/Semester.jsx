@@ -23,19 +23,28 @@ function Semester(props) {
         }
     }
 
+    // async function handleGenerateClick() {
+    //     const newSchedule = await new Promise((resolve, reject) => {
+    //         setSchedule(prev => {
+    //             const scheduleCopy = prev.getSchedule();
+    //             scheduleCopy.generateSemesterPlan(props.yearIndex, props.semesterIndex)
+    //                 .then(() => {
+    //                     resolve(scheduleCopy);
+    //                 })
+    //                 .catch(reject);
+    //             return scheduleCopy.getSchedule();
+    //         });
+    //     });
+    //     setSchedule(newSchedule.getSchedule());
+    // }
     async function handleGenerateClick() {
-        const newSchedule = await new Promise((resolve, reject) => {
-            setSchedule(prev => {
-                const scheduleCopy = prev.getSchedule();
-                scheduleCopy.generateSemesterPlan(props.yearIndex, props.semesterIndex)
-                    .then(() => {
-                        resolve(scheduleCopy);
-                    })
-                    .catch(reject);
-                return scheduleCopy;
-            });
-        });
-        setSchedule(newSchedule);
+        try {
+            const scheduleCopy = schedule.getSchedule();
+            await scheduleCopy.generateSemesterPlan(props.yearIndex, props.semesterIndex);
+            setSchedule(scheduleCopy.getSchedule());
+        } catch (error) {
+            console.error("Error generating semester plan:", error);
+        }
     }
 
     function handleClearClick() {

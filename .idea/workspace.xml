@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a72a46f0-6265-4295-bf8c-3e2435230758" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/client/react-app/src/Components/NUPathButton.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/react-app/src/Components/NUPathView.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/SelectionBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/SelectionBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/Semester.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/Semester.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/ViewableCourse.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/ViewableCourse.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/utils/Schedule.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/utils/Schedule.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +123,9 @@
       <workItem from="1730327431888" duration="378000" />
       <workItem from="1730339012969" duration="8354000" />
       <workItem from="1730474292249" duration="28117000" />
-      <workItem from="1730570108708" duration="14492000" />
+      <workItem from="1730570108708" duration="14554000" />
+      <workItem from="1730589330637" duration="276000" />
+      <workItem from="1730594164391" duration="4059000" />
     </task>
     <servers />
   </component>

@@ -24,7 +24,6 @@ function ViewableCourse(props) {
     }
 
 
-
     const hasPrerequisite = () => props.course !== null && props.course.prerequisite !== null;
 
     const isInvalidCourse = () => hasPrerequisite() && schedule.coursePrerequisiteMet(props.course.courseCode, props.course.prerequisite);
