@@ -25,6 +25,7 @@ function ScheduleMaker() {
 
     const [courseSelection, setCourseSelection] = useState();
 
+
     useEffect(() => {
         apCourses.forEach((course) => {
             const attributes = convertAttributes(course.attributes);

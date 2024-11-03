@@ -76,6 +76,11 @@
     margin-bottom: 30px;
 }
 
+.course-selection-container button:hover{
+    background-color: lightblue;
+    transform: translate(0px, -0.1rem);
+}
+
 .course-selection-container h3 {
     color: whitesmoke;
     text-align: center;

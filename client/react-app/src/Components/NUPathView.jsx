@@ -1,6 +1,5 @@
 import {MyContext} from "../App.jsx";
 import {useContext} from "react";
-import propTypes from "prop-types";
 import PropTypes from "prop-types";
 
 function NUPathView(props) {

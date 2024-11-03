@@ -1,7 +1,6 @@
-import {useContext, useState, useEffect} from 'react';
+import {useContext} from 'react';
 import { ScheduleContext } from '../Pages/ScheduleMaker';
 
-import { MyContext } from "../App";
 
 import PropTypes from "prop-types";
 import ViewableCourse from "./ViewableCourse.jsx";
@@ -11,9 +10,12 @@ function Semester(props) {
 
     const {schedule, setSchedule} = useContext(ScheduleContext);
 
-    const {setCoops, startYear} = useContext(MyContext);
 
-    const [onCoop, setOnCoop] = useState(false);
+    const handleCoopClick = () => {
+        setSchedule(s => {
+            return s.setCoop(props.yearIndex, props.semesterIndex);
+        });
+    }
 
     function renderGenerateClearButton() {
         if (schedule.isSemesterFull(props.yearIndex, props.semesterIndex)) {
@@ -43,7 +45,9 @@ function Semester(props) {
 
     function renderContent() {
         const courses = schedule.getSemesterPlan(props.yearIndex, props.semesterIndex).courses;
-        const name = (onCoop) ? 'Coop 👨‍💻' : 'Class 📚';
+        const name = (schedule.onCoop(props.yearIndex, props.semesterIndex)) ? 'Coop 👨‍💻' : 'Class 📚';
+
+
 
         return (
             <>
@@ -58,7 +62,7 @@ function Semester(props) {
                 }
                 <div className={'semester-bottom-container'}>
                     {renderGenerateClearButton()}
-                    <button onClick={() => setOnCoop(p=> !p)}
+                    <button onClick={handleCoopClick}
                             className='coop-button'
                             style={{height: '30px'}}
                         >{name}</button>
@@ -69,18 +73,7 @@ function Semester(props) {
 
 
 
-    useEffect(() => {
-        if (onCoop) {
-            setCoops(prev => {
-                const newCoops = [...prev];
-                const name = `${props.semester} Coop - ${startYear + props.yearIndex}`;
-                if (!newCoops.includes(name)) {
-                    newCoops.push(name)
-                }
-                return newCoops;
-            })
-        }
-    }, [onCoop]);
+
 
     return (
         <div className="semester-container">

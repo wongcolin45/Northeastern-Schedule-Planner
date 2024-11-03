@@ -69,7 +69,16 @@ class NUPath {
         })
     }
 
-    getPathCopy() {
+    addCoops(names) {
+        names.forEach(name => {
+            this.path["Integrating Knowledge and Skills Through Experience"].add(name);
+        })
+    }
+
+
+
+
+    getPath() {
         return Object.fromEntries(
             Object.entries(this.path).map(([key, value]) => [key, new Set(value)])
         );
@@ -90,11 +99,11 @@ class Schedule {
         this.schedule =
             [{Year: 1,
                 plans: [
-                   {year: startYear, semester: "Fall", courses: [null, null, null, null]},
-                   {year: startYear, semester: "Spring", courses: [null, null, null, null]}]
+                   {year: startYear, semester: "Fall", courses: [null, null, null, null], coop: false},
+                   {year: startYear, semester: "Spring", courses: [null, null, null, null],  coop: false}]
             }];
         this.year = 2;
-        this.startYear = startYear;
+        this.startYear = startYear+1;
         this.apCourses = []
     }
 
@@ -158,9 +167,11 @@ class Schedule {
         const end = this.schedule.length - 1;
         const plans = this.schedule[end].plans;
         if (plans.length === 1) {
-            plans.push({year: this.year, semester: "Spring", courses: [null, null, null, null]});
+            plans.push(
+                {year: this.year, semester: "Spring", courses: [null, null, null, null],  coop: false});
         } else if (plans.length === 2) {
-            plans.push({year: this.year, semester: "Summer", courses: [null, null, null, null]});
+            plans.push(
+                {year: this.year, semester: "Summer", courses: [null, null, null, null],  coop: false});
         }
 
     }
@@ -192,11 +203,12 @@ class Schedule {
     addYear() {
         this.schedule.push({Year: this.year,
             plans: [
-                    {year: this.year, semester: "Fall", courses: [null, null, null, null]},
-                    {year: this.year, semester: "Spring", courses: [null, null, null, null]}
+                    {year: this.startYear, semester: "Fall", courses: [null, null, null, null], coop: false},
+                    {year: this.startYear, semester: "Spring", courses: [null, null, null, null], coop: false}
                 ]
         });
         this.year++;
+        this.startYear++;
     }
 
     removeYear() {
@@ -229,14 +241,41 @@ class Schedule {
         const path = new NUPath();
         path.addCourses(this.getCoursesTaken());
         path.addCourses(this.apCourses);
-        return path.getPathCopy();
+        const coops = this.#getCoops();
+        path.addCoops(coops);
+        return path.getPath();
     }
 
     getNUPathCount() {
         const path = new NUPath();
         path.addCourses(this.apCourses);
         path.addCourses(this.getCoursesTaken());
+        const coops = this.#getCoops();
+        path.addCoops(coops);
         return path.getCompetenciesCompleted();
+    }
+
+    onCoop(yearIndex, semesterIndex) {
+        return this.getSemesterPlan(yearIndex, semesterIndex).coop;
+
+    }
+
+    setCoop(yearIndex, semesterIndex) {
+        const plan = this.getSemesterPlan(yearIndex, semesterIndex);
+        plan.coop = !plan.coop;
+        return this.getSchedule();
+    }
+
+    #getCoops() {
+        const coops = [];
+        this.schedule.forEach(year => {
+           year.plans.forEach(plan => {
+               if (plan.coop) {
+                   coops.push(`${plan.semester} Coop ${plan.year}`);
+               }
+           })
+        })
+        return coops;
     }
 
     // Ap Courses
@@ -290,12 +329,14 @@ class Schedule {
             plans: year.plans.map(plan => ({
                 year: plan.year,
                 semester: plan.semester,
-                courses: this.getCoursesCopy(plan.courses) // Create a shallow copy of the courses array courses: [...plan.courses]
+                courses: this.getCoursesCopy(plan.courses),
+                coop: plan.coop
             }))
         }));
         this.apCourses.forEach((course) => {
             newSchedule.addAPCourse(course)
         })
+        newSchedule.startYear = this.startYear;
         newSchedule.year = this.year;
         return newSchedule;
     }
