@@ -1,6 +1,5 @@
 .calender-container {
     display: flex;
-    flex: column;
     width: 100%;
 }
 
@@ -17,13 +16,10 @@
     display: flex;
     flex-direction: column;
     border: 0.5px solid whitesmoke;
-    width: 566px;
     width: 100%;
     padding: 20px;
     height: 250px;
-    background-color: whitesmoke;
     box-shadow: none;
-
     background-color: #2A2B32;
 }
 
@@ -89,4 +85,33 @@
     box-shadow: none;
 
     opacity: 0.7;
+}
+
+.semester-bottom-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0;
+    align-items: center;
+    width: 70%;
+    margin-left: 15%;
+    padding: 10px;
+}
+
+.coop-button {
+    border: 0.5px solid black;
+    height: 30px;
+    width: 90px;
+    background-color: whitesmoke;
+    color: black;
+
+    border-radius: 5px;
+    box-shadow: 0 0.2rem rgba(211, 211, 211, 0.5);
+    margin-left: 1%;
+
+}
+
+.coop-button:active {
+    box-shadow: none;
+    transform: translate(0px, 0.2rem);
 }

@@ -23,20 +23,6 @@ function Semester(props) {
         }
     }
 
-    // async function handleGenerateClick() {
-    //     const newSchedule = await new Promise((resolve, reject) => {
-    //         setSchedule(prev => {
-    //             const scheduleCopy = prev.getSchedule();
-    //             scheduleCopy.generateSemesterPlan(props.yearIndex, props.semesterIndex)
-    //                 .then(() => {
-    //                     resolve(scheduleCopy);
-    //                 })
-    //                 .catch(reject);
-    //             return scheduleCopy.getSchedule();
-    //         });
-    //     });
-    //     setSchedule(newSchedule.getSchedule());
-    // }
     async function handleGenerateClick() {
         try {
             const scheduleCopy = schedule.getSchedule();
@@ -57,6 +43,8 @@ function Semester(props) {
 
     function renderContent() {
         const courses = schedule.getSemesterPlan(props.yearIndex, props.semesterIndex).courses;
+        const name = (onCoop) ? 'Coop 👨‍💻' : 'Class 📚';
+
         return (
             <>
                 {
@@ -68,25 +56,18 @@ function Semester(props) {
                                            key={index}/>
                 })
                 }
-                {renderGenerateClearButton()}
+                <div className={'semester-bottom-container'}>
+                    {renderGenerateClearButton()}
+                    <button onClick={() => setOnCoop(p=> !p)}
+                            className='coop-button'
+                            style={{height: '30px'}}
+                        >{name}</button>
+                </div>
             </>
         )
     }
 
-    function renderStatusButton() {
-        const status = (onCoop) ? 'Working Coop' : 'Attending School';
 
-        function handleClick() {
-            setOnCoop(p => !p);
-
-        }
-
-        return (
-            <button className='status-button'
-                    onClick={handleClick}>
-                {status}</button>
-        )
-    }
 
     useEffect(() => {
         if (onCoop) {
@@ -105,7 +86,6 @@ function Semester(props) {
         <div className="semester-container">
             <h1>{props.semester}</h1>
             {renderContent()}
-            {renderStatusButton()}
         </div>
     )
 }

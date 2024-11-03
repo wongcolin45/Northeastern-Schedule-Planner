@@ -50,19 +50,7 @@ function App() {
      */
     const [concentrationSelections, setConcentrationSelections] = useState([]);
 
-    const [path, setPath] = useState({
-    "Engaging with the Natural and Designed World": new Set(),
-    "Exploring Creative Expression and Innovation": new Set(),
-    "Interpreting Culture": new Set(),
-    "Conducting Formal and Quantitative Reasoning": new Set(),
-    "Understanding Societies and Institutions": new Set(),
-    "Analyzing and Using Data": new Set(),
-    "Engaging Differences and Diversity": new Set(),
-    "Employing Ethical Reasoning": new Set(),
-    "Writing Across Audiences and Genres": new Set(),
-    "Integrating Knowledge and Skills Through Experience": new Set(),
-    "Demonstrating Thought and Action in a Capstone": new Set()
-  });
+
 
     const [apCourses, setAPCourses] = useState(loadAPCourses());
 
@@ -117,16 +105,7 @@ function App() {
 
     },[]);
 
-    useEffect(() => {
-        setPath(prev => {
-            const newPath = {...prev};
-            coops.forEach(coop => {
-                newPath["Integrating Knowledge and Skills Through Experience"].add(coop);
-            })
-            return newPath;
 
-        })
-    }, [coops]);
 
 
   
@@ -149,8 +128,6 @@ function App() {
                                         concentration,
                                         concentrationSelections,
                                         startYear,
-                                        path,
-                                        setPath,
                                         saveData,
                                         apCourses,
                                         setCoops,
@@ -159,32 +136,25 @@ function App() {
               <ScheduleMaker/>
             </MyContext.Provider>
         }></Route>
-
           <Route path="/transfer-credit" element={
-              <MyContext.Provider value={{path, setPath, apCourses, setAPCourses, schedule, setSchedule}}>
+              <MyContext.Provider value={{apCourses, setAPCourses, schedule, setSchedule}}>
                   <TransferCredit/>
               </MyContext.Provider>
-
           }>
           </Route>
-
         <Route path="/settings" element={
           <MyContext.Provider value={{concentration, setConcentration,
                                       startYear, setStartYear, saveData}}>
              <Settings/>
           </MyContext.Provider>
         }></Route>
-
         <Route path="/Login" element={
           <Login/>
         }>
         </Route>
-
       </Routes>
     </BrowserRouter>
     )
-
-  
 }
 
 export default App;
