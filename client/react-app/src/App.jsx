@@ -51,10 +51,8 @@ function App() {
     const [concentrationSelections, setConcentrationSelections] = useState([]);
 
 
-
     const [apCourses, setAPCourses] = useState(loadAPCourses());
 
-    const [coops, setCoops] = useState([]);
 
     const saveData = false;
 
@@ -130,7 +128,6 @@ function App() {
                                         startYear,
                                         saveData,
                                         apCourses,
-                                        setCoops,
                                         schedule, setSchedule,
             }}>
               <ScheduleMaker/>

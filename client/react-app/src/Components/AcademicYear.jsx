@@ -1,5 +1,5 @@
 import Semester from "./Semester";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import PropTypes from "prop-types";
 import {useContext} from "react";
 import {ScheduleContext} from "../Pages/ScheduleMaker.jsx";

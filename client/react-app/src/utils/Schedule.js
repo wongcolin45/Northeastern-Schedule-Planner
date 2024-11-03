@@ -1,5 +1,7 @@
 import {fetchSchedule} from "../API/requirementsAPI.js";
-import {convertAttributes} from "../Helpers/converter.jsx";
+//import {convertAttributes} from "../Helpers/converter.jsx";
+
+
 
 const conversions = {
     "Ethical Reasoning": "Employing Ethical Reasoning",
@@ -16,6 +18,21 @@ const conversions = {
     "Difference/Diversity": "Engaging Differences and Diversity",
     "Writing Intensive": "Writing Across Audiences and Genres",
     "Capstone Experience": "Demonstrating Thought and Action in a Capstone"
+}
+
+
+function convertAttributes(attributes) {
+    if (attributes === undefined || attributes == null) {
+        return [];
+    }
+    const requirements = [];
+    const names = attributes.split(',');
+    names.forEach(name => {
+        if (name in conversions) {
+            requirements.push(conversions[name]);
+        }
+    })
+    return requirements;
 }
 
 class NUPath {
@@ -36,19 +53,19 @@ class NUPath {
         }
     }
 
-    convertAttributes(attributes) {
-        if (attributes === undefined || attributes == null) {
-            return [];
-        }
-        const requirements = [];
-        const names = attributes.split(',');
-        names.forEach(name => {
-            if (name in conversions) {
-                requirements.push(conversions[name]);
-            }
-        })
-        return requirements;
-    }
+    // convertAttributes(attributes) {
+    //     if (attributes === undefined || attributes == null) {
+    //         return [];
+    //     }
+    //     const requirements = [];
+    //     const names = attributes.split(',');
+    //     names.forEach(name => {
+    //         if (name in conversions) {
+    //             requirements.push(conversions[name]);
+    //         }
+    //     })
+    //     return requirements;
+    // }
 
     getCompetenciesCompleted() {
         let total = 0;
