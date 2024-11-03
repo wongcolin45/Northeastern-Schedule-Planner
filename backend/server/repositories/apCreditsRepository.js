@@ -22,7 +22,7 @@ async function getAPCourses() {
         return await Promise.all(data.map(async r => {
             const {name, attributes, courseID} = r.dataValues;
             const courseMatch = (courseID !== null) ? await getCourseById(courseID) : null;
-            return {'className': name, 'attributes': attributes, 'courseMatch': courseMatch};
+            return {'className': 'AP ' + name, 'attributes': attributes, 'courseMatch': courseMatch};
         }));
     } catch (error) {
         console.log('Error fetching requirements:', error);
