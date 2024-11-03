@@ -24,8 +24,8 @@ To get started with the Northeastern Schedule Planner, follow these steps:
    
 ## Bugs
 ### Frontend
-- generate schedule button lagging - sometimes need to press multiple times before schedule appears
-- nu path button in selection bar does not rerender when new changes are made to schedule, fulfilling some nu path requirements
+- Missing prerequisite does work but not layers deep
+  - ex OOD fulfilled by Fundamentals 2 even though Fundamentals 1 not taken. OOD would have no warning, and Fundamentals 2 would have a warning.
 - logic for requirements is faulty - getting course left to complete work but not for concentration requirements where it courses not taken before
   - currently courses taken before will meet concentration requirements when they should not
   - need to make it check that the courses taken that are not 'already taken' elsewhere
