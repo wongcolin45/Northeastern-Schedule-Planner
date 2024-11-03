@@ -9,7 +9,7 @@ import Loader from "../Components/Loader.jsx";
  * This is the Transfer Elements Page.
  */
 function TransferCredit() {
-    const {setPath, apCourses, setAPCourses, schedule, setSchedule} = useContext(MyContext);
+    const { apCourses, schedule, setSchedule} = useContext(MyContext);
 
     /**
      * This represents all the AP courses a student can take.
@@ -37,7 +37,11 @@ function TransferCredit() {
         }
     },[]);
 
-
+    useEffect(() => {
+        schedule.getAPCourses().forEach((course) => {
+            console.log(course.className);
+        })
+    },[schedule])
 
     /**
      * Helper for renderCourses(),
@@ -48,18 +52,19 @@ function TransferCredit() {
      * @returns {JSX.Element} the button component
      */
     function getCourseButton(course, index) {
+
         if (schedule.isAPCourseTaken(course)) {
             return (
                 <button key={index+course}
                     style={{'textDecoration': 'line-through', 'backgroundColor': 'grey'}}
                     onClick={() => handleRemoveClick(course)}>
-                {'AP ' + course.className}</button>
+                {course.className}</button>
             )
         }
         return (
             <button key={index+course}
                     onClick={() => handleAddClick(course)}>
-                {'AP '+course.className}</button>
+                {course.className}</button>
         )
     }
 
@@ -89,9 +94,11 @@ function TransferCredit() {
     }
 
     function handleAddClick(course) {
+        console.log('course clicked');
+        console.log(course);
         setSchedule(prev => {
             const newSchedule = prev.getSchedule();
-            newSchedule.addAPCourse({...course, courseName: 'AP '+ course.courseName});
+            newSchedule.addAPCourse({...course, className: course.className});
             return newSchedule;
         });
     }

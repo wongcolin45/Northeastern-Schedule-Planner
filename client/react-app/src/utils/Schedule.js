@@ -298,18 +298,23 @@ class Schedule {
     // Ap Courses
 
     addAPCourse(course) {
+
         if (this.apCourses.length < 8) {
             this.apCourses.push(course);
-
         }
     }
 
     isAPCourseTaken(course) {
-        return this.apCourses.includes(course);
+        console.log('is '+course.className+' taken');
+        return this.apCourses.some(c => {
+            c.className = course.className;
+        })
     }
 
     getAPCourses() {
-        return this.apCourses;
+        return this.apCourses.map(course => {
+            return {...course};
+        });
     }
 
     clearAPCourses() {
@@ -350,9 +355,7 @@ class Schedule {
                 coop: plan.coop
             }))
         }));
-        this.apCourses.forEach((course) => {
-            newSchedule.addAPCourse(course)
-        })
+        this.apCourses = this.getAPCourses();
         newSchedule.startYear = this.startYear;
         newSchedule.year = this.year;
         return newSchedule;
