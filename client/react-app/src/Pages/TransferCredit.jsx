@@ -9,22 +9,24 @@ import Loader from "../Components/Loader.jsx";
  * This is the Transfer Elements Page.
  */
 function TransferCredit() {
-    const { apCourses, schedule, setSchedule} = useContext(MyContext);
+    const {setSchedule, apCourses, setAPCourses} = useContext(MyContext);
+
+
 
     /**
      * This represents all the AP courses a student can take.
      */
     const [courses, setCourses] = useState([]);
 
-    /**
-     * This stores all the ap courses a student has taken.
-     */
 
-    /**
-     * Keeps track of the user input in the search bar.
-     */
     const [input, setInput] = useState("");
 
+    useEffect(() => {
+        setSchedule(prev => {
+            return prev.withAPCourses(apCourses);
+        })
+
+    },[apCourses]);
 
     /**
      * Fetches the AP courses from backend on first render.
@@ -37,23 +39,10 @@ function TransferCredit() {
         }
     },[]);
 
-    useEffect(() => {
-        schedule.getAPCourses().forEach((course) => {
-            console.log(course.className);
-        })
-    },[schedule])
 
-    /**
-     * Helper for renderCourses(),
-     * If courses taken returns button that when pressed will add it to coursesTaken.
-     * Otherwise, returns button that when pressed will remove it from coursesTaken.
-     * @param course the course to get
-     * @param index the index value
-     * @returns {JSX.Element} the button component
-     */
     function getCourseButton(course, index) {
 
-        if (schedule.isAPCourseTaken(course)) {
+        if (apCourses.some(c => c.className === course.className)) {
             return (
                 <button key={index+course}
                     style={{'textDecoration': 'line-through', 'backgroundColor': 'grey'}}
@@ -94,29 +83,21 @@ function TransferCredit() {
     }
 
     function handleAddClick(course) {
-        console.log('course clicked');
-        console.log(course);
-        setSchedule(prev => {
-            const newSchedule = prev.getSchedule();
-            newSchedule.addAPCourse({...course, className: course.className});
-            return newSchedule;
-        });
+        setAPCourses(prev => {
+            return [...prev, course];
+        })
+
+
     }
 
     function handleRemoveClick(course) {
-        setSchedule(prev => {
-            const newSchedule = prev.getSchedule();
-            newSchedule.addAPCourse(course);
-            return newSchedule;
+        setAPCourses(prev => {
+            return prev.filter(c => c.className !== course.className);
         });
     }
 
     function handleClearClick() {
-        setSchedule(prev => {
-            const newSchedule = prev.getSchedule();
-            newSchedule.clearAPCourses();
-            return newSchedule;
-        })
+        setAPCourses([]);
     }
 
     function renderResultsTable() {
@@ -135,7 +116,7 @@ function TransferCredit() {
                     </thead>
                     <tbody>
                     {
-                        schedule.getAPCourses().map((course, index) => {
+                        apCourses.map((course, index) => {
                             const match = (course.courseMatch) ? course.courseMatch : 'N/A';
                             const attributes = (course.attributes) ? course.attributes : 'N/A';
                             left--;

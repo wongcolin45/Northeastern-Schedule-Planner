@@ -1,6 +1,6 @@
 import {fetchSchedule} from "../API/requirementsAPI.js";
-import semester from "../Components/Semester.jsx";
-//import {convertAttributes} from "../Helpers/converter.jsx";
+
+
 
 
 
@@ -87,14 +87,13 @@ class NUPath {
         })
     }
 
+
+
     addCoops(names) {
         names.forEach(name => {
             this.path["Integrating Knowledge and Skills Through Experience"].add(name);
         })
     }
-
-
-
 
     getPath() {
         return Object.fromEntries(
@@ -105,7 +104,7 @@ class NUPath {
 }
 
 
-
+// Possible new outline ? , too many objects
 
 class SemesterPlan {
     constructor(season) {
@@ -214,6 +213,8 @@ class SchedulePlan {
     }
 
 }
+
+
 
 /**
  * This class represents a schedule and related logic to editing it.
@@ -409,43 +410,22 @@ class Schedule {
 
     // Ap Courses
 
-    addAPCourse(course) {
-        console.log('add course '+course)
-        if (this.apCourses.length < 8) {
-            this.apCourses.push(course);
-        }
-        return this.getSchedule();
-    }
 
-    removeAPCourse(course) {
-        this.apCourses.filter(c => c.className !== course.className);
-        return this.getSchedule();
-    }
 
-    isAPCourseTaken(course) {
-        return this.apCourses.some(c => {
-            c.className = course.className;
+    withAPCourses(courses) {
+        courses.forEach(course => {
+            if (this.apCourses.length < 8) {
+                this.apCourses.push(course);
+            }
         })
-
-    }
-
-    test() {
-        let names = '';
-        this.apCourses.forEach(course => {
-            names += course.className + ' ';
-        })
-        return names;
+        return this.getSchedule();
     }
 
     getAPCourses() {
-        return this.apCourses.map(course => {
-            return {...course};
-        });
+        return [...this.apCourses];
     }
 
-    clearAPCourses() {
-        this.apCourses = [];
-    }
+
 
     // Other methods
     getPlans() {
@@ -481,7 +461,7 @@ class Schedule {
                 coop: plan.coop
             }))
         }));
-        this.apCourses = this.getAPCourses();
+        newSchedule.apCourses = this.getAPCourses();
         newSchedule.startYear = this.startYear;
         newSchedule.year = this.year;
         return newSchedule;

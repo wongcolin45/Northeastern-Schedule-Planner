@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a72a46f0-6265-4295-bf8c-3e2435230758" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/server/repositories/apCreditsRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server/repositories/apCreditsRepository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/react-app/src/Pages/TransferCredit.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Pages/TransferCredit.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/react-app/src/utils/Schedule.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/utils/Schedule.js" afterDir="false" />
     </list>
@@ -126,6 +124,9 @@
       <workItem from="1730594164391" duration="4157000" />
       <workItem from="1730656116662" duration="697000" />
       <workItem from="1730658424061" duration="13020000" />
+      <workItem from="1730676724788" duration="159000" />
+      <workItem from="1730677317519" duration="45000" />
+      <workItem from="1730685781832" duration="9184000" />
     </task>
     <servers />
   </component>
