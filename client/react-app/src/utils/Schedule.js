@@ -1,4 +1,5 @@
 import {fetchSchedule} from "../API/requirementsAPI.js";
+import semester from "../Components/Semester.jsx";
 //import {convertAttributes} from "../Helpers/converter.jsx";
 
 
@@ -99,6 +100,117 @@ class NUPath {
         return Object.fromEntries(
             Object.entries(this.path).map(([key, value]) => [key, new Set(value)])
         );
+    }
+
+}
+
+
+
+
+class SemesterPlan {
+    constructor(season) {
+        this._season = season;
+        this._courses = [null, null, null, null];
+        this.coop = false;
+    }
+
+    getSeason() {
+        return this._season;
+    }
+
+    withCourse(course, index) {
+        this.courses[index] = course;
+    }
+
+    withCourses(courses) {
+        this.courses.forEach((_, index) => {
+            if (this.courses[index] !== null && courses) {
+                this.courses[index] = courses.pop();
+            }
+        })
+    }
+
+    withCoop() {
+        this.coop = !this.coop;
+    }
+
+    getCourses() {
+        return this._courses;
+    }
+
+    clone() {
+        const newSemester = new SemesterPlan(this._season);
+        return newSemester.withCourses([...this.courses])
+    }
+}
+
+class AcademicYearPlan {
+
+    constructor() {
+        const fall = new SemesterPlan('Fall');
+        const spring = new SemesterPlan('Spring');
+        this.semesters = [fall, spring];
+    }
+
+    withAddedSemester() {
+        if (this.semesters.length === 1) {
+            this.semesters.push(new SemesterPlan('Spring'))
+        }else if (this.semesters.length === 2) {
+            this.semesters.push(new SemesterPlan('Summer'))
+        }
+        return this.clone();
+    }
+
+    withRemovedSemester() {
+        if (this.semesters.length !== 1) {
+            this.semesters.pop();
+        }
+        return this.clone();
+    }
+
+    #setSemesters(semesters) {
+        this.semester = semesters.map(semester => {
+            return semester.clone();
+        })
+    }
+
+    clone() {
+        const newAcademicYear = new AcademicYearPlan();
+        newAcademicYear.#setSemesters([...this.semesters]);
+        return newAcademicYear;
+    }
+}
+
+class SchedulePlan {
+
+    constructor() {
+        const firstYear = new AcademicYearPlan();
+        this.plans = [firstYear];
+    }
+
+    withAddedYear() {
+        const newYear = new AcademicYearPlan();
+        this.plans.push(newYear);
+        return this.lone();
+    }
+
+    widthRemovedYear() {
+        if (this.plans.length !== 1) {
+            this.plans.pop();
+        }
+        return this.clone();
+    }
+
+    #setPlans(plans) {
+        this.plans = []
+        plans.forEach(plan => {
+            this.plans.push(plan.clone());
+        })
+    }
+
+    clone() {
+        const newSchedulePlan = new SchedulePlan();
+        newSchedulePlan.#setPlans(this.plans);
     }
 
 }
@@ -298,17 +410,31 @@ class Schedule {
     // Ap Courses
 
     addAPCourse(course) {
-
+        console.log('add course '+course)
         if (this.apCourses.length < 8) {
             this.apCourses.push(course);
         }
+        return this.getSchedule();
+    }
+
+    removeAPCourse(course) {
+        this.apCourses.filter(c => c.className !== course.className);
+        return this.getSchedule();
     }
 
     isAPCourseTaken(course) {
-        console.log('is '+course.className+' taken');
         return this.apCourses.some(c => {
             c.className = course.className;
         })
+
+    }
+
+    test() {
+        let names = '';
+        this.apCourses.forEach(course => {
+            names += course.className + ' ';
+        })
+        return names;
     }
 
     getAPCourses() {
