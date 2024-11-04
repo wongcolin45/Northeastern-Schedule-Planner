@@ -30,6 +30,10 @@ To get started with the Northeastern Schedule Planner, follow these steps:
   - currently courses taken before will meet concentration requirements when they should not
   - need to make it check that the courses taken that are not 'already taken' elsewhere
   - only applies to some concentration requirements
+- Fix the Schedule Object, every function that changes state should return new instance of the schedule object
+  - possibly use multiple classes?
+  - move to schedule object to backend ?
+  - split up nu path object into its own useState hook instead of storing in schedule?
 
 ### Possible New Features
 - User login - save schedules
