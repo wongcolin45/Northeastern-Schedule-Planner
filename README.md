@@ -24,6 +24,7 @@ To get started with the Northeastern Schedule Planner, follow these steps:
    
 ## Bugs
 ### Frontend
+- AP US History not filling interpreting culture nu requirements.
 - Missing prerequisite does work but not layers deep
   - ex OOD fulfilled by Fundamentals 2 even though Fundamentals 1 not taken. OOD would have no warning, and Fundamentals 2 would have a warning.
 - logic for requirements is faulty - getting course left to complete work but not for concentration requirements where it courses not taken before
