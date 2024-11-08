@@ -32,7 +32,7 @@ function Login() {
             <div className='bottom-container'>
                     <span>{message}
                         <button onClick={handleFormChangeClick}>
-                            {getTitle(getTitle(!hasAccount))}</button></span>
+                            {getTitle((!hasAccount))}</button></span>
             </div>
         )
     }
