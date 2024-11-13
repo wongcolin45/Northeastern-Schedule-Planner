@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a72a46f0-6265-4295-bf8c-3e2435230758" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/Pages/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Pages/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/AcademicYear.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/AcademicYear.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/utils/Schedule.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/utils/Schedule.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +129,9 @@
       <workItem from="1730685781832" duration="9444000" />
       <workItem from="1730857652609" duration="150000" />
       <workItem from="1730875611438" duration="329000" />
-      <workItem from="1731095503719" duration="807000" />
+      <workItem from="1731095503719" duration="855000" />
+      <workItem from="1731110574415" duration="436000" />
+      <workItem from="1731460595477" duration="241000" />
     </task>
     <servers />
   </component>

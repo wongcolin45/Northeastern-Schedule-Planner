@@ -293,9 +293,8 @@ class Schedule {
 
     // Changes Semester
 
-    addSemester() {
-        const end = this.schedule.length - 1;
-        const plans = this.schedule[end].plans;
+    withNewSemester(yearIndex) {
+        const plans = this.schedule[yearIndex].plans;
         if (plans.length === 1) {
             plans.push(
                 {year: this.year, semester: "Spring", courses: [null, null, null, null],  coop: false});
@@ -303,15 +302,15 @@ class Schedule {
             plans.push(
                 {year: this.year, semester: "Summer", courses: [null, null, null, null],  coop: false});
         }
-
+        return this.getSchedule();
     }
 
-    removeSemester(yearIndex) {
+    withLessSemester(yearIndex) {
         const plans = this.schedule[yearIndex].plans;
         if (plans.length !== 1) {
             plans.pop();
         }
-
+        return this.getSchedule();
     }
 
     isSemesterFull(yearIndex, semesterIndex) {
@@ -409,7 +408,6 @@ class Schedule {
     }
 
     // Ap Courses
-
 
 
     withAPCourses(courses) {

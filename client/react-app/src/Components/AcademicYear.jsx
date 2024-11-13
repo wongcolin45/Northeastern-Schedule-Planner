@@ -13,17 +13,13 @@ function AcademicYear(props) {
 
     function handleAddClick() {
         setSchedule(prev => {
-            const newSchedule = prev.getSchedule();
-            newSchedule.addSemester();
-            return newSchedule;
+            return prev.withNewSemester(props.yearIndex);
         })
     }
 
     function handleRemoveClick() {
         setSchedule(prev => {
-            const newSchedule = prev.getSchedule();
-            newSchedule.removeSemester(props.yearIndex);
-            return newSchedule;
+            return prev.withLessSemester(props.yearIndex);
         })
     }
     
