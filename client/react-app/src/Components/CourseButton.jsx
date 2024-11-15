@@ -18,7 +18,12 @@ function CourseButton(props) {
     const style = (courseSelection === props.course) ? {backgroundColor : "lightblue"} : {};
 
     function handleClick() {
-        setCourseSelection(props.course);
+        setCourseSelection(prev => {
+            if (prev !== null && prev.courseCode === props.course.courseCode) {
+                return null;
+            }
+            return props.course;
+        });
     }
 
     return (

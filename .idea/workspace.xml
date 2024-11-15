@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a72a46f0-6265-4295-bf8c-3e2435230758" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/AcademicYear.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/AcademicYear.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/utils/Schedule.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/utils/Schedule.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/CourseButton.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/CourseButton.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/NUPathView.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/NUPathView.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/SelectionBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/SelectionBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Pages/ScheduleMaker.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Pages/ScheduleMaker.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +133,13 @@
       <workItem from="1730875611438" duration="329000" />
       <workItem from="1731095503719" duration="855000" />
       <workItem from="1731110574415" duration="436000" />
-      <workItem from="1731460595477" duration="241000" />
+      <workItem from="1731460595477" duration="317000" />
+      <workItem from="1731465631435" duration="16000" />
+      <workItem from="1731465654944" duration="31000" />
+      <workItem from="1731534846235" duration="1019000" />
+      <workItem from="1731536928181" duration="58000" />
+      <workItem from="1731601708607" duration="35000" />
+      <workItem from="1731640862297" duration="1219000" />
     </task>
     <servers />
   </component>

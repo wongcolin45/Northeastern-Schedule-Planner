@@ -36,8 +36,7 @@ function SelectionBar() {
      * Keeps track if the NU path section was clicked or not.
      */
     const [pathClicked, setPathClicked] = useState(false);
-
-
+    
     function coursesTaken(index) {
         const section = sections[index];
         let count = 0;

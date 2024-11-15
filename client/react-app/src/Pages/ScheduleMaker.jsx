@@ -15,14 +15,14 @@ function ScheduleMaker() {
     const {schedule, setSchedule} = useContext(MyContext);
 
     const scrollToBottom = () => {
-        console.log('scroll to bottom called');
+
         window.scrollTo({
             bottom: document.documentElement.scrollHeight, // Scroll to the total height of the document
             behavior: 'smooth', // Smooth scrolling effect
         });
     };
 
-    const [courseSelection, setCourseSelection] = useState();
+    const [courseSelection, setCourseSelection] = useState(null);
 
 
     return (
