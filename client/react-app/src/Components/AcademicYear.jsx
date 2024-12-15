@@ -65,4 +65,5 @@ AcademicYear.propTypes = {
     setYear: PropTypes.func,
     setSchedule: PropTypes.func,
     schedule: PropTypes.array,
+    component: PropTypes.R
 }

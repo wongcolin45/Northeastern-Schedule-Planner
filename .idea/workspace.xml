@@ -6,10 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="a72a46f0-6265-4295-bf8c-3e2435230758" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/CourseButton.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/CourseButton.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/NUPathView.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/NUPathView.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/SelectionBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/SelectionBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/Pages/ScheduleMaker.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Pages/ScheduleMaker.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/AcademicYear.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/AcademicYear.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/react-app/src/Pages/Settings.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Pages/Settings.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +79,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-WS-242.23339.15" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-WS-242.23726.96" />
       </set>
     </attachedChunks>
   </component>
@@ -139,7 +138,16 @@
       <workItem from="1731534846235" duration="1019000" />
       <workItem from="1731536928181" duration="58000" />
       <workItem from="1731601708607" duration="35000" />
-      <workItem from="1731640862297" duration="1219000" />
+      <workItem from="1731640862297" duration="1272000" />
+      <workItem from="1731695164664" duration="632000" />
+      <workItem from="1731711646120" duration="1264000" />
+      <workItem from="1731774992002" duration="129000" />
+      <workItem from="1731814797879" duration="34000" />
+      <workItem from="1732468417586" duration="1556000" />
+      <workItem from="1733341063556" duration="1092000" />
+      <workItem from="1733938393864" duration="5000" />
+      <workItem from="1734108219626" duration="571000" />
+      <workItem from="1734247303833" duration="274000" />
     </task>
     <servers />
   </component>

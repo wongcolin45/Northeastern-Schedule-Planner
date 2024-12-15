@@ -10,7 +10,7 @@ function Settings() {
 
     const {concentration, setConcentration, startYear, setStartYear, setAPCourses} = useContext(MyContext);
 
-    const concentrations = ['Artificial Intelligence', 'Human Centered Computing', 'Sotware', 'Systems', 'Foundations'];
+    const concentrations = ['Artificial Intelligence', 'Human Centered Computing', 'Software', 'Systems', 'Foundations'];
 
     const majors = ['Computer Science', 'Data Science', 'Cybersecurity'];
 
