@@ -10,6 +10,7 @@ import getConcentration from '../repositories/concentrationRepository.mjs';
 import { generateSchedule } from '../repositories/scheduleRepository.mjs';
 
 import {getAPCourses} from "../repositories/apCreditsRepository.js";
+import {syncDatabase} from "../Configuration/connection.mjs";
 
 const app = express();
 
@@ -22,6 +23,13 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log('Server running on port 3000');
 });
+
+(async () => {
+    await syncDatabase();  // Ensure tables are updated before server starts
+    app.listen(port, () => {
+        console.log(`Server running on port ${port}`);
+    });
+})();
 
 app.get('/', (req, res) => {
     return res.status(200).send('Planner API working!');
