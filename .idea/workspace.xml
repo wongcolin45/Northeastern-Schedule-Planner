@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a72a46f0-6265-4295-bf8c-3e2435230758" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/Components/AcademicYear.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Components/AcademicYear.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/react-app/src/Pages/Settings.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/react-app/src/Pages/Settings.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/database/clear.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/database/users.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/server/Configuration/connection.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server/Configuration/connection.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/server/routes/root.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server/routes/root.mjs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,6 +149,13 @@
       <workItem from="1733938393864" duration="5000" />
       <workItem from="1734108219626" duration="571000" />
       <workItem from="1734247303833" duration="274000" />
+      <workItem from="1736170119693" duration="1000" />
+      <workItem from="1741198799641" duration="616000" />
+      <workItem from="1741293727800" duration="77000" />
+      <workItem from="1741544123019" duration="23000" />
+      <workItem from="1741875825799" duration="601000" />
+      <workItem from="1741897446851" duration="83000" />
+      <workItem from="1742005884482" duration="1050000" />
     </task>
     <servers />
   </component>

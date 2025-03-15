@@ -19,7 +19,7 @@ async function authenticateDatabase() {
 
 async function syncDatabase() {
     try {
-        await sequelize.sync(); // or use { force: true } or { alter: true }
+        await sequelize.sync({alter: true}); // or use { force: true } or { alter: true }
         //console.log('Database synchronized');
     } catch (error) {
         //console.error('Error syncing database:', error);
